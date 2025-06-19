@@ -336,7 +336,7 @@ const Preview = () => {
                       className="w-full h-full"
                       preload="metadata"
                     >
-                      <source src="/src/assets/videos/phone-addiction-strategy.mp4" type="video/mp4" />
+                      <source src="/assets/videos/phone-addiction-strategy.mp4" type="video/mp4" />
                       Your browser does not support the video tag.
                     </video>
                   </div>
