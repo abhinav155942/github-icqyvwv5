@@ -22,6 +22,12 @@ const CoachServices = () => {
       title: "Viral Content Clips",
       description: "Transform your coaching sessions into engaging short-form content that attracts ideal clients across all platforms.",
       cost: 300
+    },
+    {
+      icon: Video,
+      title: "Website Creation",
+      description: "Professional, mobile-responsive websites designed to showcase your coaching services and convert visitors into clients.",
+      cost: 300
     }
   ];
 
@@ -44,6 +50,14 @@ const CoachServices = () => {
           <img 
             src="./assets/images/funnel-demo.avif"
             alt="Funnel Demo"
+            className="w-full rounded-lg shadow-lg"
+          />
+        </div>
+
+        <div className="mt-12 mb-16 max-w-4xl mx-auto">
+          <img 
+            src="./assets/images/website-creation-demo.avif"
+            alt="Website Creation Demo"
             className="w-full rounded-lg shadow-lg"
           />
         </div>
