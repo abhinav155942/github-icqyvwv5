@@ -123,6 +123,15 @@ const Hero = () => {
           >
             Get your free Demo
           </Button>
+          <Button 
+            size="lg" 
+            variant="outline"
+            className="px-12 py-4 text-lg border-2 border-gray-800 text-gray-800 hover:bg-gray-800 hover:text-white rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 font-semibold"
+            onClick={goToProjects}
+            onMouseEnter={handleHover}
+          >
+            View Portfolio
+          </Button>
         </div>
         
         <div className="mt-16 text-lg text-gray-700 font-medium">
