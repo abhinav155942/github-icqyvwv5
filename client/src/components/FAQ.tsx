@@ -11,16 +11,17 @@ const FAQ = () => {
 
   const faqData: FAQItem[] = [
     {
-      question: "Why should I choose Adymize over other agencies?",
-      answer: "Adymize stands out with our AI-powered automation solutions that deliver 3× growth rates. We've helped 88+ brands generate over $430k in revenue through our dedicated team of AI specialists. Unlike traditional agencies, our services are mostly automated, providing faster results and more consistent performance."
+      question: "Why should I choose HookAI over other agencies?",
+      answer: "HookAI stands out with our AI-powered automation solutions that mostly delivers 3× growth rates. We've helped 88+ brands generate over $430k in revenue through our dedicated team of AI specialists. Unlike traditional agencies, our services are mostly automated, providing faster results and more consistent performance and we do provide demos to you for better understanding."
     },
     {
-      question: "What sets Adymize apart from the competition?",
-      answer: "Our unique approach combines cutting-edge AI technology with proven marketing strategies. We offer automated solutions that work 24/7, personalized strategies for each client, and a track record of delivering remarkable results. Our team focuses on automation that scales with your business growth."
+      question: "What sets HookAI apart from the competition?",
+      answer: "We have developed our custom system that uses powerful AI service to create a smooth flow for your project and our team of AI specialist review and test each flow, we have our own servers so you don't have to worry about storage,domains or updates."
     },
     {
-      question: "How can Adymize guarantee accurate reporting?",
-      answer: "We use advanced AI-powered analytics and real-time tracking systems to provide transparent, accurate reporting. Our automated reporting tools monitor key performance indicators continuously, giving you detailed insights into your campaigns' performance with complete transparency and accountability."
+      question: "How can HookAI will help us?",
+      answer: "We use advanced AI-powered analytics and real-time tracking systems to provide you a full stack ai automation and services that will help you to increase your revenue but also saves your time and money"
+
     }
   ];
 
