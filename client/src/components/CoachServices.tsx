@@ -111,49 +111,7 @@ const CoachServices = () => {
                     Your browser does not support the video tag.
                   </video>
                 </div>
-                <div className="p-6">
-                  <h4 className="text-lg font-semibold text-gray-800 mb-3">
-                    What You'll Learn in This Demo:
-                  </h4>
-                  <div className="grid md:grid-cols-2 gap-4">
-                    <div className="flex items-start space-x-3">
-                      <div className="w-6 h-6 bg-purple-500 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                        <span className="text-white text-xs font-bold">1</span>
-                      </div>
-                      <div>
-                        <h5 className="font-medium text-gray-800">Landing Page Optimization</h5>
-                        <p className="text-sm text-gray-600">Create pages that convert visitors into leads</p>
-                      </div>
-                    </div>
-                    <div className="flex items-start space-x-3">
-                      <div className="w-6 h-6 bg-pink-500 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                        <span className="text-white text-xs font-bold">2</span>
-                      </div>
-                      <div>
-                        <h5 className="font-medium text-gray-800">Email Automation</h5>
-                        <p className="text-sm text-gray-600">Nurture leads with automated sequences</p>
-                      </div>
-                    </div>
-                    <div className="flex items-start space-x-3">
-                      <div className="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                        <span className="text-white text-xs font-bold">3</span>
-                      </div>
-                      <div>
-                        <h5 className="font-medium text-gray-800">Follow-up Systems</h5>
-                        <p className="text-sm text-gray-600">Convert prospects into paying clients</p>
-                      </div>
-                    </div>
-                    <div className="flex items-start space-x-3">
-                      <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                        <span className="text-white text-xs font-bold">4</span>
-                      </div>
-                      <div>
-                        <h5 className="font-medium text-gray-800">Performance Tracking</h5>
-                        <p className="text-sm text-gray-600">Monitor and optimize your funnel results</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                
               </CardContent>
             </Card>
           </div>
