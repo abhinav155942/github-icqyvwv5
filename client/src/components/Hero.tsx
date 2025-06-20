@@ -61,7 +61,7 @@ const Hero = () => {
             Let
           </span>{" "}
           <span className="relative inline-block">
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-purple-600 to-purple-800 text-3xl sm:text-4xl md:text-[56px] lg:text-[63px]">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-purple-600 to-purple-800 sm:text-4xl md:text-[56px] lg:text-[63px] text-[63px]">
               AI handle it. 
             </span>
             {/* Animated underline with pen */}
