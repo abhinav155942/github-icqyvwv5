@@ -78,14 +78,11 @@ const CoachServices = () => {
         </div>
 
         <div className="mt-12 mb-16 max-w-4xl mx-auto">
-          <div className="relative w-full" style={{ paddingBottom: '56.25%', height: 0 }}>
-            <iframe 
-              src="https://www.loom.com/embed/YOUR_LOOM_ID_HERE"
-              className="absolute top-0 left-0 w-full h-full rounded-lg shadow-lg"
-              frameBorder="0"
-              allowFullScreen
-            />
-          </div>
+          <img 
+            src="./assets/images/website-creation-demo.avif"
+            alt="Website Creation Demo"
+            className="w-full rounded-lg shadow-lg"
+          />
         </div>
 
         <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
