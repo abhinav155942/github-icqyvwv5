@@ -232,47 +232,47 @@ const ReviewsSection = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 mb-8">
           {displayedReviews.map((review) => (
             <Card key={review.id} className="h-full hover:shadow-xl transition-all duration-300 transform hover:scale-105 border-0 shadow-lg bg-gradient-to-br from-white to-gray-50">
-              <CardContent className="p-8">
-                <div className="flex items-start gap-4 mb-6">
-                  <div className="relative">
+              <CardContent className="p-4 sm:p-6 lg:p-8">
+                <div className="flex items-start gap-3 sm:gap-4 mb-4 sm:mb-6">
+                  <div className="relative flex-shrink-0">
                     {review.avatar ? (
                       <img 
                         src={review.avatar} 
                         alt={review.name}
-                        className="w-16 h-16 rounded-full object-cover border-2 border-purple-200 shadow-md"
+                        className="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 rounded-full object-cover border-2 border-purple-200 shadow-md"
                       />
                     ) : (
-                      <div className="w-16 h-16 rounded-full bg-gradient-to-br from-purple-400 to-pink-400 flex items-center justify-center text-white font-bold text-xl shadow-md">
+                      <div className="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 rounded-full bg-gradient-to-br from-purple-400 to-pink-400 flex items-center justify-center text-white font-bold text-sm sm:text-base lg:text-xl shadow-md">
                         {review.name.split(' ').map(n => n[0]).join('')}
                       </div>
                     )}
                     {review.emoji && (
-                      <span className="absolute -bottom-1 -right-1 text-2xl bg-white rounded-full p-1 shadow-sm">
+                      <span className="absolute -bottom-1 -right-1 text-lg sm:text-xl lg:text-2xl bg-white rounded-full p-0.5 sm:p-1 shadow-sm">
                         {review.emoji}
                       </span>
                     )}
                   </div>
-                  <div className="flex-1">
-                    <div className="flex items-center justify-between mb-2">
-                      <h4 className="font-bold text-lg text-gray-800">{review.name}</h4>
-                      <div className="flex">
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-start justify-between mb-2 gap-2">
+                      <h4 className="font-bold text-sm sm:text-base lg:text-lg text-gray-800 truncate">{review.name}</h4>
+                      <div className="flex flex-shrink-0">
                         {renderStars(review.rating)}
                       </div>
                     </div>
                     {review.verified && (
-                      <span className="text-xs text-green-600 bg-green-50 px-3 py-1 rounded-full font-medium border border-green-200">
+                      <span className="text-xs text-green-600 bg-green-50 px-2 sm:px-3 py-1 rounded-full font-medium border border-green-200 inline-block">
                         ✓ Verified Purchase
                       </span>
                     )}
                   </div>
                 </div>
-                <blockquote className="text-gray-700 text-base leading-relaxed mb-4 font-medium italic">
+                <blockquote className="text-gray-700 text-sm sm:text-base leading-relaxed mb-3 sm:mb-4 font-medium italic">
                   "{review.comment}"
                 </blockquote>
-                <p className="text-sm text-gray-500 font-medium">
+                <p className="text-xs sm:text-sm text-gray-500 font-medium">
                   {new Date(review.date).toLocaleDateString('en-US', {
                     year: 'numeric',
                     month: 'long',

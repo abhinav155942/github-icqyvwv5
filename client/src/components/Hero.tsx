@@ -56,12 +56,12 @@ const Hero = () => {
       </div>
 
       <div className="max-w-5xl mx-auto text-center relative z-10">
-        <h1 className="text-5xl md:text-7xl font-bold text-gray-800 mb-8 leading-tight" style={{ fontFamily: 'Poppins, sans-serif' }}>
+        <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold text-gray-800 mb-6 md:mb-8 leading-tight px-4" style={{ fontFamily: 'Poppins, sans-serif' }}>
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-purple-600 to-purple-800">
             Let
           </span>{" "}
           <span className="relative inline-block">
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-purple-600 to-purple-800 text-[63px]">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-purple-600 to-purple-800 text-3xl sm:text-4xl md:text-[56px] lg:text-[63px]">
               AI handle it. 
             </span>
             {/* Animated underline with pen */}
@@ -110,14 +110,14 @@ const Hero = () => {
           3× growth | 88+ Brands | $430k+ Revenue Generated
         </div>
         
-        <p className="text-xl md:text-2xl text-gray-700 mb-10 max-w-4xl mx-auto leading-relaxed font-medium">
+        <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-700 mb-8 md:mb-10 max-w-4xl mx-auto leading-relaxed font-medium px-4">
           A dedicated team of AI specialists, delivering remarkable automation solutions to entrepreneurs worldwide!
         </p>
         
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+        <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center px-4">
           <Button 
             size="lg" 
-            className="px-12 py-4 text-lg bg-gradient-to-r from-gray-800 to-gray-900 hover:from-gray-900 hover:to-black text-white rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 font-semibold"
+            className="w-full sm:w-auto px-8 sm:px-12 py-3 sm:py-4 text-base sm:text-lg bg-gradient-to-r from-gray-800 to-gray-900 hover:from-gray-900 hover:to-black text-white rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 font-semibold"
             onClick={scrollToForm}
             onMouseEnter={handleHover}
           >
@@ -126,7 +126,7 @@ const Hero = () => {
           <Button 
             size="lg" 
             variant="outline"
-            className="px-12 py-4 text-lg border-2 border-gray-800 text-gray-800 hover:bg-gray-800 hover:text-white rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 font-semibold"
+            className="w-full sm:w-auto px-8 sm:px-12 py-3 sm:py-4 text-base sm:text-lg border-2 border-gray-800 text-gray-800 hover:bg-gray-800 hover:text-white rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 font-semibold"
             onClick={goToProjects}
             onMouseEnter={handleHover}
           >
