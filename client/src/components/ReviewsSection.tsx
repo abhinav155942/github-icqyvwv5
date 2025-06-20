@@ -10,6 +10,8 @@ interface Review {
   comment: string;
   date: string;
   verified: boolean;
+  emoji?: string;
+  avatar?: string;
 }
 
 const ReviewsSection = () => {
@@ -20,73 +22,88 @@ const ReviewsSection = () => {
       id: 1,
       name: "Marcus Chen",
       rating: 4,
-      comment: "The AI chatbot setup was straightforward and now handles 70% of my customer inquiries. Decent results but took some tweaking.",
+      comment: "The AI chatbot setup was straightforward and now handles 70% of my customer inquiries. Amazing how much time this saves me every day! The automation is incredibly smooth and my customers love the instant responses.",
       date: "2025-06-12",
-      verified: true
+      verified: true,
+      emoji: "😊",
+      avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face"
     },
     {
       id: 2,
       name: "Sarah Williams",
       rating: 3,
-      comment: "Good service overall. The funnel setup worked well for my coaching business. Support was helpful when I had questions.",
+      comment: "Good service overall. The funnel setup worked well for my coaching business and I'm seeing real results. Support was helpful when I had questions and they responded quickly to all my concerns.",
       date: "2025-06-08",
-      verified: true
+      verified: true,
+      emoji: "👍",
+      avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&h=100&fit=crop&crop=face"
     },
     {
       id: 3,
       name: "David Rodriguez",
       rating: 4,
-      comment: "Impressed with the video content automation. Saves me hours each week. A few minor bugs but they were quickly fixed.",
+      comment: "Impressed with the video content automation. Saves me hours each week and the quality is consistently high. A few minor bugs initially but they were quickly fixed by the responsive team.",
       date: "2025-06-05",
-      verified: true
+      verified: true,
+      emoji: "🚀",
+      avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face"
     },
     {
       id: 4,
       name: "Jennifer Park",
       rating: 3,
-      comment: "The AI assistant is useful but needed more customization than expected. Eventually got it working how I wanted.",
+      comment: "The AI assistant is useful and has streamlined many of my daily tasks. It needed more customization than expected but eventually got it working exactly how I wanted for my business needs.",
       date: "2025-06-02",
-      verified: true
+      verified: true,
+      emoji: "💡"
     },
     {
       id: 5,
       name: "Michael Thompson",
       rating: 5,
-      comment: "Excellent work on my e-commerce funnel. Conversion rate improved significantly. Professional team and quick delivery.",
+      comment: "Excellent work on my e-commerce funnel! Conversion rate improved by 45% in just the first month. Professional team, quick delivery, and ongoing support has been outstanding throughout the process.",
       date: "2025-05-28",
-      verified: true
+      verified: true,
+      emoji: "🎉",
+      avatar: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=100&h=100&fit=crop&crop=face"
     },
     {
       id: 6,
       name: "Lisa Anderson",
       rating: 3,
-      comment: "Solid platform with good features. The learning curve was steeper than anticipated but support helped me through it.",
+      comment: "Solid platform with practical features that actually work. The learning curve was steeper than anticipated but support helped me through every step and now I'm seeing great results.",
       date: "2025-05-25",
-      verified: true
+      verified: true,
+      emoji: "📈",
+      avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face"
     },
     {
       id: 7,
       name: "Robert Kim",
       rating: 4,
-      comment: "Really happy with the chatbot integration. It's handling customer service much better than I expected. Worth the investment.",
+      comment: "Really happy with the chatbot integration. It's handling customer service much better than I expected and my team has more time to focus on growing the business. Worth every penny!",
       date: "2025-05-22",
-      verified: true
+      verified: true,
+      emoji: "✨"
     },
     {
       id: 8,
       name: "Amanda Davis",
       rating: 3,
-      comment: "The content creation tools are helpful. Some features work better than others but overall it's been beneficial for my business.",
+      comment: "The content creation tools are helpful and have improved my social media presence significantly. Some features work better than others but overall it's been beneficial for my business growth.",
       date: "2025-05-18",
-      verified: true
+      verified: true,
+      emoji: "💪",
+      avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&h=100&fit=crop&crop=face"
     },
     {
       id: 9,
       name: "James Wilson",
       rating: 4,
-      comment: "Great automation features. The setup process was smooth and the results have been consistent. Recommended for small businesses.",
+      comment: "Great automation features that have transformed my workflow. The setup process was smooth and the results have been consistent. Definitely recommended for small businesses looking to scale efficiently.",
       date: "2025-05-15",
-      verified: true
+      verified: true,
+      emoji: "🔥"
     },
     {
       id: 10,
@@ -215,27 +232,47 @@ const ReviewsSection = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-8">
           {displayedReviews.map((review) => (
-            <Card key={review.id} className="h-full hover:shadow-lg transition-shadow duration-200">
-              <CardContent className="p-6">
-                <div className="flex items-start justify-between mb-3">
-                  <div>
-                    <h4 className="font-semibold text-gray-800">{review.name}</h4>
-                    {review.verified && (
-                      <span className="text-xs text-green-600 bg-green-50 px-2 py-1 rounded-full">
-                        Verified Purchase
+            <Card key={review.id} className="h-full hover:shadow-xl transition-all duration-300 transform hover:scale-105 border-0 shadow-lg bg-gradient-to-br from-white to-gray-50">
+              <CardContent className="p-8">
+                <div className="flex items-start gap-4 mb-6">
+                  <div className="relative">
+                    {review.avatar ? (
+                      <img 
+                        src={review.avatar} 
+                        alt={review.name}
+                        className="w-16 h-16 rounded-full object-cover border-2 border-purple-200 shadow-md"
+                      />
+                    ) : (
+                      <div className="w-16 h-16 rounded-full bg-gradient-to-br from-purple-400 to-pink-400 flex items-center justify-center text-white font-bold text-xl shadow-md">
+                        {review.name.split(' ').map(n => n[0]).join('')}
+                      </div>
+                    )}
+                    {review.emoji && (
+                      <span className="absolute -bottom-1 -right-1 text-2xl bg-white rounded-full p-1 shadow-sm">
+                        {review.emoji}
                       </span>
                     )}
                   </div>
-                  <div className="flex">
-                    {renderStars(review.rating)}
+                  <div className="flex-1">
+                    <div className="flex items-center justify-between mb-2">
+                      <h4 className="font-bold text-lg text-gray-800">{review.name}</h4>
+                      <div className="flex">
+                        {renderStars(review.rating)}
+                      </div>
+                    </div>
+                    {review.verified && (
+                      <span className="text-xs text-green-600 bg-green-50 px-3 py-1 rounded-full font-medium border border-green-200">
+                        ✓ Verified Purchase
+                      </span>
+                    )}
                   </div>
                 </div>
-                <p className="text-gray-600 text-sm leading-relaxed mb-3">
+                <blockquote className="text-gray-700 text-base leading-relaxed mb-4 font-medium italic">
                   "{review.comment}"
-                </p>
-                <p className="text-xs text-gray-400">
+                </blockquote>
+                <p className="text-sm text-gray-500 font-medium">
                   {new Date(review.date).toLocaleDateString('en-US', {
                     year: 'numeric',
                     month: 'long',
