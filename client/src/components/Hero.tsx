@@ -65,23 +65,23 @@ const Hero = () => {
               AI handle it. 
             </span>
             {/* Animated underline with pen */}
-            <div className="absolute -bottom-2 left-0 w-full h-1 overflow-hidden">
+            <div className="absolute -bottom-4 left-0 w-full h-8 overflow-visible">
               <svg 
                 className="absolute bottom-0 left-0 w-full h-8" 
-                viewBox="0 0 400 20"
+                viewBox="0 0 100 20"
+                preserveAspectRatio="none"
                 fill="none"
               >
                 <path
-                  d="M10 15 Q100 5 200 12 T390 8"
+                  d="M5 12 Q25 8 50 10 Q75 12 95 9"
                   stroke="url(#gradient)"
-                  strokeWidth="3"
+                  strokeWidth="2"
                   strokeLinecap="round"
                   fill="none"
-                  className={`${lineAnimation ? 'animate-draw-line' : ''}`}
                   style={{
-                    strokeDasharray: 400,
-                    strokeDashoffset: lineAnimation ? 0 : 400,
-                    transition: 'stroke-dashoffset 2s ease-in-out'
+                    strokeDasharray: '100',
+                    strokeDashoffset: lineAnimation ? '0' : '100',
+                    transition: 'stroke-dashoffset 2.5s ease-in-out 0.5s'
                   }}
                 />
                 <defs>
@@ -94,12 +94,12 @@ const Hero = () => {
               </svg>
               {/* Animated pen icon */}
               <Edit3 
-                className={`absolute h-4 w-4 text-purple-600 transition-all duration-2000 ${
-                  lineAnimation ? 'right-2 bottom-1' : 'left-2 bottom-1'
-                }`}
+                className="absolute h-5 w-5 text-purple-600"
                 style={{
-                  transform: lineAnimation ? 'translateX(0) rotate(-10deg)' : 'translateX(0) rotate(-10deg)',
-                  transition: 'right 2s ease-in-out'
+                  left: lineAnimation ? '95%' : '0%',
+                  bottom: '4px',
+                  transform: 'rotate(-15deg)',
+                  transition: 'left 2.5s ease-in-out 0.5s'
                 }}
               />
             </div>
