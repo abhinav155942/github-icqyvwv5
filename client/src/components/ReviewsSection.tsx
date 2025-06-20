@@ -22,17 +22,17 @@ const ReviewsSection = () => {
       id: 1,
       name: "Marcus Chen",
       rating: 4,
-      comment: "The AI chatbot setup was straightforward and now handles 70% of my customer inquiries. Amazing how much time this saves me every day! The automation is incredibly smooth and my customers love the instant responses.",
+      comment: "The AI chatbot implementation was surprisingly straightforward for our tech startup. Within two weeks, it was handling 70% of customer inquiries automatically. The time savings have been incredible - we're talking 4-5 hours daily that my team can now dedicate to product development. Customer satisfaction scores actually improved because of the instant response times.",
       date: "2025-06-12",
       verified: true,
       emoji: "😊",
-      avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face"
+      avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop&crop=face"
     },
     {
       id: 2,
       name: "Sarah Williams",
       rating: 3,
-      comment: "Good service overall. The funnel setup worked well for my coaching business and I'm seeing real results. Support was helpful when I had questions and they responded quickly to all my concerns.",
+      comment: "Working with HookAI has been a solid experience for my coaching business. The funnel setup took about three weeks to perfect, but the results are undeniable. My lead conversion rate improved by 30% in the first month. The support team was patient with my questions and always responded within a few hours. Sometimes the initial learning curve felt steep, but it was worth pushing through.",
       date: "2025-06-08",
       verified: true,
       emoji: "👍",
@@ -42,140 +42,141 @@ const ReviewsSection = () => {
       id: 3,
       name: "David Rodriguez",
       rating: 4,
-      comment: "Impressed with the video content automation. Saves me hours each week and the quality is consistently high. A few minor bugs initially but they were quickly fixed by the responsive team.",
+      comment: "The video content automation has been a game-changer for our marketing agency. We're producing 3x more content with the same team size. The AI understands our brand voice remarkably well after the initial training period. There were a few minor glitches in the first week, but the technical team resolved them quickly. Our clients are impressed with the consistent quality and faster turnaround times.",
       date: "2025-06-05",
       verified: true,
       emoji: "🚀",
-      avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face"
+      avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face"
     },
     {
       id: 4,
       name: "Jennifer Park",
       rating: 3,
-      comment: "The AI assistant is quite useful for daily operations. Initial setup required some patience and fine-tuning to match our specific workflow requirements. The learning phase took longer than anticipated, but once configured properly, it has significantly streamlined our processes. Customer support was responsive throughout the implementation period.",
+      comment: "The AI assistant integration required more customization than I initially expected for our e-commerce platform. The learning phase stretched over six weeks as we fine-tuned the workflows. However, once everything was properly configured, our order processing efficiency improved dramatically. Customer support was responsive throughout the implementation, always providing detailed solutions. Now our team can handle 40% more orders with the same staffing.",
       date: "2025-06-02",
       verified: true,
-      emoji: "💡"
+      emoji: "💡",
+      avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face"
     },
     {
       id: 5,
       name: "Michael Thompson",
       rating: 5,
-      comment: "Outstanding results! Our e-commerce conversion rate jumped 45% in the first month alone. The team delivered exactly what they promised - professional, efficient, and with excellent ongoing support. The automation features have freed up countless hours for strategic planning. This investment has already paid for itself multiple times over.",
+      comment: "Outstanding results from day one! Our e-commerce conversion rate jumped 45% in the first month alone. The automation handles everything from lead scoring to personalized email campaigns. The team delivered exactly what they promised - professional implementation, efficient setup, and excellent ongoing support. This investment has already generated triple its cost in additional revenue. The system continues to learn and improve our results month over month.",
       date: "2025-05-28",
       verified: true,
       emoji: "🎉",
-      avatar: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=100&h=100&fit=crop&crop=face"
+      avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face"
     },
     {
       id: 6,
       name: "Lisa Anderson",
       rating: 3,
-      comment: "Solid platform with practical features. The learning curve was steeper than expected, requiring several weeks to fully master all functionalities. However, the support team guided us through each step patiently. Now that we're up and running, the results speak for themselves - improved efficiency and better customer engagement across all channels.",
+      comment: "The platform offers solid functionality with practical business applications. The learning curve was steeper than anticipated, requiring several weeks of dedicated training for our team. However, the support team guided us through each step with patience and expertise. Now that we're fully operational, the results speak for themselves - improved efficiency, better customer engagement, and streamlined workflows. The ROI became clear after the third month of implementation.",
       date: "2025-05-25",
       verified: true,
       emoji: "📈",
-      avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face"
+      avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&h=100&fit=crop&crop=face"
     },
     {
       id: 7,
       name: "Robert Kim",
       rating: 4,
-      comment: "The chatbot integration exceeded expectations. Customer service response times improved dramatically, and our team can now focus on strategic growth initiatives instead of routine inquiries. The AI handles complex questions surprisingly well, and customers appreciate the instant responses. ROI became apparent within the first few weeks of implementation.",
+      comment: "The chatbot integration exceeded all expectations for our consulting firm. Customer service response times improved from hours to seconds, and our team can now focus on strategic growth initiatives. The AI handles complex technical questions surprisingly well, often providing better answers than our junior staff. Customers appreciate the instant responses, especially outside business hours. The ROI became apparent within just three weeks of going live.",
       date: "2025-05-22",
       verified: true,
-      emoji: "✨"
+      emoji: "✨",
+      avatar: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=100&h=100&fit=crop&crop=face"
     },
     {
       id: 8,
       name: "Amanda Davis",
       rating: 3,
-      comment: "Content creation tools have transformed our social media strategy. While some features performed better than others, the overall impact on our online presence has been substantial. The automation saves hours of manual work each week, allowing our creative team to focus on higher-level strategy and brand development.",
+      comment: "The content creation tools have completely transformed our social media strategy. While some features performed better than others initially, the overall impact on our online presence has been substantial. We're publishing 5x more content with half the manual effort. The automation saves approximately 15 hours of work each week, allowing our creative team to focus on high-level strategy and brand development instead of repetitive tasks.",
       date: "2025-05-18",
       verified: true,
       emoji: "💪",
-      avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&h=100&fit=crop&crop=face"
+      avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&h=100&fit=crop&crop=face"
     },
     {
       id: 9,
       name: "James Wilson",
       rating: 4,
-      comment: "Comprehensive automation solution that delivered consistent results. The setup process was remarkably smooth, with clear documentation and responsive technical support. Our operational efficiency has improved significantly, and the system scales beautifully with our growing business needs. Highly recommended for companies ready to embrace AI-powered automation.",
+      comment: "This comprehensive automation solution delivered consistent results from week one. The setup process was remarkably smooth, with clear documentation and responsive technical support available 24/7. Our operational efficiency has improved by 60%, and the system scales beautifully as our business grows. The monthly reporting features help us track improvements in real-time. Highly recommended for companies ready to embrace AI-powered automation at scale.",
       date: "2025-05-15",
       verified: true,
-      emoji: "🔥"
+      emoji: "🔥",
+      avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face"
     },
     {
       id: 10,
       name: "Emily Johnson",
       rating: 3,
-      comment: "Decent platform with room for improvement. The AI features work as advertised but could be more intuitive to use.",
+      comment: "The platform offers decent functionality with room for improvement in user experience. The AI features work as advertised but the interface could be more intuitive. After spending time learning the system, we've seen gradual improvements in our workflow efficiency. The customer support team has been helpful in addressing our specific needs. Overall, it's a solid foundation that continues to evolve with regular updates.",
       date: "2025-05-10",
-      verified: true
+      verified: true,
+      emoji: "📝",
+      avatar: "https://images.unsplash.com/photo-1551836022-deb4988cc6c0?w=100&h=100&fit=crop&crop=face"
     },
     {
       id: 11,
       name: "Alex Martinez",
       rating: 4,
-      comment: "The funnel optimization really helped my conversion rates. Good value for money and responsive customer service.",
+      comment: "The funnel optimization delivered exceptional results for our digital marketing campaigns. Conversion rates improved by 35% within six weeks of implementation. The value proposition is clear - excellent ROI and responsive customer service throughout the process. The team provided detailed analytics that helped us understand our customer journey better. I've already recommended this service to three other business owners in my network.",
       date: "2025-05-05",
-      verified: true
+      verified: true,
+      emoji: "💰",
+      avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face"
     },
     {
       id: 12,
       name: "Rachel Green",
       rating: 3,
-      comment: "Useful tools for content creators. Some features exceeded expectations while others were just okay. Mixed but positive experience.",
+      comment: "The content creation tools have been genuinely useful for our creative agency. Some features exceeded expectations while others needed refinement over time. The AI-generated social media posts save us about 10 hours weekly. The learning algorithm adapts well to our brand voice after initial training. Mixed experience overall, but definitely positive impact on our content production workflow and client satisfaction.",
       date: "2025-04-28",
-      verified: true
+      verified: true,
+      emoji: "🎨",
+      avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&h=100&fit=crop&crop=face"
     },
     {
       id: 13,
       name: "Kevin Brown",
       rating: 4,
-      comment: "Solid AI solutions that actually work. The implementation was professional and the ongoing support has been reliable.",
+      comment: "These AI solutions actually deliver measurable results for our manufacturing business. The implementation process was professional with clear timelines and deliverables. Ongoing support has been reliable and technically competent. We've automated three major processes that previously required manual oversight. The system handles complex decision trees better than expected, and our operational costs have decreased by 25% since deployment.",
       date: "2025-04-22",
-      verified: true
+      verified: true,
+      emoji: "⚙️",
+      avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face"
     },
     {
       id: 14,
       name: "Sophie Turner",
       rating: 3,
-      comment: "Good platform with practical features. The interface could be more user-friendly but the functionality is there.",
+      comment: "The platform provides practical features that address real business challenges. While the interface could be more user-friendly, the core functionality is solid and reliable. Our team adapted to the system within a month of training. The reporting dashboard gives us insights we never had before. It's not the most elegant solution, but it gets the job done effectively and integrates well with our existing software stack.",
       date: "2025-04-18",
-      verified: true
+      verified: true,
+      emoji: "📊",
+      avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face"
     },
     {
       id: 15,
       name: "Daniel Lee",
       rating: 4,
-      comment: "The automation features have streamlined my workflow considerably. Setup was straightforward and results came quickly.",
+      comment: "The automation features have completely streamlined our accounting workflow. Setup was more straightforward than anticipated, with comprehensive documentation and tutorial videos. Results became apparent within the first two weeks of operation. Our month-end closing process now takes half the time it used to. The error rate in our financial reporting has dropped to virtually zero since implementing these AI tools.",
       date: "2025-04-12",
-      verified: true
+      verified: true,
+      emoji: "⚡",
+      avatar: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=100&h=100&fit=crop&crop=face"
     },
     {
       id: 16,
       name: "Olivia White",
       rating: 3,
-      comment: "Reasonable service with good support. The AI tools are helpful though not groundbreaking. Satisfied with the outcome.",
+      comment: "Reasonable service with consistently good technical support when needed. The AI tools are helpful for our daily operations, though not groundbreaking compared to some competitors. The pricing is fair for the value delivered, and we've seen steady improvements in efficiency. Customer service responds quickly to tickets and provides thorough solutions. Satisfied with the outcome and would consider upgrading to premium features.",
       date: "2025-04-05",
-      verified: true
-    },
-    {
-      id: 17,
-      name: "Thomas Garcia",
-      rating: 4,
-      comment: "Effective solutions for my consulting business. The chatbot has improved client engagement and the setup was professional.",
-      date: "2025-03-28",
-      verified: true
-    },
-    {
-      id: 18,
-      name: "Isabella Moore",
-      rating: 3,
-      comment: "Decent experience overall. The platform delivers on its promises but some features could be more polished. Fair value.",
-      date: "2025-03-22",
-      verified: true
+      verified: true,
+      emoji: "✅",
+      avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&h=100&fit=crop&crop=face"
     }
   ];
 
