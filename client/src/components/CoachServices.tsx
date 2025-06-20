@@ -99,7 +99,7 @@ const CoachServices = () => {
               </div>
               
               <h3 className="text-xl md:text-2xl font-bold text-gray-800 mb-3 md:mb-4 px-2">{service.title}</h3>
-              <p className="text-gray-600 leading-relaxed px-4 text-sm md:text-base">{service.description}</p>
+              <p className="text-gray-600 px-4 md:text-base text-[20px]">{service.description}</p>
               
               <div className="mt-4 text-sm text-gray-500 italic">
                 First demo: <span className="text-green-600 font-semibold">FREE</span>
