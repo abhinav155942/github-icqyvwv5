@@ -106,8 +106,8 @@ const Hero = () => {
           </span>
         </h1>
         
-        <div className="mb-6 text-lg md:text-xl text-gray-600 font-medium">
-          3+ years | 200+ Brands | 40+ Crore Revenue Generated
+        <div className="mb-6 text-lg md:text-xl text-gray-600 font-medium bg-[#708bff1c]">
+          3× growth | 88+ Brands | $430k+ Revenue Generated
         </div>
         
         <p className="text-xl md:text-2xl text-gray-700 mb-10 max-w-4xl mx-auto leading-relaxed font-medium">
