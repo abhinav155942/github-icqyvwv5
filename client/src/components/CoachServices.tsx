@@ -54,17 +54,43 @@ const CoachServices = () => {
           />
         </div>
 
+        <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+          {services.slice(0, 3).map((service, index) => (
+            <div key={index} className="text-center group relative">
+              <div className="w-16 h-16 md:w-20 md:h-20 bg-gradient-to-br from-purple-100 to-pink-100 rounded-full flex items-center justify-center mx-auto mb-4 md:mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                <service.icon className="h-8 w-8 md:h-10 md:w-10 text-purple-600" />
+              </div>
+              
+              {/* Cost indicator */}
+              <div className="absolute -top-2 -right-2 bg-gradient-to-r from-purple-600 to-pink-600 text-white text-xs font-bold px-2 py-1 rounded-full shadow-lg">
+                <span className="line-through opacity-70">${service.cost}</span>
+                <span className="ml-1">$0</span>
+              </div>
+              
+              <h3 className="text-xl md:text-2xl font-bold text-gray-800 mb-3 md:mb-4 px-2">{service.title}</h3>
+              <p className="text-gray-600 leading-relaxed px-4 text-sm md:text-base">{service.description}</p>
+              
+              <div className="mt-4 text-sm text-gray-500 italic">
+                First demo: <span className="text-green-600 font-semibold">FREE</span>
+              </div>
+            </div>
+          ))}
+        </div>
+
         <div className="mt-12 mb-16 max-w-4xl mx-auto">
-          <img 
-            src="./assets/images/website-creation-demo.avif"
-            alt="Website Creation Demo"
-            className="w-full rounded-lg shadow-lg"
-          />
+          <div className="relative w-full" style={{ paddingBottom: '56.25%', height: 0 }}>
+            <iframe 
+              src="https://www.loom.com/embed/YOUR_LOOM_ID_HERE"
+              className="absolute top-0 left-0 w-full h-full rounded-lg shadow-lg"
+              frameBorder="0"
+              allowFullScreen
+            />
+          </div>
         </div>
 
         <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-          {services.map((service, index) => (
-            <div key={index} className="text-center group relative">
+          {services.slice(3).map((service, index) => (
+            <div key={index + 3} className="text-center group relative">
               <div className="w-16 h-16 md:w-20 md:h-20 bg-gradient-to-br from-purple-100 to-pink-100 rounded-full flex items-center justify-center mx-auto mb-4 md:mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
                 <service.icon className="h-8 w-8 md:h-10 md:w-10 text-purple-600" />
               </div>
