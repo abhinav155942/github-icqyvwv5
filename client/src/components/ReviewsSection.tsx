@@ -26,7 +26,7 @@ const ReviewsSection = () => {
       date: "2025-06-12",
       verified: true,
       emoji: "😊",
-      avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop&crop=face"
+      avatar: "https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?w=100&h=100&fit=crop&crop=face"
     },
     {
       id: 2,
@@ -36,7 +36,7 @@ const ReviewsSection = () => {
       date: "2025-06-08",
       verified: true,
       emoji: "👍",
-      avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&h=100&fit=crop&crop=face"
+      avatar: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=100&h=100&fit=crop&crop=face"
     },
     {
       id: 3,
@@ -46,7 +46,7 @@ const ReviewsSection = () => {
       date: "2025-06-05",
       verified: true,
       emoji: "🚀",
-      avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face"
+      avatar: "https://images.unsplash.com/photo-1566492031773-4f4e44671d66?w=100&h=100&fit=crop&crop=face"
     },
     {
       id: 4,
@@ -56,7 +56,7 @@ const ReviewsSection = () => {
       date: "2025-06-02",
       verified: true,
       emoji: "💡",
-      avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face"
+      avatar: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=100&h=100&fit=crop&crop=face"
     },
     {
       id: 5,
@@ -66,7 +66,7 @@ const ReviewsSection = () => {
       date: "2025-05-28",
       verified: true,
       emoji: "🎉",
-      avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face"
+      avatar: "https://images.unsplash.com/photo-1552058544-f2b08422138a?w=100&h=100&fit=crop&crop=face"
     },
     {
       id: 6,
@@ -76,7 +76,7 @@ const ReviewsSection = () => {
       date: "2025-05-25",
       verified: true,
       emoji: "📈",
-      avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&h=100&fit=crop&crop=face"
+      avatar: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=100&h=100&fit=crop&crop=face"
     },
     {
       id: 7,
@@ -86,7 +86,7 @@ const ReviewsSection = () => {
       date: "2025-05-22",
       verified: true,
       emoji: "✨",
-      avatar: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=100&h=100&fit=crop&crop=face"
+      avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face"
     },
     {
       id: 8,
@@ -96,7 +96,7 @@ const ReviewsSection = () => {
       date: "2025-05-18",
       verified: true,
       emoji: "💪",
-      avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&h=100&fit=crop&crop=face"
+      avatar: "https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?w=100&h=100&fit=crop&crop=face"
     },
     {
       id: 9,
@@ -126,7 +126,7 @@ const ReviewsSection = () => {
       date: "2025-05-05",
       verified: true,
       emoji: "💰",
-      avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face"
+      avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop&crop=face"
     },
     {
       id: 12,
@@ -136,7 +136,7 @@ const ReviewsSection = () => {
       date: "2025-04-28",
       verified: true,
       emoji: "🎨",
-      avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&h=100&fit=crop&crop=face"
+      avatar: "https://images.unsplash.com/photo-1594736797933-d0401ba6fe65?w=100&h=100&fit=crop&crop=face"
     },
     {
       id: 13,
@@ -146,7 +146,7 @@ const ReviewsSection = () => {
       date: "2025-04-22",
       verified: true,
       emoji: "⚙️",
-      avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face"
+      avatar: "https://images.unsplash.com/photo-1507591064344-4c6ce005b128?w=100&h=100&fit=crop&crop=face"
     },
     {
       id: 14,
@@ -156,7 +156,7 @@ const ReviewsSection = () => {
       date: "2025-04-18",
       verified: true,
       emoji: "📊",
-      avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face"
+      avatar: "https://images.unsplash.com/photo-1607746882042-944635dfe10e?w=100&h=100&fit=crop&crop=face"
     },
     {
       id: 15,
@@ -166,7 +166,7 @@ const ReviewsSection = () => {
       date: "2025-04-12",
       verified: true,
       emoji: "⚡",
-      avatar: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=100&h=100&fit=crop&crop=face"
+      avatar: "https://images.unsplash.com/photo-1568602471122-7832951cc4c5?w=100&h=100&fit=crop&crop=face"
     },
     {
       id: 16,
@@ -176,7 +176,7 @@ const ReviewsSection = () => {
       date: "2025-04-05",
       verified: true,
       emoji: "✅",
-      avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&h=100&fit=crop&crop=face"
+      avatar: "https://images.unsplash.com/photo-1559526324-4b87b5e36e44?w=100&h=100&fit=crop&crop=face"
     }
   ];
 
