@@ -40,6 +40,60 @@ const CoachServices = () => {
           </p>
         </div>
 
+        {/* Free Gift Video Section */}
+        <div className="mt-12 mb-16 max-w-4xl mx-auto">
+          <div className="text-center mb-8">
+            <h3 className="text-2xl md:text-3xl font-bold mb-4">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600">
+                🎁 Free Bonus Gift: Watch How We Build High-Converting Funnels In Minutes
+              </span>
+            </h3>
+          </div>
+          
+          <div className="relative">
+            {/* FREE GIFT Badge */}
+            <div className="absolute -top-3 -right-3 z-10 bg-gradient-to-r from-pink-500 to-purple-600 text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg transform rotate-12">
+              FREE GIFT
+            </div>
+            
+            {/* Video Container */}
+            <div className="bg-gradient-to-br from-purple-50 via-pink-50 to-orange-50 p-6 rounded-xl shadow-2xl">
+              <div className="relative bg-black rounded-xl overflow-hidden shadow-lg aspect-video">
+                <video 
+                  controls 
+                  className="w-full h-full"
+                  preload="metadata"
+                  poster="/assets/videos/funnel-poster.jpg"
+                >
+                  <source src="./assets/videos/free-gift-funnel-demo.mp4" type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+              
+              {/* Video Description */}
+              <div className="mt-6 text-center">
+                <div className="flex flex-wrap justify-center gap-3 mb-4">
+                  <Badge variant="secondary" className="bg-purple-100 text-purple-800 px-4 py-2">
+                    <TrendingUp className="h-4 w-4 mr-2" />
+                    Proven Strategy
+                  </Badge>
+                  <Badge variant="secondary" className="bg-pink-100 text-pink-800 px-4 py-2">
+                    <Bot className="h-4 w-4 mr-2" />
+                    Step-by-Step Guide
+                  </Badge>
+                  <Badge variant="secondary" className="bg-blue-100 text-blue-800 px-4 py-2">
+                    <Scissors className="h-4 w-4 mr-2" />
+                    Real Results
+                  </Badge>
+                </div>
+                <p className="text-gray-600 text-lg">
+                  See exactly how we create sales funnels that convert prospects into paying clients - completely free!
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {services.map((service, index) => (
             <div key={index} className="text-center group relative">
