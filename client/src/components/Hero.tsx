@@ -56,7 +56,7 @@ const Hero = () => {
       </div>
 
       <div className="max-w-5xl mx-auto text-center relative z-10">
-        <h1 className="text-5xl md:text-7xl font-bold text-gray-800 mb-8 leading-tight">
+        <h1 className="text-5xl md:text-7xl font-bold text-gray-800 mb-8 leading-tight" style={{ fontFamily: 'Poppins, sans-serif' }}>
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-purple-600 to-purple-800">
             Let
           </span>{" "}
