@@ -52,6 +52,37 @@ export async function registerRoutes(app: Express): Promise<Server> {
         userType
       });
 
+      // Send notification to n8n webhook
+      try {
+        const webhookUrl = "https://stacksinfo.app.n8n.cloud/webhook/3a6e5602-b960-4820-89e8-5efc7fdc19a3";
+        const webhookParams = new URLSearchParams({
+          name,
+          email,
+          phone,
+          business,
+          coachingNiche,
+          monthlyRevenue,
+          currentChallenges,
+          services: services.join(', '),
+          totalCost: totalCost.toString(),
+          userType,
+          submissionId: submission.id.toString(),
+          timestamp: new Date().toISOString()
+        });
+
+        const webhookResponse = await fetch(`${webhookUrl}?${webhookParams}`, {
+          method: 'GET',
+          headers: {
+            'User-Agent': 'AI Coach Growth Suite',
+          }
+        });
+
+        console.log(`n8n webhook called: ${webhookResponse.status}`);
+      } catch (webhookError) {
+        console.error("Failed to notify n8n webhook:", webhookError);
+        // Don't fail the submission if webhook fails
+      }
+
       // Send confirmation email
       try {
         const emailContent = generateConfirmationEmail(name, services, totalCost);
