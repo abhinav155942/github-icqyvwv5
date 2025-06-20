@@ -228,7 +228,7 @@ const ReviewsSection = () => {
             </span>
           </div>
           <p className="text-gray-600 max-w-2xl mx-auto">
-            Real feedback from businesses who've used our AI solutions
+            Feedback from businesses who've used our AI solutions
           </p>
         </div>
 
