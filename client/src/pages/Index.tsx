@@ -9,6 +9,7 @@ import CreatorBenefits from "@/components/CreatorBenefits";
 import EcommerceBenefits from "@/components/EcommerceBenefits";
 import Process from "@/components/Process";
 import ContactForm from "@/components/ContactForm";
+import FAQ from "@/components/FAQ";
 import Footer from "@/components/Footer";
 import UserTypeSelector from "@/components/UserTypeSelector";
 import RecommendationPopup from "@/components/RecommendationPopup";
@@ -72,6 +73,7 @@ const Index = () => {
       {renderBenefits()}
       <Process />
       <ContactForm userType={userType} />
+      <FAQ />
       <Footer />
       <ChatBot />
     </div>
