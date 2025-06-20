@@ -121,7 +121,7 @@ const Hero = () => {
             onClick={scrollToForm}
             onMouseEnter={handleHover}
           >
-            Book a Strategy Call
+            Get your free Demo
           </Button>
         </div>
         
