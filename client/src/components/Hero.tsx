@@ -126,7 +126,7 @@ const Hero = () => {
         </div>
         
         <div className="mt-16 text-lg text-gray-700 font-medium">
-          Our Performance Marketing Services are Certified by
+          Our AI services are mostly automated
         </div>
       </div>
     </section>
