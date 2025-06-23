@@ -161,28 +161,20 @@ export const OnboardingOverlay = ({ isVisible, onComplete, onSkip, steps }: Onbo
         exit={{ opacity: 0 }}
         className="fixed inset-0 z-[1000] pointer-events-none"
       >
-        {/* Dark overlay with cutout for highlighted element */}
-        <div className="absolute inset-0 bg-black bg-opacity-50" />
+        {/* Light overlay that doesn't darken content */}
+        <div className="absolute inset-0 bg-black bg-opacity-20" />
         
-        {/* Tooltip */}
+        {/* Simple overlay tooltip */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.8, y: 20 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
-          exit={{ opacity: 0, scale: 0.8, y: 20 }}
-          transition={{ type: "spring", stiffness: 300, damping: 30 }}
-          className="fixed pointer-events-auto bg-white rounded-xl shadow-2xl p-4 md:p-6 border border-gray-200 z-[1001] mx-4 md:mx-0"
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0.9 }}
+          transition={{ duration: 0.2 }}
+          className="fixed pointer-events-auto bg-white rounded-lg shadow-xl p-4 border-2 border-purple-200 z-[1001] max-w-xs"
           style={{
-            width: window.innerWidth < 768 ? 'calc(100vw - 2rem)' : '320px',
-            maxWidth: window.innerWidth < 768 ? 'none' : '400px',
-            left: window.innerWidth < 768 ? '1rem' : Math.max(20, Math.min(tooltipPosition.x, window.innerWidth - 340)),
-            top: window.innerWidth < 768 ? 'auto' : Math.max(20, Math.min(tooltipPosition.y, window.innerHeight - 300)),
-            bottom: window.innerWidth < 768 ? '1rem' : 'auto',
-            transform: window.innerWidth < 768 ? 'none' : 
-                      currentStepData.position === 'center' ? 'translate(-50%, -50%)' : 
-                      currentStepData.position === 'top' ? 'translate(-50%, -100%)' :
-                      currentStepData.position === 'bottom' ? 'translate(-50%, 0%)' :
-                      currentStepData.position === 'left' ? 'translate(-100%, -50%)' :
-                      'translate(0%, -50%)'
+            right: '1rem',
+            top: '1rem',
+            width: window.innerWidth < 768 ? 'calc(100vw - 2rem)' : '300px'
           }}
         >
           {/* Animated icon */}

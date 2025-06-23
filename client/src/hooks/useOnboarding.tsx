@@ -18,16 +18,18 @@ export const useOnboarding = () => {
   useEffect(() => {
     // Check if user has completed onboarding before
     const completed = localStorage.getItem('onboardingCompleted');
+    const welcomeShown = localStorage.getItem('welcomeModalShown');
+    
     if (completed === 'true') {
       setHasCompletedOnboarding(true);
-    } else {
+    } else if (welcomeShown !== 'true') {
       // Show welcome modal for new users after a short delay
       const timer = setTimeout(() => {
-        // Only show if user hasn't interacted with the page yet
         if (!document.hidden) {
           setShowWelcomeModal(true);
+          localStorage.setItem('welcomeModalShown', 'true');
         }
-      }, 3000);
+      }, 2000);
       return () => clearTimeout(timer);
     }
   }, []);
@@ -56,6 +58,7 @@ export const useOnboarding = () => {
     setShowWelcomeModal(false);
     setHasCompletedOnboarding(true);
     localStorage.setItem('onboardingCompleted', 'true');
+    localStorage.setItem('welcomeModalShown', 'true');
   };
 
   const resetOnboarding = () => {

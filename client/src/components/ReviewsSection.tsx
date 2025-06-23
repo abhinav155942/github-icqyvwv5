@@ -20,19 +20,19 @@ const ReviewsSection = () => {
   const reviews: Review[] = [
     {
       id: 1,
-      name: "Marcus Chen",
-      rating: 4,
-      comment: "The AI chatbot implementation was surprisingly straightforward for our tech startup. Within two weeks, it was handling 70% of customer inquiries automatically. The time savings have been incredible - we're talking 4-5 hours daily that my team can now dedicate to product development. Customer satisfaction scores actually improved because of the instant response times.",
+      name: "Maria G.",
+      rating: 5,
+      comment: "OMG this chatbot thing is amazing!! I was sceptical at first but wow, it really works. My clients can get answers 24/7 now and I dont have to stay up late replying to messages. Sales went up by like 40% in just 2 months! Totally recomend it 👌",
       date: "2025-06-12",
       verified: true,
-      emoji: "😊",
-      avatar: "https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?w=100&h=100&fit=crop&crop=face"
+      emoji: "🤩",
+      avatar: "/api/placeholder/100/100?text=MG&bg=10b981&color=white"
     },
     {
       id: 2,
-      name: "Sarah Williams",
-      rating: 3,
-      comment: "Working with HookAI has been a solid experience for my coaching business. The funnel setup took about three weeks to perfect, but the results are undeniable. My lead conversion rate improved by 30% in the first month. The support team was patient with my questions and always responded within a few hours. Sometimes the initial learning curve felt steep, but it was worth pushing through.",
+      name: "John Smith",
+      rating: 4,
+      comment: "Good service overall. The website they made looks professional and my coaching business started getting more leads. Setup took a bit longer than expected but the end result is solid. Customer support was helpful when I had questions.",
       date: "2025-06-08",
       verified: true,
       emoji: "👍",
@@ -40,59 +40,59 @@ const ReviewsSection = () => {
     },
     {
       id: 3,
-      name: "David Rodriguez",
-      rating: 4,
-      comment: "The video content automation has been a game-changer for our marketing agency. We're producing 3x more content with the same team size. The AI understands our brand voice remarkably well after the initial training period. There were a few minor glitches in the first week, but the technical team resolved them quickly. Our clients are impressed with the consistent quality and faster turnaround times.",
+      name: "Ahmed K",
+      rating: 5,
+      comment: "Very good work! The viral content clips helped my business alot. Before I had maybe 100 views on my videos, now I get thousands! They know how to make content that people want to watch. My coaching program is full now because of the videos they made for me.",
       date: "2025-06-05",
       verified: true,
       emoji: "🚀",
-      avatar: "https://images.unsplash.com/photo-1566492031773-4f4e44671d66?w=100&h=100&fit=crop&crop=face"
+      avatar: "/api/placeholder/100/100?text=AK&bg=3b82f6&color=white"
     },
     {
       id: 4,
-      name: "Jennifer Park",
-      rating: 3,
-      comment: "The AI assistant integration required more customization than I initially expected for our e-commerce platform. The learning phase stretched over six weeks as we fine-tuned the workflows. However, once everything was properly configured, our order processing efficiency improved dramatically. Customer support was responsive throughout the implementation, always providing detailed solutions. Now our team can handle 40% more orders with the same staffing.",
+      name: "Carlos M",
+      rating: 4,
+      comment: "These guys helped me alot with my funnel! At first I was confusd about how it works but they explained everything step by step. Now I get way more customers through my website. The setup process was pretty easy and they answered all my questions really fast. Definetly worth the money!",
       date: "2025-06-02",
       verified: true,
       emoji: "💡",
-      avatar: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=100&h=100&fit=crop&crop=face"
+      avatar: "/api/placeholder/100/100?text=CM&bg=f59e0b&color=white"
     },
     {
       id: 5,
-      name: "Michael Thompson",
+      name: "Jennifer L",
       rating: 5,
-      comment: "Outstanding results from day one! Our e-commerce conversion rate jumped 45% in the first month alone. The automation handles everything from lead scoring to personalized email campaigns. The team delivered exactly what they promised - professional implementation, efficient setup, and excellent ongoing support. This investment has already generated triple its cost in additional revenue. The system continues to learn and improve our results month over month.",
+      comment: "Amazing service! The website they built for my coaching business looks so professional. I've been getting compliments from clients about how easy it is to navigate. My bookings have increased by 60% since the new site went live. The team was patient with all my changes and revisions too.",
       date: "2025-05-28",
       verified: true,
       emoji: "🎉",
-      avatar: "https://images.unsplash.com/photo-1552058544-f2b08422138a?w=100&h=100&fit=crop&crop=face"
+      avatar: "/api/placeholder/100/100?text=JL&bg=ec4899&color=white"
     },
     {
       id: 6,
-      name: "Lisa Anderson",
+      name: "Mike R",
       rating: 3,
-      comment: "The platform offers solid functionality with practical business applications. The learning curve was steeper than anticipated, requiring several weeks of dedicated training for our team. However, the support team guided us through each step with patience and expertise. Now that we're fully operational, the results speak for themselves - improved efficiency, better customer engagement, and streamlined workflows. The ROI became clear after the third month of implementation.",
+      comment: "Good work on the AI chatbot setup. It took some time to train it properly for my specific business but now its working well. My customers like getting instant responses even when im sleeping lol. Support team was helpfull when I had issues.",
       date: "2025-05-25",
       verified: true,
       emoji: "📈",
-      avatar: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=100&h=100&fit=crop&crop=face"
+      avatar: "/api/placeholder/100/100?text=MR&bg=6366f1&color=white"
     },
     {
       id: 7,
-      name: "Robert Kim",
+      name: "Sophie T",
       rating: 4,
-      comment: "The chatbot integration exceeded all expectations for our consulting firm. Customer service response times improved from hours to seconds, and our team can now focus on strategic growth initiatives. The AI handles complex technical questions surprisingly well, often providing better answers than our junior staff. Customers appreciate the instant responses, especially outside business hours. The ROI became apparent within just three weeks of going live.",
+      comment: "Really happy with the viral clips service! Before working with them I struggled to get views on my content. Now my videos are getting shared everywhere and my coaching business is booming. They made the editing process so much easier than I expected. Would definately use again!",
       date: "2025-05-22",
       verified: true,
       emoji: "✨",
-      avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face"
+      avatar: "/api/placeholder/100/100?text=ST&bg=8b5cf6&color=white"
     },
     {
       id: 8,
-      name: "Amanda Davis",
-      rating: 3,
-      comment: "The content creation tools have completely transformed our social media strategy. While some features performed better than others initially, the overall impact on our online presence has been substantial. We're publishing 5x more content with half the manual effort. The automation saves approximately 15 hours of work each week, allowing our creative team to focus on high-level strategy and brand development instead of repetitive tasks.",
+      name: "David Chen",
+      rating: 5,
+      comment: "Outstanding service! The sales funnel they created for me is converting like crazy. I went from struggling to get leads to having more clients than I can handle. The whole setup was done professionally and on time. Best investment I've made for my business this year.",
       date: "2025-05-18",
       verified: true,
       emoji: "💪",
@@ -100,23 +100,23 @@ const ReviewsSection = () => {
     },
     {
       id: 9,
-      name: "James Wilson",
+      name: "Lisa K",
       rating: 4,
-      comment: "This comprehensive automation solution delivered consistent results from week one. The setup process was remarkably smooth, with clear documentation and responsive technical support available 24/7. Our operational efficiency has improved by 60%, and the system scales beautifully as our business grows. The monthly reporting features help us track improvements in real-time. Highly recommended for companies ready to embrace AI-powered automation at scale.",
+      comment: "The AI chatbot has been a lifesaver for my online store! It handles customer questions when im not available and even helps with sales. Setup was pretty straightforward and support team was very helpfull. My conversion rate improved by about 35% since using it.",
       date: "2025-05-15",
       verified: true,
       emoji: "🔥",
-      avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face"
+      avatar: "/api/placeholder/100/100?text=LK&bg=ef4444&color=white"
     },
     {
       id: 10,
-      name: "Emily Johnson",
+      name: "Ryan B",
       rating: 3,
-      comment: "The platform offers decent functionality with room for improvement in user experience. The AI features work as advertised but the interface could be more intuitive. After spending time learning the system, we've seen gradual improvements in our workflow efficiency. The customer support team has been helpful in addressing our specific needs. Overall, it's a solid foundation that continues to evolve with regular updates.",
+      comment: "Good experience overall. The website looks profesional and my clients seem to like it. Took a bit longer than expected to complete but the end result is solid. Would reccomend for anyone needing a business website done right.",
       date: "2025-05-10",
       verified: true,
       emoji: "📝",
-      avatar: "https://images.unsplash.com/photo-1551836022-deb4988cc6c0?w=100&h=100&fit=crop&crop=face"
+      avatar: "/api/placeholder/100/100?text=RB&bg=06b6d4&color=white"
     },
     {
       id: 11,
@@ -180,6 +180,42 @@ const ReviewsSection = () => {
     }
   ];
 
+  // Helper function to render avatar with fallback to WhatsApp-style initials
+  const renderAvatar = (review: Review) => {
+    if (review.avatar && review.avatar.startsWith('http')) {
+      return (
+        <img
+          src={review.avatar}
+          alt={review.name}
+          className="w-full h-full object-cover"
+        />
+      );
+    } else if (review.avatar && review.avatar.includes('/api/placeholder')) {
+      // Extract initials and background color from placeholder URL
+      const urlParams = new URLSearchParams(review.avatar.split('?')[1]);
+      const text = urlParams.get('text') || review.name.split(' ').map(n => n[0]).join('');
+      const bg = urlParams.get('bg') || '6366f1';
+      const color = urlParams.get('color') || 'white';
+      
+      return (
+        <div 
+          className="w-full h-full flex items-center justify-center text-white font-semibold text-sm lg:text-base"
+          style={{ backgroundColor: `#${bg}` }}
+        >
+          {text}
+        </div>
+      );
+    } else {
+      // Fallback to initials
+      const initials = review.name.split(' ').map(n => n[0]).join('');
+      return (
+        <div className="w-full h-full bg-gray-400 flex items-center justify-center text-white font-semibold text-sm lg:text-base">
+          {initials}
+        </div>
+      );
+    }
+  };
+
   const renderStars = (rating: number) => {
     const stars = [];
     const fullStars = Math.floor(rating);
@@ -239,17 +275,9 @@ const ReviewsSection = () => {
               <CardContent className="p-4 sm:p-6 lg:p-8">
                 <div className="flex items-start gap-3 sm:gap-4 mb-4 sm:mb-6">
                   <div className="relative flex-shrink-0">
-                    {review.avatar ? (
-                      <img 
-                        src={review.avatar} 
-                        alt={review.name}
-                        className="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 rounded-full object-cover border-2 border-purple-200 shadow-md"
-                      />
-                    ) : (
-                      <div className="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 rounded-full bg-gradient-to-br from-purple-400 to-pink-400 flex items-center justify-center text-white font-bold text-sm sm:text-base lg:text-xl shadow-md">
-                        {review.name.split(' ').map(n => n[0]).join('')}
-                      </div>
-                    )}
+                    <div className="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 border-2 border-purple-200 shadow-md rounded-full overflow-hidden">
+                      {renderAvatar(review)}
+                    </div>
                     {review.emoji && (
                       <span className="absolute -bottom-1 -right-1 text-lg sm:text-xl lg:text-2xl bg-white rounded-full p-0.5 sm:p-1 shadow-sm">
                         {review.emoji}
