@@ -23,8 +23,11 @@ export const useOnboarding = () => {
     } else {
       // Show welcome modal for new users after a short delay
       const timer = setTimeout(() => {
-        setShowWelcomeModal(true);
-      }, 2000);
+        // Only show if user hasn't interacted with the page yet
+        if (!document.hidden) {
+          setShowWelcomeModal(true);
+        }
+      }, 3000);
       return () => clearTimeout(timer);
     }
   }, []);
@@ -85,52 +88,36 @@ export const useOnboarding = () => {
   // Default onboarding steps for the application
   const defaultSteps: OnboardingStep[] = [
     {
-      id: 'welcome',
-      title: 'Welcome to Your Business Growth Platform!',
-      description: 'Let\'s take a quick tour to help you get started with growing your business using AI-powered tools.',
-      targetSelector: 'body',
-      position: 'center',
-      animation: 'glow'
-    },
-    {
       id: 'hero-section',
-      title: 'Your Growth Journey Starts Here',
-      description: 'This is where potential clients first learn about your services. The powerful headline captures attention immediately.',
-      targetSelector: '[data-onboarding="hero"]',
+      title: 'Welcome! Let\'s Start Your Journey',
+      description: 'This powerful headline section shows visitors what you can do for their business growth.',
+      targetSelector: '.hero-main, [data-onboarding="hero"], h1',
       position: 'bottom',
       animation: 'pulse'
     },
     {
       id: 'services-overview',
-      title: 'Discover Our Services',
-      description: 'Here you can see all the ways we help businesses like yours grow with automation and AI-powered solutions.',
-      targetSelector: '[data-onboarding="services"]',
-      position: 'top',
+      title: 'Your Services Showcase',
+      description: 'This section displays all the AI-powered services you offer to help businesses grow.',
+      targetSelector: '.services-section, [data-onboarding="services"]',
+      position: 'bottom',
       animation: 'bounce'
     },
     {
       id: 'contact-form',
-      title: 'Get Your Free Demo',
-      description: 'This contact form is where interested clients can request a free demo of our services. It\'s completely free to get started!',
-      targetSelector: '[data-onboarding="contact-form"]',
-      position: 'left',
-      animation: 'shake'
+      title: 'Free Demo Request Form',
+      description: 'This is where potential clients can request their free demo. The form captures all necessary details.',
+      targetSelector: '.contact-form, [data-onboarding="contact-form"]',
+      position: 'right',
+      animation: 'glow'
     },
     {
       id: 'chat-assistant',
-      title: 'AI Chat Assistant',
-      description: 'Need help anytime? Click this chat button to get instant answers about our services and how we can help your business.',
-      targetSelector: '[data-onboarding="chat-button"]',
+      title: 'AI Chat Helper',
+      description: 'This chat button lets visitors get instant answers about your services 24/7.',
+      targetSelector: '.chat-button, [data-onboarding="chat-button"]',
       position: 'left',
-      animation: 'pulse'
-    },
-    {
-      id: 'testimonials',
-      title: 'Success Stories',
-      description: 'See how other businesses have grown using our services. Real results from real clients who started just like you.',
-      targetSelector: '[data-onboarding="testimonials"]',
-      position: 'top',
-      animation: 'glow'
+      animation: 'shake'
     }
   ];
 

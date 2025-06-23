@@ -18,6 +18,7 @@ import { OnboardingOverlay } from "@/components/onboarding/OnboardingOverlay";
 import { OnboardingTrigger } from "@/components/onboarding/OnboardingTrigger";
 import { WelcomeModal } from "@/components/onboarding/WelcomeModal";
 import { CompletionCelebration } from "@/components/onboarding/CompletionCelebration";
+import { OnboardingDebug } from "@/components/onboarding/OnboardingDebug";
 import { useOnboarding } from "@/hooks/useOnboarding";
 
 const Index = () => {
@@ -32,6 +33,7 @@ const Index = () => {
     startOnboarding,
     completeOnboarding,
     skipOnboarding,
+    resetOnboarding,
     closeCelebration,
     defaultSteps
   } = useOnboarding();
@@ -127,6 +129,8 @@ const Index = () => {
         isVisible={showCelebration}
         onClose={closeCelebration}
       />
+      
+
     </div>
   );
 };

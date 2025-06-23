@@ -235,7 +235,7 @@ const ContactForm = ({ userType }: ContactFormProps) => {
   const progress = calculateProgress();
 
   return (
-    <section id="contact-form" className="py-12 md:py-20 px-4 bg-gradient-to-br from-slate-50 to-purple-50">
+    <section id="contact-form" className="contact-form py-12 md:py-20 px-4 bg-gradient-to-br from-slate-50 to-purple-50" data-onboarding="contact-form">
       <div className="max-w-4xl mx-auto">
         <FormHeader 
           demoSubmitted={demoSubmitted}

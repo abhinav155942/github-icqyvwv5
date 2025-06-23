@@ -27,36 +27,65 @@ export const OnboardingOverlay = ({ isVisible, onComplete, onSkip, steps }: Onbo
   useEffect(() => {
     if (!isVisible || !steps[currentStep]) return;
 
-    const targetElement = document.querySelector(steps[currentStep].targetSelector) as HTMLElement;
+    // Try multiple selectors for better targeting
+    const step = steps[currentStep];
+    const selectors = step.targetSelector.split(',').map(s => s.trim());
+    let targetElement: HTMLElement | null = null;
+    
+    // Add debugging for missing elements
+    for (const selector of selectors) {
+      targetElement = document.querySelector(selector) as HTMLElement;
+      if (targetElement) {
+        console.log(`Onboarding: Found element for step ${currentStep} with selector:`, selector);
+        break;
+      }
+    }
+    
+    // Fallback to body if no element found
+    if (!targetElement) {
+      console.warn(`Onboarding: No element found for step ${currentStep}, using body as fallback`);
+      targetElement = document.body;
+    }
+    
     if (targetElement) {
       setHighlightedElement(targetElement);
       
-      // Calculate tooltip position
+      // Calculate tooltip position with mobile responsiveness
       const rect = targetElement.getBoundingClientRect();
-      const step = steps[currentStep];
+      const windowWidth = window.innerWidth;
+      const windowHeight = window.innerHeight;
+      const isMobile = windowWidth < 768;
       
       let x = 0, y = 0;
+      let adjustedPosition = step.position;
       
-      switch (step.position) {
+      // Adjust position for mobile
+      if (isMobile) {
+        if (step.position === 'left' || step.position === 'right') {
+          adjustedPosition = rect.top > windowHeight / 2 ? 'top' : 'bottom';
+        }
+      }
+      
+      switch (adjustedPosition) {
         case 'top':
-          x = rect.left + rect.width / 2;
+          x = Math.min(Math.max(rect.left + rect.width / 2, 200), windowWidth - 200);
           y = rect.top - 20;
           break;
         case 'bottom':
-          x = rect.left + rect.width / 2;
+          x = Math.min(Math.max(rect.left + rect.width / 2, 200), windowWidth - 200);
           y = rect.bottom + 20;
           break;
         case 'left':
           x = rect.left - 20;
-          y = rect.top + rect.height / 2;
+          y = Math.min(Math.max(rect.top + rect.height / 2, 100), windowHeight - 100);
           break;
         case 'right':
           x = rect.right + 20;
-          y = rect.top + rect.height / 2;
+          y = Math.min(Math.max(rect.top + rect.height / 2, 100), windowHeight - 100);
           break;
         case 'center':
-          x = window.innerWidth / 2;
-          y = window.innerHeight / 2;
+          x = windowWidth / 2;
+          y = windowHeight / 2;
           break;
       }
       
@@ -72,8 +101,13 @@ export const OnboardingOverlay = ({ isVisible, onComplete, onSkip, steps }: Onbo
         targetElement.classList.add(`onboarding-${step.animation}`);
       }
       
-      // Scroll element into view
-      targetElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      // Scroll element into view with offset for mobile
+      const offsetTop = isMobile ? 100 : 50;
+      const elementTop = targetElement.offsetTop - offsetTop;
+      window.scrollTo({ 
+        top: elementTop, 
+        behavior: 'smooth' 
+      });
     }
 
     return () => {
@@ -136,11 +170,15 @@ export const OnboardingOverlay = ({ isVisible, onComplete, onSkip, steps }: Onbo
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.8, y: 20 }}
           transition={{ type: "spring", stiffness: 300, damping: 30 }}
-          className="absolute pointer-events-auto bg-white rounded-xl shadow-2xl p-6 max-w-sm border border-gray-200"
+          className="fixed pointer-events-auto bg-white rounded-xl shadow-2xl p-4 md:p-6 border border-gray-200 z-[1001] mx-4 md:mx-0"
           style={{
-            left: tooltipPosition.x,
-            top: tooltipPosition.y,
-            transform: currentStepData.position === 'center' ? 'translate(-50%, -50%)' : 
+            width: window.innerWidth < 768 ? 'calc(100vw - 2rem)' : '320px',
+            maxWidth: window.innerWidth < 768 ? 'none' : '400px',
+            left: window.innerWidth < 768 ? '1rem' : Math.max(20, Math.min(tooltipPosition.x, window.innerWidth - 340)),
+            top: window.innerWidth < 768 ? 'auto' : Math.max(20, Math.min(tooltipPosition.y, window.innerHeight - 300)),
+            bottom: window.innerWidth < 768 ? '1rem' : 'auto',
+            transform: window.innerWidth < 768 ? 'none' : 
+                      currentStepData.position === 'center' ? 'translate(-50%, -50%)' : 
                       currentStepData.position === 'top' ? 'translate(-50%, -100%)' :
                       currentStepData.position === 'bottom' ? 'translate(-50%, 0%)' :
                       currentStepData.position === 'left' ? 'translate(-100%, -50%)' :
