@@ -12,6 +12,7 @@ interface Review {
   verified: boolean;
   emoji?: string;
   avatar?: string;
+  fontFamily?: string;
 }
 
 const ReviewsSection = () => {
@@ -26,7 +27,8 @@ const ReviewsSection = () => {
       date: "2025-06-12",
       verified: true,
       emoji: "🤩",
-      avatar: "/api/placeholder/100/100?text=MG&bg=10b981&color=white"
+      avatar: "/api/placeholder/100/100?text=MG&bg=10b981&color=white",
+      fontFamily: "font-mono"
     },
     {
       id: 2,
@@ -36,7 +38,8 @@ const ReviewsSection = () => {
       date: "2025-06-08",
       verified: true,
       emoji: "👍",
-      avatar: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=100&h=100&fit=crop&crop=face"
+      avatar: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=100&h=100&fit=crop&crop=face",
+      fontFamily: "font-serif"
     },
     {
       id: 3,
@@ -46,7 +49,8 @@ const ReviewsSection = () => {
       date: "2025-06-05",
       verified: true,
       emoji: "🚀",
-      avatar: "/api/placeholder/100/100?text=AK&bg=3b82f6&color=white"
+      avatar: "/api/placeholder/100/100?text=AK&bg=3b82f6&color=white",
+      fontFamily: "font-sans"
     },
     {
       id: 4,
@@ -56,7 +60,8 @@ const ReviewsSection = () => {
       date: "2025-06-02",
       verified: true,
       emoji: "💡",
-      avatar: "/api/placeholder/100/100?text=CM&bg=f59e0b&color=white"
+      avatar: "/api/placeholder/100/100?text=CM&bg=f59e0b&color=white",
+      fontFamily: "font-mono"
     },
     {
       id: 5,
@@ -66,7 +71,8 @@ const ReviewsSection = () => {
       date: "2025-05-28",
       verified: true,
       emoji: "🎉",
-      avatar: "/api/placeholder/100/100?text=JL&bg=ec4899&color=white"
+      avatar: "/api/placeholder/100/100?text=JL&bg=ec4899&color=white",
+      fontFamily: "font-serif"
     },
     {
       id: 6,
@@ -76,7 +82,8 @@ const ReviewsSection = () => {
       date: "2025-05-25",
       verified: true,
       emoji: "📈",
-      avatar: "/api/placeholder/100/100?text=MR&bg=6366f1&color=white"
+      avatar: "/api/placeholder/100/100?text=MR&bg=6366f1&color=white",
+      fontFamily: "font-sans"
     },
     {
       id: 7,
@@ -86,7 +93,8 @@ const ReviewsSection = () => {
       date: "2025-05-22",
       verified: true,
       emoji: "✨",
-      avatar: "/api/placeholder/100/100?text=ST&bg=8b5cf6&color=white"
+      avatar: "/api/placeholder/100/100?text=ST&bg=8b5cf6&color=white",
+      fontFamily: "font-mono"
     },
     {
       id: 8,
@@ -96,7 +104,8 @@ const ReviewsSection = () => {
       date: "2025-05-18",
       verified: true,
       emoji: "💪",
-      avatar: "https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?w=100&h=100&fit=crop&crop=face"
+      avatar: "https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?w=100&h=100&fit=crop&crop=face",
+      fontFamily: "font-serif"
     },
     {
       id: 9,
@@ -106,7 +115,8 @@ const ReviewsSection = () => {
       date: "2025-05-15",
       verified: true,
       emoji: "🔥",
-      avatar: "/api/placeholder/100/100?text=LK&bg=ef4444&color=white"
+      avatar: "/api/placeholder/100/100?text=LK&bg=ef4444&color=white",
+      fontFamily: "font-sans"
     },
     {
       id: 10,
@@ -116,7 +126,8 @@ const ReviewsSection = () => {
       date: "2025-05-10",
       verified: true,
       emoji: "📝",
-      avatar: "/api/placeholder/100/100?text=RB&bg=06b6d4&color=white"
+      avatar: "/api/placeholder/100/100?text=RB&bg=06b6d4&color=white",
+      fontFamily: "font-mono"
     },
     {
       id: 11,
@@ -298,7 +309,7 @@ const ReviewsSection = () => {
                     )}
                   </div>
                 </div>
-                <blockquote className="text-gray-700 text-sm sm:text-base leading-relaxed mb-3 sm:mb-4 font-medium italic">
+                <blockquote className={`text-gray-700 text-sm sm:text-base leading-relaxed mb-3 sm:mb-4 font-medium italic ${review.fontFamily || 'font-sans'}`}>
                   "{review.comment}"
                 </blockquote>
                 <p className="text-xs sm:text-sm text-gray-500 font-medium">

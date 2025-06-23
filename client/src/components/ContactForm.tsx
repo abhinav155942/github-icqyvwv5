@@ -205,10 +205,10 @@ const ContactForm = ({ userType }: ContactFormProps) => {
         webhookData.coachingNiche = formData.otherNiche;
       }
 
-      const n8nWebhookUrl = "https://stacksinfo.app.n8n.cloud/webhook/3a6e5602-b960-4820-89e8-5efc7fdc19a3";
+      const makeWebhookUrl = "https://hook.us2.make.com/e0avjappx2co9oc9hwt6gb53oj42sjbm";
       
       // Don't wait for webhook response as database is primary
-      submitToWebhook(n8nWebhookUrl, webhookData, {
+      submitToWebhook(makeWebhookUrl, webhookData, {
         maxRetries: 2,
         retryDelay: 1000,
         timeout: 10000

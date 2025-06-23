@@ -60,23 +60,13 @@ export const useWebhookSubmission = () => {
 
     setIsSubmitting(true);
     
-    // Convert data to plain text format for GET request
-    const plainTextData = Object.entries(data)
-      .map(([key, value]) => {
-        if (Array.isArray(value)) {
-          return `${key}: ${value.join(', ')}`;
-        }
-        return `${key}: ${value}`;
-      })
-      .join('\n');
-
-    // Create URL search params for GET request
-    const params = new URLSearchParams();
-    params.append('data', plainTextData);
-    params.append('timestamp', new Date().toISOString());
-    params.append('submissionId', `sub_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`);
-
-    const finalUrl = `${webhookUrl}?${params.toString()}`;
+    // Prepare JSON payload for Make.com webhook
+    const webhookPayload = {
+      ...data,
+      timestamp: new Date().toISOString(),
+      submissionId: `sub_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
+      source: 'contact_form'
+    };
 
     let lastError: Error | null = null;
 
@@ -84,18 +74,20 @@ export const useWebhookSubmission = () => {
       try {
         console.log(`Webhook submission attempt ${attempt}/${maxRetries}:`, {
           url: webhookUrl,
-          method: 'GET',
-          dataLength: plainTextData.length
+          method: 'POST',
+          payloadSize: JSON.stringify(webhookPayload).length
         });
 
         const controller = new AbortController();
         const timeoutId = setTimeout(() => controller.abort(), timeout);
 
-        const response = await fetch(finalUrl, {
-          method: "GET",
+        const response = await fetch(webhookUrl, {
+          method: "POST",
           headers: {
-            "Accept": "text/plain, application/json",
+            "Content-Type": "application/json",
+            "Accept": "application/json",
           },
+          body: JSON.stringify(webhookPayload),
           signal: controller.signal
         });
 
