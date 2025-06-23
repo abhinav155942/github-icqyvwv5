@@ -14,10 +14,27 @@ import Footer from "@/components/Footer";
 import UserTypeSelector from "@/components/UserTypeSelector";
 import RecommendationPopup from "@/components/RecommendationPopup";
 import ChatBot from "@/components/ChatBot";
+import { OnboardingOverlay } from "@/components/onboarding/OnboardingOverlay";
+import { OnboardingTrigger } from "@/components/onboarding/OnboardingTrigger";
+import { WelcomeModal } from "@/components/onboarding/WelcomeModal";
+import { CompletionCelebration } from "@/components/onboarding/CompletionCelebration";
+import { useOnboarding } from "@/hooks/useOnboarding";
 
 const Index = () => {
   const [userType, setUserType] = useState<string>("");
   const [showUserTypeSelector, setShowUserTypeSelector] = useState(true);
+  
+  const {
+    isOnboardingVisible,
+    hasCompletedOnboarding,
+    showWelcomeModal,
+    showCelebration,
+    startOnboarding,
+    completeOnboarding,
+    skipOnboarding,
+    closeCelebration,
+    defaultSteps
+  } = useOnboarding();
 
   useEffect(() => {
     // Check if user type is already saved
@@ -68,14 +85,48 @@ const Index = () => {
         onSelect={handleUserTypeSelect} 
       />
       <RecommendationPopup userType={userType} />
-      <Hero />
-      {renderServices()}
+      <div data-onboarding="hero">
+        <Hero />
+      </div>
+      <div data-onboarding="services">
+        {renderServices()}
+      </div>
       {renderBenefits()}
       <Process />
-      <ContactForm userType={userType} />
-      <FAQ />
+      <div data-onboarding="contact-form">
+        <ContactForm userType={userType} />
+      </div>
+      <div data-onboarding="testimonials">
+        <FAQ />
+      </div>
       <Footer />
-      <ChatBot />
+      <div data-onboarding="chat-button">
+        <ChatBot />
+      </div>
+      
+      {/* Onboarding System */}
+      <WelcomeModal
+        isVisible={showWelcomeModal}
+        onStartTour={startOnboarding}
+        onSkip={skipOnboarding}
+      />
+      
+      <OnboardingOverlay
+        isVisible={isOnboardingVisible}
+        onComplete={completeOnboarding}
+        onSkip={skipOnboarding}
+        steps={defaultSteps}
+      />
+      
+      <OnboardingTrigger
+        onStart={startOnboarding}
+        hasCompleted={hasCompletedOnboarding}
+      />
+      
+      <CompletionCelebration
+        isVisible={showCelebration}
+        onClose={closeCelebration}
+      />
     </div>
   );
 };

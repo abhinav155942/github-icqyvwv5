@@ -1,3 +1,6 @@
+/* Import onboarding styles */
+@import './styles/onboarding.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
