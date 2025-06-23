@@ -1,5 +1,5 @@
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { Conversation, ChatMessage } from '@/types/chat';
 
 export const useChatHistory = () => {
@@ -26,7 +26,7 @@ export const useChatHistory = () => {
     }
   }, [conversations]);
 
-  const saveConversation = (messages: ChatMessage[]) => {
+  const saveConversation = useCallback((messages: ChatMessage[]) => {
     if (messages.length <= 1) return; // Don't save if only greeting message
 
     const conversationId = currentConversationId || `conv-${Date.now()}`;
@@ -53,7 +53,7 @@ export const useChatHistory = () => {
     });
     
     setCurrentConversationId(conversationId);
-  };
+  }, [currentConversationId]);
 
   const loadConversation = (conversationId: string): ChatMessage[] => {
     const conversation = conversations.find(conv => conv.id === conversationId);

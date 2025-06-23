@@ -79,8 +79,8 @@ const CoachServices = () => {
 
         <div className="mt-12 mb-16 max-w-4xl mx-auto">
           <img 
-            src="./assets/images/website-creation-demo.avif"
-            alt="Website Creation Demo"
+            src="./assets/images/smm_1750682392318.avif"
+            alt="Social Media Marketing Demo"
             className="w-full rounded-lg shadow-lg"
           />
         </div>
