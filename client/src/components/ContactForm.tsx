@@ -15,6 +15,7 @@ import { FormFooter } from "./contact-form/FormFooter";
 import { SuccessDialog } from "./contact-form/SuccessDialog";
 import { useFormPersistence } from "@/hooks/useFormPersistence";
 import { SoundEffects } from "@/utils/soundEffects";
+import { LocalStorageManager } from "@/utils/localStorageManager";
 
 interface ContactFormProps {
   userType: string;
@@ -118,31 +119,49 @@ const ContactForm = ({ userType }: ContactFormProps) => {
     return true;
   };
 
-  // Make.com webhook submission script
-  const submitToMakeWebhook = async (formData: any) => {
+  // Make.com webhook submission with local storage backup
+  const submitToMakeWebhook = async (webhookData: any) => {
     const webhookUrl = "https://hook.us2.make.com/e0avjappx2co9oc9hwt6gb53oj42sjbm";
     
+    const submissionId = LocalStorageManager.generateSubmissionId();
+    const submissionData = {
+      id: submissionId,
+      timestamp: new Date().toISOString(),
+      data: webhookData,
+      status: 'pending' as const
+    };
+    
     try {
-      console.log('Sending data to Make.com webhook:', formData);
+      // Store submission data in local storage as backup
+      LocalStorageManager.saveSubmission(submissionData);
+      
+      console.log('Sending data to Make.com webhook:', webhookData);
       
       const response = await fetch(webhookUrl, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData)
+        body: JSON.stringify(webhookData)
       });
 
       if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status} - ${response.statusText}`);
+        const errorMessage = `HTTP ${response.status}: ${response.statusText}`;
+        LocalStorageManager.updateSubmissionStatus(submissionId, 'failed', errorMessage);
+        throw new Error(errorMessage);
       }
 
       const responseText = await response.text();
       console.log('Make.com webhook response:', responseText);
       
-      return { success: true, response: responseText };
+      // Update status to success in local storage
+      LocalStorageManager.updateSubmissionStatus(submissionId, 'success', undefined, responseText);
+      
+      return { success: true, response: responseText, submissionId };
     } catch (error) {
       console.error('Make.com webhook error:', error);
+      const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+      LocalStorageManager.updateSubmissionStatus(submissionId, 'failed', errorMessage);
       throw error;
     }
   };

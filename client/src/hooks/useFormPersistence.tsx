@@ -1,5 +1,6 @@
 
 import { useState, useEffect } from 'react';
+import { LocalStorageManager } from "@/utils/localStorageManager";
 
 interface FormData {
   name: string;
@@ -19,8 +20,6 @@ interface LinkItem {
 }
 
 export const useFormPersistence = () => {
-  const STORAGE_KEY = 'contact-form-draft';
-  
   const [formData, setFormData] = useState<FormData>({
     name: "",
     email: "",
@@ -38,31 +37,20 @@ export const useFormPersistence = () => {
 
   // Load saved form data on mount
   useEffect(() => {
-    try {
-      const savedData = localStorage.getItem(STORAGE_KEY);
-      if (savedData) {
-        const parsed = JSON.parse(savedData);
-        setFormData(parsed.formData || formData);
-        setLinks(parsed.links || []);
-        // Note: Files can't be persisted in localStorage
-      }
-    } catch (error) {
-      console.error('Error loading saved form data:', error);
+    const savedData = LocalStorageManager.getFormDraft();
+    if (savedData) {
+      setFormData(savedData.formData || formData);
+      setLinks(savedData.links || []);
+      // Note: Files can't be persisted in localStorage
     }
+    
+    // Clean up old submissions on component mount
+    LocalStorageManager.cleanupOldSubmissions();
   }, []);
 
   // Save form data whenever it changes
   useEffect(() => {
-    try {
-      const dataToSave = {
-        formData,
-        links,
-        timestamp: Date.now()
-      };
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(dataToSave));
-    } catch (error) {
-      console.error('Error saving form data:', error);
-    }
+    LocalStorageManager.saveFormDraft(formData, links);
   }, [formData, links]);
 
   const updateFormData = (updates: Partial<FormData>) => {
@@ -70,7 +58,7 @@ export const useFormPersistence = () => {
   };
 
   const clearSavedData = () => {
-    localStorage.removeItem(STORAGE_KEY);
+    LocalStorageManager.clearFormDraft();
   };
 
   const backupFormData = () => {
