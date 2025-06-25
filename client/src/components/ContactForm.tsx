@@ -176,23 +176,34 @@ const ContactForm = ({ userType }: ContactFormProps) => {
     }
 
     try {
+      // Debug: Log current form data
+      console.log('Current formData before submission:', formData);
+      console.log('Current files:', files);
+      console.log('Current links:', links);
+      console.log('Current serviceConfigs:', serviceConfigs);
+      
       // Prepare data for Make.com webhook
       const webhookData = {
-        name: formData.name,
-        email: formData.email,
-        phone: formData.phone,
-        business: formData.business,
+        name: formData.name || '',
+        email: formData.email || '',
+        phone: formData.phone || '',
+        business: formData.business || '',
         coaching_niche: formData.coachingNiche === "other" ? formData.otherNiche : formData.coachingNiche,
-        monthly_revenue: formData.monthlyRevenue,
-        current_challenges: formData.currentChallenges,
-        selected_services: formData.services.join(', '),
-        user_type: userType,
+        other_niche: formData.otherNiche || '',
+        monthly_revenue: formData.monthlyRevenue || '',
+        current_challenges: formData.currentChallenges || '',
+        selected_services: formData.services.length > 0 ? formData.services.join(', ') : 'None selected',
+        services_array: formData.services,
+        user_type: userType || 'Unknown',
         submission_timestamp: new Date().toISOString(),
-        service_configs: serviceConfigs,
+        service_configs: serviceConfigs || {},
         uploaded_files: files.map(f => ({ name: f.name, size: f.size, type: f.type })),
-        website_links: links,
-        form_version: "webhook_only"
+        website_links: links || [],
+        form_version: "webhook_only",
+        form_completion_percentage: calculateProgress()
       };
+
+      console.log('Prepared webhookData:', webhookData);
 
       // Send to Make.com webhook
       await submitToMakeWebhook(webhookData);
