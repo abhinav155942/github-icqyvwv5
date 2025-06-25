@@ -206,7 +206,6 @@ const ContactForm = ({ userType }: ContactFormProps) => {
       <div className="max-w-4xl mx-auto">
         <FormHeader 
           demoSubmitted={demoSubmitted}
-          submitAttempts={submitAttempts}
           progress={progress}
         />
 
