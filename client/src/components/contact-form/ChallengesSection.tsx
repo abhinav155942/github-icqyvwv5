@@ -22,6 +22,7 @@ export const ChallengesSection = ({ currentChallenges, onUpdate, isSubmitting }:
         </Label>
         <Textarea
           id="challenges"
+          name="challenges"
           value={currentChallenges}
           onChange={(e) => onUpdate(e.target.value)}
           className="mt-2 border-purple-200 focus:border-purple-500 focus:ring-purple-500/20 min-h-[140px] rounded-xl"

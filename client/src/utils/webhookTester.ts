@@ -26,6 +26,7 @@ export const testWebhook = async () => {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
+        'Accept': 'application/json',
       },
       body: JSON.stringify(testData)
     });
@@ -52,16 +53,28 @@ export const testWebhook = async () => {
 export const inspectFormData = () => {
   const formElements = document.querySelectorAll('input, select, textarea');
   const formData = {};
+  const missingNameAttributes = [];
   
   console.log('=== FORM DATA INSPECTION ===');
   formElements.forEach((element) => {
     const el = element as HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement;
+    
+    // Check for missing name attributes
+    if (!el.name && el.id) {
+      missingNameAttributes.push(el.id);
+    }
+    
     if (el.name || el.id) {
       const key = el.name || el.id;
-      formData[key] = el.value;
-      console.log(`${key}: "${el.value}"`);
+      const value = el.value;
+      formData[key] = value;
+      console.log(`${key}: "${value}" ${!el.name ? '(WARNING: Missing name attribute)' : ''}`);
     }
   });
+  
+  if (missingNameAttributes.length > 0) {
+    console.warn('⚠️ Elements missing name attributes:', missingNameAttributes);
+  }
   
   console.log('Complete form data object:', formData);
   console.log('=== END FORM DATA INSPECTION ===');

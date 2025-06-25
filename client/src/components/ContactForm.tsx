@@ -144,6 +144,7 @@ const ContactForm = ({ userType }: ContactFormProps) => {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'Accept': 'application/json',
         },
         body: JSON.stringify(webhookData)
       });
@@ -172,9 +173,71 @@ const ContactForm = ({ userType }: ContactFormProps) => {
     }
   };
 
+  const validateRequiredFields = () => {
+    const requiredFields = [
+      { field: formData.name, name: 'Full Name' },
+      { field: formData.email, name: 'Email Address' },
+      { field: formData.phone, name: 'Phone Number' },
+      { field: formData.business, name: 'Business Name' },
+      { field: formData.coachingNiche, name: 'Category/Niche' },
+      { field: formData.currentChallenges, name: 'Current Challenges' }
+    ];
+
+    // Check if "other" niche is selected and otherNiche is empty
+    if (formData.coachingNiche === "other" && !formData.otherNiche?.trim()) {
+      toast({
+        title: "Missing Information",
+        description: "Please specify your niche/category when 'Other' is selected.",
+        variant: "destructive",
+      });
+      return false;
+    }
+
+    // Check if services are selected
+    if (formData.services.length === 0) {
+      toast({
+        title: "Service Selection Required",
+        description: "Please select at least one service to request your free demo.",
+        variant: "destructive",
+      });
+      return false;
+    }
+
+    // Check required fields
+    for (const { field, name } of requiredFields) {
+      if (!field?.trim()) {
+        toast({
+          title: "Missing Information",
+          description: `Please fill in the ${name} field.`,
+          variant: "destructive",
+        });
+        return false;
+      }
+    }
+
+    // Validate email format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.email)) {
+      toast({
+        title: "Invalid Email",
+        description: "Please enter a valid email address.",
+        variant: "destructive",
+      });
+      return false;
+    }
+
+    return true;
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+
+    // Validate all required fields before submission
+    if (!validateRequiredFields()) {
+      setIsSubmitting(false);
+      return;
+    }
 
     if (formData.services.length > 0 && !validateServiceConfigs()) {
       setIsSubmitting(false);
@@ -278,7 +341,7 @@ const ContactForm = ({ userType }: ContactFormProps) => {
             />
             
             <CardContent className="relative">
-              <form onSubmit={handleSubmit} className="space-y-6 md:space-y-8">
+              <form onSubmit={handleSubmit} method="POST" encType="application/x-www-form-urlencoded" className="space-y-6 md:space-y-8">
                 <PersonalInfoSection
                   formData={{ name: formData.name, email: formData.email, phone: formData.phone }}
                   onUpdate={updateFormData}

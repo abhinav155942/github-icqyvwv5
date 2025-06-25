@@ -27,6 +27,7 @@ export const PersonalInfoSection = ({ formData, onUpdate, isSubmitting }: Person
           </Label>
           <Input
             id="name"
+            name="name"
             type="text"
             value={formData.name}
             onChange={(e) => onUpdate({ name: e.target.value })}
@@ -43,6 +44,7 @@ export const PersonalInfoSection = ({ formData, onUpdate, isSubmitting }: Person
           </Label>
           <Input
             id="email"
+            name="email"
             type="email"
             value={formData.email}
             onChange={(e) => onUpdate({ email: e.target.value })}
@@ -60,6 +62,7 @@ export const PersonalInfoSection = ({ formData, onUpdate, isSubmitting }: Person
         </Label>
         <Input
           id="phone"
+          name="phone"
           type="tel"
           value={formData.phone}
           onChange={(e) => onUpdate({ phone: e.target.value })}

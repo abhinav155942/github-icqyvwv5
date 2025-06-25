@@ -91,6 +91,7 @@ export const BusinessInfoSection = ({
           </Label>
           <Input
             id="business"
+            name="business"
             type="text"
             value={formData.business}
             onChange={(e) => onUpdate({ business: e.target.value })}
@@ -126,6 +127,7 @@ export const BusinessInfoSection = ({
             </Label>
             <Input
               id="otherNiche"
+              name="otherNiche"
               type="text"
               value={formData.otherNiche}
               onChange={(e) => onUpdate({ otherNiche: e.target.value })}

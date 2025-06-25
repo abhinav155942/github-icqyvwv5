@@ -28,6 +28,7 @@ export async function sendToMakeWebhook(payload: WebhookPayload): Promise<Webhoo
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
+        'Accept': 'application/json',
         'User-Agent': 'AI-Coach-Suite/1.0'
       },
       body: JSON.stringify(payload)
