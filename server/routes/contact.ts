@@ -20,10 +20,12 @@ router.post('/submit', async (req, res) => {
     const { userType, name, email, phone, message } = req.body;
     
     // Parse message if it's JSON string (from frontend)
-    let formData = {};
+    let formData: any = {};
     try {
       if (typeof message === 'string' && message.startsWith('{')) {
         formData = JSON.parse(message);
+      } else if (typeof message === 'object' && message !== null) {
+        formData = message;
       }
     } catch (e) {
       console.warn('Could not parse message as JSON:', e);

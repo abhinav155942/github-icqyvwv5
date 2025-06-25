@@ -3,7 +3,7 @@ interface ContactFormData {
   name: string;
   email: string;
   phone?: string;
-  message?: string;
+  message?: string | object;
 }
 
 interface ApiResponse {
@@ -12,9 +12,10 @@ interface ApiResponse {
   error?: string;
 }
 
-const API_BASE_URL = process.env.NODE_ENV === 'production' 
-  ? window.location.origin 
-  : 'http://localhost:3001';
+// Use relative paths to work with both dev and production
+const API_BASE_URL = window.location.protocol === 'http:' && window.location.hostname === 'localhost'
+  ? 'http://localhost:3001'
+  : window.location.origin;
 
 export class ApiClient {
   private static async request<T>(
@@ -31,15 +32,24 @@ export class ApiClient {
       ...options,
     };
 
+    console.log('API request to:', url);
+    console.log('Request options:', defaultOptions);
+
     try {
       const response = await fetch(url, defaultOptions);
       
+      console.log('API response status:', response.status);
+      
       if (!response.ok) {
         const errorData = await response.json().catch(() => ({}));
-        throw new Error(errorData.message || `HTTP ${response.status}: ${response.statusText}`);
+        const errorMessage = errorData.message || `HTTP ${response.status}: ${response.statusText}`;
+        console.error('API error response:', errorData);
+        throw new Error(errorMessage);
       }
 
-      return await response.json();
+      const data = await response.json();
+      console.log('API response data:', data);
+      return data;
     } catch (error) {
       console.error('API request failed:', error);
       throw error;

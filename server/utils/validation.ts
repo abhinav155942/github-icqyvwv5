@@ -23,15 +23,15 @@ export function validateContactForm(data: any): ValidationResult {
   if (!data.userType || typeof data.userType !== 'string') {
     errors.push('User type is required');
   } else {
-    const validUserTypes = ['coach', 'creator', 'ecommerce'];
+    const validUserTypes = ['coach', 'creator', 'ecommerce', 'Unknown'];
     if (!validUserTypes.includes(data.userType)) {
       errors.push('User type must be one of: coach, creator, ecommerce');
     }
   }
 
   // Optional but validated if present
-  if (data.phone && typeof data.phone === 'string') {
-    const phoneRegex = /^[\+]?[\d\s\-\(\)]{10,}$/;
+  if (data.phone && typeof data.phone === 'string' && data.phone.trim().length > 0) {
+    const phoneRegex = /^[\+]?[\d\s\-\(\)]{8,}$/;
     if (!phoneRegex.test(data.phone.replace(/\s/g, ''))) {
       errors.push('Phone number must be valid');
     }

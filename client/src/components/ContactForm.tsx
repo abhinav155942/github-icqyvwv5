@@ -215,11 +215,11 @@ const ContactForm = ({ userType }: ContactFormProps) => {
       // First try to send via backend API, fallback to direct webhook
       try {
         const apiResponse = await ApiClient.submitContactForm({
-          userType: userType || 'Unknown',
+          userType: userType || 'ecommerce',
           name: formData.name || '',
           email: formData.email || '',
           phone: formData.phone || '',
-          message: JSON.stringify(webhookData)
+          message: webhookData
         });
         
         console.log('Backend API response:', apiResponse);

@@ -3,9 +3,10 @@ interface WebhookPayload {
   name: string;
   email: string;
   phone?: string;
-  message?: string;
+  message?: string | object;
   source: string;
   timestamp: string;
+  submissionId?: number;
 }
 
 interface WebhookResponse {
@@ -17,7 +18,11 @@ const MAKE_WEBHOOK_URL = 'https://hook.us2.make.com/e0avjappx2co9oc9hwt6gb53oj42
 
 export async function sendToMakeWebhook(payload: WebhookPayload): Promise<WebhookResponse> {
   try {
-    console.log('Sending to Make.com webhook:', { ...payload, message: payload.message?.substring(0, 50) + '...' });
+    const messagePreview = typeof payload.message === 'string' 
+      ? payload.message.substring(0, 50) + '...'
+      : 'Object data';
+    
+    console.log('Sending to Make.com webhook:', { ...payload, message: messagePreview });
 
     const response = await fetch(MAKE_WEBHOOK_URL, {
       method: 'POST',
