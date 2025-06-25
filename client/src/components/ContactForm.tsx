@@ -14,8 +14,6 @@ import { LinksSection } from "./contact-form/LinksSection";
 import { FormFooter } from "./contact-form/FormFooter";
 import { SuccessDialog } from "./contact-form/SuccessDialog";
 import { useFormPersistence } from "@/hooks/useFormPersistence";
-import { useWebhookSubmission } from "@/hooks/useWebhookSubmission";
-import { useDatabaseSubmission } from "@/hooks/useDatabaseSubmission";
 import { SoundEffects } from "@/utils/soundEffects";
 
 interface ContactFormProps {
@@ -48,15 +46,8 @@ const ContactForm = ({ userType }: ContactFormProps) => {
     backupFormData
   } = useFormPersistence();
 
-  const { submitToWebhook } = useWebhookSubmission();
-  const { 
-    isSubmitting, 
-    submitAttempts, 
-    hasSubmission, 
-    existingSubmission, 
-    submitToDatabase, 
-    checkExistingSubmission 
-  } = useDatabaseSubmission();
+
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
     // Free demo version - no cost calculation needed
@@ -73,23 +64,7 @@ const ContactForm = ({ userType }: ContactFormProps) => {
     });
   }, [formData.services]);
 
-  // Check for existing submission when email changes (debounced)
-  useEffect(() => {
-    if (formData.email && formData.email.includes('@') && formData.email.includes('.')) {
-      const timeoutId = setTimeout(() => {
-        checkExistingSubmission(formData.email);
-      }, 2000); // 2 second debounce to prevent spam
-      
-      return () => clearTimeout(timeoutId);
-    }
-  }, [formData.email]);
-
-  // Set demo submitted state based on existing submission
-  useEffect(() => {
-    if (hasSubmission && existingSubmission) {
-      setDemoSubmitted(true);
-    }
-  }, [hasSubmission, existingSubmission]);
+  // Simple form state - no external database checks needed
 
   // Calculate form completion percentage
   const calculateProgress = () => {
@@ -143,73 +118,47 @@ const ContactForm = ({ userType }: ContactFormProps) => {
     return true;
   };
 
+  // Make.com webhook submission script
+  const submitToMakeWebhook = async (formData: any) => {
+    const webhookUrl = "https://hook.us2.make.com/e0avjappx2co9oc9hwt6gb53oj42sjbm";
+    
+    try {
+      console.log('Sending data to Make.com webhook:', formData);
+      
+      const response = await fetch(webhookUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData)
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status} - ${response.statusText}`);
+      }
+
+      const responseText = await response.text();
+      console.log('Make.com webhook response:', responseText);
+      
+      return { success: true, response: responseText };
+    } catch (error) {
+      console.error('Make.com webhook error:', error);
+      throw error;
+    }
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
-    // Free demo only - no payment processing
+    setIsSubmitting(true);
 
     if (formData.services.length > 0 && !validateServiceConfigs()) {
+      setIsSubmitting(false);
       return;
     }
 
-    const backup = backupFormData();
-    console.log("Form backup created:", backup);
-
-    const submissionData = {
-      name: formData.name,
-      email: formData.email,
-      phone: formData.phone,
-      business: formData.business,
-      coachingNiche: formData.coachingNiche === "other" && formData.otherNiche ? formData.otherNiche : formData.coachingNiche,
-      otherNiche: showOtherNiche ? formData.otherNiche : undefined,
-      monthlyRevenue: formData.monthlyRevenue,
-      currentChallenges: formData.currentChallenges,
-      services: formData.services,
-      serviceConfigs,
-      files: files.map(file => ({ name: file.name, size: file.size, type: file.type })),
-      links,
-      totalCost,
-      userType
-    };
-
-    // Submit to database first
-    const dbResult = await submitToDatabase(submissionData);
-
-    if (dbResult.success) {
-      // Also submit to webhook for backup/integration
+    try {
+      // Prepare data for Make.com webhook
       const webhookData = {
-        ...formData,
-        userType,
-        serviceConfigurations: serviceConfigs,
-        uploadedFiles: files.map(f => ({ 
-          name: f.name, 
-          size: f.size, 
-          type: f.type,
-          lastModified: f.lastModified
-        })),
-        websiteLinks: links,
-        totalFiles: files.length,
-        totalServices: formData.services.length,
-        estimatedValue: totalCost,
-        formVersion: "3.0",
-        browserInfo: {
-          language: navigator.language,
-          platform: navigator.platform,
-          cookieEnabled: navigator.cookieEnabled
-        }
-      };
-
-      if (!showOtherNiche || !formData.otherNiche) {
-        delete (webhookData as any).otherNiche; 
-      }
-      
-      if (formData.coachingNiche === "other" && formData.otherNiche) {
-        webhookData.coachingNiche = formData.otherNiche;
-      }
-
-      // Send to Make.com webhook with improved reliability
-      const makeWebhookUrl = "https://hook.us2.make.com/e0avjappx2co9oc9hwt6gb53oj42sjbm";
-      const makeWebhookData = {
         name: formData.name,
         email: formData.email,
         phone: formData.phone,
@@ -220,39 +169,36 @@ const ContactForm = ({ userType }: ContactFormProps) => {
         selected_services: formData.services.join(', '),
         user_type: userType,
         submission_timestamp: new Date().toISOString(),
-        form_version: "free_demo_only"
+        service_configs: serviceConfigs,
+        uploaded_files: files.map(f => ({ name: f.name, size: f.size, type: f.type })),
+        website_links: links,
+        form_version: "webhook_only"
       };
-      
-      // Send webhook asynchronously without blocking user experience
-      fetch(makeWebhookUrl, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(makeWebhookData)
-      }).catch(error => {
-        console.log('Make.com webhook info:', error.message);
-        // Silent fail - don't impact user experience
-      });
 
+      // Send to Make.com webhook
+      await submitToMakeWebhook(webhookData);
+      
+      SoundEffects.playSuccess();
       setDemoSubmitted(true);
       clearSavedData();
       setShowSuccessDialog(true);
       
       toast({
         title: "Success!",
-        description: dbResult.message || "Your request has been received!",
+        description: "Your request has been sent successfully!",
       });
-    } else {
+    } catch (error) {
       toast({
         title: "Submission Failed",
-        description: dbResult.error || "Please try again later.",
+        description: "Unable to send your request. Please try again.",
         variant: "destructive",
       });
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
-  const isPurchaseDisabled = formData.services.length === 0;
+  const isSubmitDisabled = formData.services.length === 0;
   const progress = calculateProgress();
 
   return (

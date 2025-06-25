@@ -6,11 +6,11 @@ import { Eye, CheckCircle, Clock, AlertCircle } from "lucide-react";
 
 interface FormHeaderProps {
   demoSubmitted: boolean;
-  submitAttempts: number;
+  submitAttempts?: number;
   progress: number;
 }
 
-export const FormHeader = ({ demoSubmitted, submitAttempts, progress }: FormHeaderProps) => {
+export const FormHeader = ({ demoSubmitted, submitAttempts = 0, progress }: FormHeaderProps) => {
   const navigate = useNavigate();
 
   return (
