@@ -8,6 +8,7 @@ export default defineConfig({
     host: '0.0.0.0',
     port: 5000,
     strictPort: true,
+    allowedHosts: ['dd6cf9ec-3ae1-4587-9a2e-0d10a02764ff-00-3jie8zda2qii3.worf.replit.dev'],
   },
   resolve: {
     alias: {

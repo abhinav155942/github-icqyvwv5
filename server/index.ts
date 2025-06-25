@@ -4,6 +4,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import webhookRoutes from './routes/webhook.js';
 import contactRoutes from './routes/contact.js';
+import adminRoutes from './routes/admin.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -27,6 +28,7 @@ app.use((req, res, next) => {
 // API Routes
 app.use('/api/webhook', webhookRoutes);
 app.use('/api/contact', contactRoutes);
+app.use('/api/admin', adminRoutes);
 
 // Health check
 app.get('/api/health', (req, res) => {

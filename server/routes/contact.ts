@@ -1,6 +1,7 @@
 import express from 'express';
 import { validateContactForm } from '../utils/validation.js';
 import { sendToMakeWebhook } from '../utils/makeWebhook.js';
+import { storage } from '../storage.js';
 
 const router = express.Router();
 
@@ -17,15 +18,44 @@ router.post('/submit', async (req, res) => {
     }
 
     const { userType, name, email, phone, message } = req.body;
+    
+    // Parse message if it's JSON string (from frontend)
+    let formData = {};
+    try {
+      if (typeof message === 'string' && message.startsWith('{')) {
+        formData = JSON.parse(message);
+      }
+    } catch (e) {
+      console.warn('Could not parse message as JSON:', e);
+    }
 
-    // Log the submission
-    console.log('Contact form submission:', {
+    // Save to database first
+    const submission = await storage.createContactSubmission({
       userType,
       name,
       email,
       phone,
-      message: message?.substring(0, 100) + '...',
-      timestamp: new Date().toISOString()
+      business: formData.business || '',
+      coachingNiche: formData.coaching_niche || '',
+      otherNiche: formData.other_niche || '',
+      monthlyRevenue: formData.monthly_revenue || '',
+      currentChallenges: formData.current_challenges || '',
+      selectedServices: formData.services_array || [],
+      serviceConfigs: formData.service_configs || {},
+      uploadedFiles: formData.uploaded_files || [],
+      websiteLinks: formData.website_links || [],
+      formData: formData,
+      submissionSource: 'contact_form',
+      status: 'pending'
+    });
+
+    console.log('Contact form submission saved:', {
+      id: submission.id,
+      userType,
+      name,
+      email,
+      phone,
+      timestamp: submission.createdAt
     });
 
     // Send to Make.com webhook
@@ -34,12 +64,26 @@ router.post('/submit', async (req, res) => {
       name,
       email,
       phone,
-      message,
+      message: formData,
       source: 'contact_form',
-      timestamp: new Date().toISOString()
+      timestamp: new Date().toISOString(),
+      submissionId: submission.id
     });
 
-    if (!webhookResult.success) {
+    // Update submission status based on webhook result
+    if (webhookResult.success) {
+      await storage.updateContactSubmissionStatus(
+        submission.id, 
+        'sent', 
+        'Webhook sent successfully'
+      );
+    } else {
+      await storage.updateContactSubmissionStatus(
+        submission.id, 
+        'failed', 
+        undefined, 
+        webhookResult.error
+      );
       console.error('Failed to send to Make.com:', webhookResult.error);
       return res.status(500).json({
         error: 'Failed to process submission',
@@ -51,7 +95,8 @@ router.post('/submit', async (req, res) => {
     res.status(200).json({
       success: true,
       message: 'Form submitted successfully',
-      timestamp: new Date().toISOString()
+      submissionId: submission.id,
+      timestamp: submission.createdAt
     });
 
   } catch (error) {

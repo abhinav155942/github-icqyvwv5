@@ -1,5 +1,6 @@
 import express from 'express';
 import { validateWebhookData } from '../utils/validation.js';
+import { storage } from '../storage.js';
 
 const router = express.Router();
 
@@ -21,16 +22,27 @@ router.post('/receive', async (req, res) => {
       });
     }
 
+    // Log webhook to database
+    await storage.logWebhook({
+      webhookType: 'incoming',
+      source: req.headers['user-agent'] || 'unknown',
+      endpoint: req.path,
+      method: req.method,
+      headers: req.headers as any,
+      payload: req.body,
+      statusCode: '200',
+      success: 'true'
+    });
+
     // Process the webhook data
     const { userType, name, email, phone, message, source } = req.body;
 
-    // Log the processed data (you can extend this to save to database)
     console.log('Processed webhook data:', {
       userType,
       name,
       email,
       phone,
-      message,
+      message: typeof message === 'object' ? JSON.stringify(message).substring(0, 100) + '...' : message,
       source,
       processedAt: new Date().toISOString()
     });
