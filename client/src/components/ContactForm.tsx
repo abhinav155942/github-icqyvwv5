@@ -218,7 +218,7 @@ const ContactForm = ({ userType }: ContactFormProps) => {
               demoSubmitted={demoSubmitted}
               userType={userType}
               services={formData.services}
-              totalCost={totalCost}
+              totalCost={0}
               progress={progress}
             />
             
@@ -289,9 +289,9 @@ const ContactForm = ({ userType }: ContactFormProps) => {
 
                 <FormFooter
                   isSubmitting={isSubmitting}
-                  isPurchaseDisabled={isPurchaseDisabled}
+                  isPurchaseDisabled={isSubmitDisabled}
                   demoSubmitted={demoSubmitted}
-                  totalCost={totalCost}
+                  totalCost={0}
                 />
               </form>
             </CardContent>
