@@ -4,6 +4,9 @@
 AI-powered business solutions platform offering sales funnels, chatbots, and content creation services for coaches, creators, and e-commerce businesses.
 
 ## Recent Changes
+- **2025-01-21**: Successfully migrated project from Replit Agent to standard Replit environment
+- **2025-01-21**: Fixed CSS compilation errors by removing problematic border-border class
+- **2025-01-21**: Updated workflow configuration to run React frontend-only application properly
 - **2025-01-17**: Successfully migrated project from Replit Agent to standard Replit environment
 - **2025-01-17**: Fixed import resolution issues and configured proper TypeScript paths
 - **2025-01-17**: Verified Make.com webhook integration is working with provided webhook URL
