@@ -32,5 +32,5 @@ author = "agent"
 
 [[workflows.workflow.tasks]]
 task = "shell.exec"
-args = "npx vite --host 0.0.0.0 --port 5000 --config vite.config.ts"
+args = "npx vite --host 0.0.0.0 --port 5000"
 waitForPort = 5000
