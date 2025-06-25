@@ -4,9 +4,8 @@ interface OnboardingStep {
   id: string;
   title: string;
   description: string;
-  targetSelector: string;
+  targetSelector?: string;
   position: 'top' | 'bottom' | 'left' | 'right' | 'center';
-  animation?: 'bounce' | 'pulse' | 'shake' | 'glow';
 }
 
 export const useOnboarding = () => {
@@ -91,36 +90,25 @@ export const useOnboarding = () => {
   // Default onboarding steps for the application
   const defaultSteps: OnboardingStep[] = [
     {
-      id: 'hero-section',
-      title: 'Welcome! Let\'s Start Your Journey',
-      description: 'This powerful headline section shows visitors what you can do for their business growth.',
-      targetSelector: '.hero-main, [data-onboarding="hero"], h1',
-      position: 'bottom',
-      animation: 'pulse'
+      id: 'welcome',
+      title: 'Welcome to Your AI Coach Platform',
+      description: 'This platform helps coaches and creators grow their business with AI-powered tools.',
+      targetSelector: '',
+      position: 'center'
     },
     {
-      id: 'services-overview',
-      title: 'Your Services Showcase',
-      description: 'This section displays all the AI-powered services you offer to help businesses grow.',
-      targetSelector: '.services-section, [data-onboarding="services"]',
-      position: 'bottom',
-      animation: 'bounce'
+      id: 'services',
+      title: 'AI Services Available',
+      description: 'Browse through various AI services like chatbots, sales funnels, and content creation.',
+      targetSelector: '',
+      position: 'center'
     },
     {
-      id: 'contact-form',
-      title: 'Free Demo Request Form',
-      description: 'This is where potential clients can request their free demo. The form captures all necessary details.',
-      targetSelector: '.contact-form, [data-onboarding="contact-form"]',
-      position: 'right',
-      animation: 'glow'
-    },
-    {
-      id: 'chat-assistant',
-      title: 'AI Chat Helper',
-      description: 'This chat button lets visitors get instant answers about your services 24/7.',
-      targetSelector: '.chat-button, [data-onboarding="chat-button"]',
-      position: 'left',
-      animation: 'shake'
+      id: 'contact',
+      title: 'Get Your Free Demo',
+      description: 'Use the contact form to request a personalized demo of our services.',
+      targetSelector: '',
+      position: 'center'
     }
   ];
 
