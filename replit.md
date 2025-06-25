@@ -4,8 +4,11 @@
 AI-powered business solutions platform offering sales funnels, chatbots, and content creation services for coaches, creators, and e-commerce businesses.
 
 ## Recent Changes
-- **2025-01-24**: Simplified onboarding tour and removed highlight feature for cleaner user experience
-- **2025-01-24**: Successfully completed migration from Replit Agent to standard Replit environment
+- **2025-06-25**: Completely removed PayPal redirect and payment processing - now free demo only
+- **2025-06-25**: Fixed Make.com webhook integration with reliable data structure and proper error handling
+- **2025-06-25**: Updated all pricing displays to show "FREE DEMO" instead of costs
+- **2025-06-25**: Fixed excessive API calls with proper debouncing (2-second delay)
+- **2025-06-25**: Simplified form submission flow to only send data to Make.com webhook
 - **2025-06-19**: Implemented database storage for contact form submissions with PostgreSQL
 - **2025-06-19**: Added SendGrid email notification system for automatic user confirmations
 - **2025-06-19**: Created persistent purchase button functionality based on database records

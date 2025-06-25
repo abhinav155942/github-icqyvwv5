@@ -31,30 +31,22 @@ export const useDatabaseSubmission = () => {
   const [hasSubmission, setHasSubmission] = useState(false);
 
   const checkExistingSubmission = async (email: string) => {
-    if (!email || !email.includes('@')) return;
+    if (!email || !email.includes('@') || !email.includes('.')) return;
     
-    // Debounce API calls to prevent spam
-    const debounceKey = `email-check-${email}`;
-    if (window[debounceKey]) {
-      clearTimeout(window[debounceKey]);
-    }
-    
-    window[debounceKey] = setTimeout(async () => {
-      try {
-        const response = await fetch(`/api/contact-submission?email=${encodeURIComponent(email)}`);
-        const data = await response.json();
-        
-        if (data.hasSubmission && data.submission) {
-          setExistingSubmission(data.submission);
-          setHasSubmission(true);
-        } else {
-          setHasSubmission(false);
-          setExistingSubmission(null);
-        }
-      } catch (error) {
-        console.error('Error checking existing submission:', error);
+    try {
+      const response = await fetch(`/api/contact-submission?email=${encodeURIComponent(email)}`);
+      const data = await response.json();
+      
+      if (data.hasSubmission && data.submission) {
+        setExistingSubmission(data.submission);
+        setHasSubmission(true);
+      } else {
+        setHasSubmission(false);
+        setExistingSubmission(null);
       }
-    }, 500); // 500ms debounce
+    } catch (error) {
+      console.error('Error checking existing submission:', error);
+    }
   };
 
   const submitToDatabase = async (submissionData: SubmissionData) => {

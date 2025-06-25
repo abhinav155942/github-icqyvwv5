@@ -73,12 +73,16 @@ const ContactForm = ({ userType }: ContactFormProps) => {
     });
   }, [formData.services]);
 
-  // Check for existing submission when email changes
+  // Check for existing submission when email changes (debounced)
   useEffect(() => {
-    if (formData.email && formData.email.includes('@')) {
-      checkExistingSubmission(formData.email);
+    if (formData.email && formData.email.includes('@') && formData.email.includes('.')) {
+      const timeoutId = setTimeout(() => {
+        checkExistingSubmission(formData.email);
+      }, 2000); // 2 second debounce to prevent spam
+      
+      return () => clearTimeout(timeoutId);
     }
-  }, [formData.email, checkExistingSubmission]);
+  }, [formData.email]);
 
   // Set demo submitted state based on existing submission
   useEffect(() => {
@@ -142,10 +146,7 @@ const ContactForm = ({ userType }: ContactFormProps) => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (demoSubmitted) {
-      window.open("https://www.paypal.com/ncp/payment/ZVJMZLCPHGDWS", "_blank");
-      return;
-    }
+    // Free demo only - no payment processing
 
     if (formData.services.length > 0 && !validateServiceConfigs()) {
       return;
