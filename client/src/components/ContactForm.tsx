@@ -205,14 +205,13 @@ const ContactForm = ({ userType }: ContactFormProps) => {
         webhookData.coachingNiche = formData.otherNiche;
       }
 
-      const makeWebhookUrl = "https://hook.us2.make.com/e0avjappx2co9oc9hwt6gb53oj42sjbm";
-      
-      // Don't wait for webhook response as database is primary
-      submitToWebhook(makeWebhookUrl, webhookData, {
-        maxRetries: 2,
-        retryDelay: 1000,
-        timeout: 10000
-      });
+      // Optional external webhook integration (disabled for now to prevent network errors)
+      // const makeWebhookUrl = "https://hook.us2.make.com/e0avjappx2co9oc9hwt6gb53oj42sjbm";
+      // submitToWebhook(makeWebhookUrl, webhookData, {
+      //   maxRetries: 2,
+      //   retryDelay: 1000,
+      //   timeout: 10000
+      // });
 
       setDemoSubmitted(true);
       clearSavedData();
