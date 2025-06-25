@@ -16,6 +16,7 @@ import { SuccessDialog } from "./contact-form/SuccessDialog";
 import { useFormPersistence } from "@/hooks/useFormPersistence";
 import { SoundEffects } from "@/utils/soundEffects";
 import { LocalStorageManager } from "@/utils/localStorageManager";
+import { ApiClient } from "@/utils/apiClient";
 
 interface ContactFormProps {
   userType: string;
@@ -211,8 +212,26 @@ const ContactForm = ({ userType }: ContactFormProps) => {
       console.log('Prepared webhookData:', webhookData);
       console.log('Form Data JSON String:', JSON.stringify(webhookData, null, 2));
 
-      // Send to Make.com webhook
-      await submitToMakeWebhook(webhookData);
+      // First try to send via backend API, fallback to direct webhook
+      try {
+        const apiResponse = await ApiClient.submitContactForm({
+          userType: userType || 'Unknown',
+          name: formData.name || '',
+          email: formData.email || '',
+          phone: formData.phone || '',
+          message: JSON.stringify(webhookData)
+        });
+        
+        console.log('Backend API response:', apiResponse);
+        
+        if (!apiResponse.success) {
+          throw new Error(apiResponse.error || 'Backend API failed');
+        }
+      } catch (apiError) {
+        console.warn('Backend API failed, trying direct webhook:', apiError);
+        // Fallback to direct Make.com webhook
+        await submitToMakeWebhook(webhookData);
+      }
       
       SoundEffects.playSuccess();
       setDemoSubmitted(true);

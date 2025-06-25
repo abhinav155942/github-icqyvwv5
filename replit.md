@@ -5,8 +5,10 @@ AI-powered business solutions platform offering sales funnels, chatbots, and con
 
 ## Recent Changes
 - **2025-01-21**: Successfully migrated project from Replit Agent to standard Replit environment
-- **2025-01-21**: Fixed CSS compilation errors by removing problematic border-border class
-- **2025-01-21**: Updated workflow configuration to run React frontend-only application properly
+- **2025-01-21**: Added complete Express.js backend with webhook and API functionality
+- **2025-01-21**: Implemented secure form submission with backend validation and Make.com integration
+- **2025-01-21**: Fixed CSS compilation errors and configured proper Tailwind setup
+- **2025-01-21**: Updated workflow configuration to run both frontend (port 5000) and backend (port 3001)
 - **2025-01-17**: Successfully migrated project from Replit Agent to standard Replit environment
 - **2025-01-17**: Fixed import resolution issues and configured proper TypeScript paths
 - **2025-01-17**: Verified Make.com webhook integration is working with provided webhook URL
@@ -39,15 +41,18 @@ AI-powered business solutions platform offering sales funnels, chatbots, and con
 - **2024-01-16**: Migrated from MemStorage to PostgreSQL database with Drizzle ORM
 
 ## Project Architecture
-- **Frontend**: React with TypeScript, Vite build system
-- **Backend**: Express.js server with TypeScript
-- **Database**: PostgreSQL with Drizzle ORM and Neon serverless driver
-- **Email**: SendGrid integration for automated notifications
-- **Deployment**: Vercel with serverless API functions
+- **Frontend**: React with TypeScript, Vite build system (port 5000)
+- **Backend**: Express.js server with TypeScript (port 3001)
+- **API Endpoints**: 
+  - `/api/contact/submit` - Form submissions with validation
+  - `/api/webhook/receive` - Incoming webhook handler
+  - `/api/webhook/test` - Webhook testing endpoint
+  - `/api/health` - Health check endpoint
+- **Webhook Integration**: Make.com webhook integration with fallback logic
 - **Styling**: Tailwind CSS with shadcn/ui components
 - **Routing**: React Router DOM for client-side navigation
-- **Storage**: DatabaseStorage class implementing IStorage interface
-- **API**: RESTful endpoints for contact form submissions and user data persistence
+- **Form Handling**: Client-side form with backend API and direct webhook fallback
+- **Security**: Input validation, CORS protection, security headers
 
 ## Key Features
 - User type selection (coach, creator, e-commerce)
