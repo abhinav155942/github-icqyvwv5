@@ -136,6 +136,8 @@ const ContactForm = ({ userType }: ContactFormProps) => {
       LocalStorageManager.saveSubmission(submissionData);
       
       console.log('Sending data to Make.com webhook:', webhookData);
+      console.log('Webhook URL:', webhookUrl);
+      console.log('Request payload JSON:', JSON.stringify(webhookData));
       
       const response = await fetch(webhookUrl, {
         method: 'POST',
@@ -144,6 +146,9 @@ const ContactForm = ({ userType }: ContactFormProps) => {
         },
         body: JSON.stringify(webhookData)
       });
+
+      console.log('Response status:', response.status);
+      console.log('Response headers:', Object.fromEntries(response.headers.entries()));
 
       if (!response.ok) {
         const errorMessage = `HTTP ${response.status}: ${response.statusText}`;
@@ -204,6 +209,7 @@ const ContactForm = ({ userType }: ContactFormProps) => {
       };
 
       console.log('Prepared webhookData:', webhookData);
+      console.log('Form Data JSON String:', JSON.stringify(webhookData, null, 2));
 
       // Send to Make.com webhook
       await submitToMakeWebhook(webhookData);
