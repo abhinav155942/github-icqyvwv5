@@ -59,7 +59,8 @@ const ContactForm = ({ userType }: ContactFormProps) => {
   } = useDatabaseSubmission();
 
   useEffect(() => {
-    setTotalCost(formData.services.length * 300);
+    // Free demo version - no cost calculation needed
+    setTotalCost(0);
     
     // Initialize service configs for selected services
     formData.services.forEach(serviceId => {
@@ -205,13 +206,33 @@ const ContactForm = ({ userType }: ContactFormProps) => {
         webhookData.coachingNiche = formData.otherNiche;
       }
 
-      // Optional external webhook integration (disabled for now to prevent network errors)
-      // const makeWebhookUrl = "https://hook.us2.make.com/e0avjappx2co9oc9hwt6gb53oj42sjbm";
-      // submitToWebhook(makeWebhookUrl, webhookData, {
-      //   maxRetries: 2,
-      //   retryDelay: 1000,
-      //   timeout: 10000
-      // });
+      // Send to Make.com webhook with improved reliability
+      const makeWebhookUrl = "https://hook.us2.make.com/e0avjappx2co9oc9hwt6gb53oj42sjbm";
+      const makeWebhookData = {
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        business: formData.business,
+        coaching_niche: formData.coachingNiche === "other" ? formData.otherNiche : formData.coachingNiche,
+        monthly_revenue: formData.monthlyRevenue,
+        current_challenges: formData.currentChallenges,
+        selected_services: formData.services.join(', '),
+        user_type: userType,
+        submission_timestamp: new Date().toISOString(),
+        form_version: "free_demo_only"
+      };
+      
+      // Send webhook asynchronously without blocking user experience
+      fetch(makeWebhookUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(makeWebhookData)
+      }).catch(error => {
+        console.log('Make.com webhook info:', error.message);
+        // Silent fail - don't impact user experience
+      });
 
       setDemoSubmitted(true);
       clearSavedData();
@@ -230,7 +251,7 @@ const ContactForm = ({ userType }: ContactFormProps) => {
     }
   };
 
-  const isPurchaseDisabled = demoSubmitted && formData.services.length === 0;
+  const isPurchaseDisabled = formData.services.length === 0;
   const progress = calculateProgress();
 
   return (
@@ -282,7 +303,7 @@ const ContactForm = ({ userType }: ContactFormProps) => {
                   services={formData.services}
                   onServiceToggle={handleServiceToggle}
                   isSubmitting={isSubmitting}
-                  showActualPrice={demoSubmitted}
+                  showActualPrice={false}
                 />
 
                 {formData.services.map(serviceId => (

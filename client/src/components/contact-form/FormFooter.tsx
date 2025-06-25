@@ -38,7 +38,7 @@ export const FormFooter = ({
           <div className="flex items-center justify-center space-x-2">
             <Zap className="w-5 h-5 text-yellow-600 animate-pulse" />
             <p className="text-yellow-800 dark:text-yellow-200 font-medium text-center">
-              Please select at least one service to proceed with your purchase
+              Please select at least one service to request your free demo
             </p>
           </div>
         </div>
@@ -59,14 +59,8 @@ export const FormFooter = ({
             <>
               <Loader2 className="mr-3 h-6 w-6 animate-spin" />
               <span className="animate-pulse">
-                {demoSubmitted ? "Processing your order..." : "Submitting your request..."}
+                Submitting your request...
               </span>
-            </>
-          ) : demoSubmitted ? (
-            <>
-              <CreditCard className="mr-3 h-6 w-6 group-hover:animate-bounce" />
-              Purchase Service - ${totalCost.toLocaleString()}
-              <Rocket className="ml-3 h-6 w-6 group-hover:animate-bounce" />
             </>
           ) : (
             <>
@@ -80,19 +74,11 @@ export const FormFooter = ({
       
       <div className="mt-6 text-center space-y-4 animate-slide-in-up" style={{ animationDelay: '0.2s' }}>
         <p className="text-lg font-medium bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
-          {demoSubmitted ? (
-            "Complete your purchase to get started with your AI transformation"
-          ) : (
-            "100% free demo • No credit card needed"
-          )}
+          100% free demo • No credit card needed
         </p>
         
         <p className="text-sm text-gray-600 dark:text-gray-400">
-          {demoSubmitted ? (
-            "30-day money-back guarantee • Premium support included"
-          ) : (
-            "Response within 24-48 hours • Professional consultation"
-          )}
+          Response within 24-48 hours • Professional consultation
         </p>
         
         {/* Trust indicators */}

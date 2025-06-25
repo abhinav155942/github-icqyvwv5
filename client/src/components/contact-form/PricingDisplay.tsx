@@ -51,16 +51,14 @@ export const PricingDisplay = ({ userType, services, totalCost, showActualPrice 
             </span>
           </div>
           <div className="text-right">
-            {!showActualPrice && (
-              <div className="text-lg font-bold text-gray-500 line-through">
-                ${totalCost}
-              </div>
-            )}
-            <div className={`text-2xl font-bold ${showActualPrice ? 'text-purple-600' : 'text-green-600'}`}>
-              ${showActualPrice ? totalCost : 0}
+            <div className="text-lg font-bold text-gray-500 line-through">
+              ${totalCost}
+            </div>
+            <div className="text-2xl font-bold text-green-600">
+              FREE DEMO
             </div>
             <div className="text-xs text-gray-500">
-              {showActualPrice ? 'Total Price' : 'First Demo Free'}
+              First Demo Free
             </div>
           </div>
         </div>
@@ -75,13 +73,11 @@ export const PricingDisplay = ({ userType, services, totalCost, showActualPrice 
                 <div className="text-xs text-gray-600">{service.description}</div>
               </div>
               <div className="text-right ml-4">
-                {!showActualPrice && (
-                  <div className="text-sm font-bold text-gray-500 line-through">
-                    ${service.cost}
-                  </div>
-                )}
-                <div className={`text-lg font-bold ${showActualPrice ? 'text-purple-600' : 'text-green-600'}`}>
-                  ${showActualPrice ? service.cost : 0}
+                <div className="text-sm font-bold text-gray-500 line-through">
+                  ${service.cost}
+                </div>
+                <div className="text-lg font-bold text-green-600">
+                  FREE
                 </div>
               </div>
             </div>
