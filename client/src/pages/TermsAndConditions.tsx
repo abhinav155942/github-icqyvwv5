@@ -77,7 +77,7 @@ const TermsAndConditions = () => {
               <div className="space-y-3">
                 <p><strong>4.1 Delivery Timeline:</strong> We guarantee delivery within 2-7 business days for standard packages.</p>
                 <p><strong>4.2 Demo Services:</strong> Initial consultations and demos are provided free of charge.</p>
-                <p><strong>4.3 Revisions:</strong> We offer reasonable revisions to ensure your satisfaction with delivered services.</p>
+                <p><strong>4.3 Revisions:</strong> We provide 1 free revision. Additional revisions are available for $50 each if you're not satisfied with the service.</p>
               </div>
             </section>
 
@@ -86,7 +86,7 @@ const TermsAndConditions = () => {
               <div className="space-y-3">
                 <p><strong>5.1 Pricing:</strong> Service prices are clearly displayed during the quote process.</p>
                 <p><strong>5.2 Payment Methods:</strong> We accept major credit cards and digital payment methods.</p>
-                <p><strong>5.3 Refund Policy:</strong> We offer a 65% money refund within 2 days after delivery if you're not satisfied with our work.</p>
+                <p><strong>5.3 Refund Policy:</strong> We offer a refund only if you experience 0% growth in views and sales within 90 days of service delivery. Refunds are subject to verification of growth metrics.</p>
               </div>
             </section>
 
