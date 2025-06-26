@@ -44,8 +44,7 @@ export const useFormPersistence = () => {
       // Note: Files can't be persisted in localStorage
     }
     
-    // Clean up old submissions on component mount
-    LocalStorageManager.cleanupOldSubmissions();
+    // Note: No cleanup needed for simple form drafts
   }, []);
 
   // Save form data whenever it changes

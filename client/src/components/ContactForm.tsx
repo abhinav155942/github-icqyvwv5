@@ -16,7 +16,7 @@ import { SuccessDialog } from "./contact-form/SuccessDialog";
 import { useFormPersistence } from "@/hooks/useFormPersistence";
 import { SoundEffects } from "@/utils/soundEffects";
 import { LocalStorageManager } from "@/utils/localStorageManager";
-import { ApiClient } from "@/utils/apiClient";
+
 
 interface ContactFormProps {
   userType: string;
@@ -120,58 +120,7 @@ const ContactForm = ({ userType }: ContactFormProps) => {
     return true;
   };
 
-  // Make.com webhook submission with local storage backup
-  const submitToMakeWebhook = async (webhookData: any) => {
-    const webhookUrl = "https://hook.us2.make.com/e0avjappx2co9oc9hwt6gb53oj42sjbm";
-    
-    const submissionId = LocalStorageManager.generateSubmissionId();
-    const submissionData = {
-      id: submissionId,
-      timestamp: new Date().toISOString(),
-      data: webhookData,
-      status: 'pending' as const
-    };
-    
-    try {
-      // Store submission data in local storage as backup
-      LocalStorageManager.saveSubmission(submissionData);
-      
-      console.log('Sending data to Make.com webhook:', webhookData);
-      console.log('Webhook URL:', webhookUrl);
-      console.log('Request payload JSON:', JSON.stringify(webhookData));
-      
-      const response = await fetch(webhookUrl, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json',
-        },
-        body: JSON.stringify(webhookData)
-      });
 
-      console.log('Response status:', response.status);
-      console.log('Response headers:', Object.fromEntries(response.headers.entries()));
-
-      if (!response.ok) {
-        const errorMessage = `HTTP ${response.status}: ${response.statusText}`;
-        LocalStorageManager.updateSubmissionStatus(submissionId, 'failed', errorMessage);
-        throw new Error(errorMessage);
-      }
-
-      const responseText = await response.text();
-      console.log('Make.com webhook response:', responseText);
-      
-      // Update status to success in local storage
-      LocalStorageManager.updateSubmissionStatus(submissionId, 'success', undefined, responseText);
-      
-      return { success: true, response: responseText, submissionId };
-    } catch (error) {
-      console.error('Make.com webhook error:', error);
-      const errorMessage = error instanceof Error ? error.message : 'Unknown error';
-      LocalStorageManager.updateSubmissionStatus(submissionId, 'failed', errorMessage);
-      throw error;
-    }
-  };
 
   const validateRequiredFields = () => {
     const requiredFields = [
@@ -246,72 +195,31 @@ const ContactForm = ({ userType }: ContactFormProps) => {
 
     try {
       // Debug: Log current form data
-      console.log('Current formData before submission:', formData);
+      console.log('Form submitted locally:', formData);
       console.log('Current files:', files);
       console.log('Current links:', links);
       console.log('Current serviceConfigs:', serviceConfigs);
       
-      // Prepare data for Make.com webhook
-      const webhookData = {
-        name: formData.name || '',
-        email: formData.email || '',
-        phone: formData.phone || '',
-        business: formData.business || '',
-        coaching_niche: formData.coachingNiche === "other" ? formData.otherNiche : formData.coachingNiche,
-        other_niche: formData.otherNiche || '',
-        monthly_revenue: formData.monthlyRevenue || '',
-        current_challenges: formData.currentChallenges || '',
-        selected_services: formData.services.length > 0 ? formData.services.join(', ') : 'None selected',
-        services_array: formData.services,
-        user_type: userType || 'Unknown',
-        submission_timestamp: new Date().toISOString(),
-        service_configs: serviceConfigs || {},
-        uploaded_files: files.map(f => ({ name: f.name, size: f.size, type: f.type })),
-        website_links: links || [],
-        form_version: "webhook_only",
-        form_completion_percentage: calculateProgress()
-      };
-
-      console.log('Prepared webhookData:', webhookData);
-      console.log('Form Data JSON String:', JSON.stringify(webhookData, null, 2));
-
-      // First try to send via backend API, fallback to direct webhook
-      try {
-        const apiResponse = await ApiClient.submitContactForm({
-          userType: userType || 'ecommerce',
-          name: formData.name || '',
-          email: formData.email || '',
-          phone: formData.phone || '',
-          message: webhookData
+      // Simulate form submission without any external calls
+      setTimeout(() => {
+        SoundEffects.playSuccess();
+        setDemoSubmitted(true);
+        clearSavedData();
+        setShowSuccessDialog(true);
+        
+        toast({
+          title: "Success!",
+          description: "Your form has been submitted locally!",
         });
-        
-        console.log('Backend API response:', apiResponse);
-        
-        if (!apiResponse.success) {
-          throw new Error(apiResponse.error || 'Backend API failed');
-        }
-      } catch (apiError) {
-        console.warn('Backend API failed, trying direct webhook:', apiError);
-        // Fallback to direct Make.com webhook
-        await submitToMakeWebhook(webhookData);
-      }
+        setIsSubmitting(false);
+      }, 1000);
       
-      SoundEffects.playSuccess();
-      setDemoSubmitted(true);
-      clearSavedData();
-      setShowSuccessDialog(true);
-      
-      toast({
-        title: "Success!",
-        description: "Your request has been sent successfully!",
-      });
     } catch (error) {
       toast({
         title: "Submission Failed",
-        description: "Unable to send your request. Please try again.",
+        description: "Unable to process your request. Please try again.",
         variant: "destructive",
       });
-    } finally {
       setIsSubmitting(false);
     }
   };

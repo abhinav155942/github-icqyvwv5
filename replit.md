@@ -46,17 +46,11 @@ AI-powered business solutions platform offering sales funnels, chatbots, and con
 
 ## Project Architecture
 - **Frontend**: React with TypeScript, Vite build system (port 5000)
-- **Backend**: Express.js server with TypeScript (port 3001)
-- **API Endpoints**: 
-  - `/api/contact/submit` - Form submissions with validation
-  - `/api/webhook/receive` - Incoming webhook handler
-  - `/api/webhook/test` - Webhook testing endpoint
-  - `/api/health` - Health check endpoint
-- **Webhook Integration**: Make.com webhook integration with fallback logic
 - **Styling**: Tailwind CSS with shadcn/ui components
 - **Routing**: React Router DOM for client-side navigation
-- **Form Handling**: Client-side form with backend API and direct webhook fallback
-- **Security**: Input validation, CORS protection, security headers
+- **Form Handling**: Pure client-side form with local storage for drafts
+- **Data Persistence**: LocalStorage for form draft saving only
+- **Build System**: Vite with modern TypeScript configuration
 
 ## Key Features
 - User type selection (coach, creator, e-commerce)
