@@ -48,7 +48,7 @@ export const FormFooter = ({
         type="submit"
         onClick={handleClick}
         onMouseEnter={handleHover}
-        className={`w-full py-6 md:py-8 text-lg md:text-xl bg-gradient-to-r from-purple-600 via-pink-600 to-indigo-600 hover:from-purple-700 hover:via-pink-700 hover:to-indigo-700 text-white rounded-2xl shadow-2xl hover:shadow-purple-500/50 transition-all duration-500 transform hover:scale-105 flex items-center justify-center animate-pulse-glow hover-lift group relative overflow-hidden ${isPurchaseDisabled ? 'opacity-50 cursor-not-allowed' : ''}`}
+        className={`w-full py-4 sm:py-6 md:py-8 text-base sm:text-lg md:text-xl bg-gradient-to-r from-purple-600 via-pink-600 to-indigo-600 hover:from-purple-700 hover:via-pink-700 hover:to-indigo-700 text-white rounded-xl sm:rounded-2xl shadow-2xl hover:shadow-purple-500/50 transition-all duration-500 transform hover:scale-105 flex items-center justify-center animate-pulse-glow hover-lift group relative overflow-hidden ${isPurchaseDisabled ? 'opacity-50 cursor-not-allowed' : ''}`}
         disabled={isSubmitting || isPurchaseDisabled}
       >
         {/* Animated background shimmer */}
@@ -73,7 +73,7 @@ export const FormFooter = ({
       </Button>
       
       <div className="mt-6 text-center space-y-4 animate-slide-in-up" style={{ animationDelay: '0.2s' }}>
-        <p className="text-lg font-medium bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+        <p className="text-sm sm:text-base md:text-lg font-medium bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
           100% free demo • No credit card needed
         </p>
         

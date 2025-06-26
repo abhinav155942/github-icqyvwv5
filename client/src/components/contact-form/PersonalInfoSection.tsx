@@ -20,7 +20,7 @@ export const PersonalInfoSection = ({ formData, onUpdate, isSubmitting }: Person
         <Users className="h-5 w-5 mr-2 text-purple-600" />
         Personal Information
       </h3>
-      <div className="grid md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
         <div>
           <Label htmlFor="name" className="text-gray-700 font-medium flex items-center">
             Full Name <span className="text-red-500 ml-1">*</span>

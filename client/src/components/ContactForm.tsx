@@ -277,8 +277,8 @@ const ContactForm = ({ userType }: ContactFormProps) => {
   const progress = calculateProgress();
 
   return (
-    <section id="contact-form" className="contact-form py-12 md:py-20 px-4 bg-gradient-to-br from-slate-50 to-purple-50" data-onboarding="contact-form">
-      <div className="max-w-4xl mx-auto">
+    <section id="contact-form" className="contact-form py-8 md:py-12 lg:py-20 px-2 sm:px-4 bg-gradient-to-br from-slate-50 to-purple-50" data-onboarding="contact-form">
+      <div className="max-w-4xl mx-auto w-full">
         <FormHeader 
           demoSubmitted={demoSubmitted}
           progress={progress}
@@ -286,7 +286,7 @@ const ContactForm = ({ userType }: ContactFormProps) => {
 
         <div className="relative">
           <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-pink-600 rounded-3xl blur-lg opacity-20"></div>
-          <Card className="relative shadow-2xl border-0 bg-white/95 backdrop-blur-sm rounded-3xl overflow-hidden">
+          <Card className="relative shadow-2xl border-0 bg-white/95 backdrop-blur-sm rounded-2xl sm:rounded-3xl overflow-hidden w-full">
             <div className="absolute inset-0 bg-gradient-to-br from-purple-50/50 to-pink-50/50"></div>
             
             <FormCardHeader 

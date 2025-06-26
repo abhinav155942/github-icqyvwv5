@@ -70,7 +70,7 @@ const Services = () => {
           <Star className="absolute top-20 right-1/3 w-4 h-4 text-pink-400 animate-sparkle hidden md:block" style={{ animationDelay: '1s' }} />
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8 lg:gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 lg:gap-12">
           {services.map((service, index) => (
             <Card 
               key={index} 
@@ -85,7 +85,7 @@ const Services = () => {
               {/* Animated border */}
               <div className={`absolute inset-0 bg-gradient-to-r ${service.color} opacity-0 group-hover:opacity-20 transition-opacity duration-500 rounded-xl`}></div>
               
-              <CardContent className="relative p-8 lg:p-10">
+              <CardContent className="relative p-4 sm:p-6 md:p-8 lg:p-10">
                 <div className="mb-8">
                   <div className={`relative w-20 h-20 bg-gradient-to-br ${service.color} rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 animate-pulse-glow`}>
                     <service.icon className="h-10 w-10 text-white group-hover:animate-bounce" />

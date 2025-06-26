@@ -50,8 +50,8 @@ export const ServicesSection = ({ userType, services, onServiceToggle, isSubmitt
       <div className="mt-4 space-y-4">
         {getServiceDetails().map((service) => (
           <div key={service.id} className="relative">
-            <div className={`flex items-center justify-between p-4 bg-white rounded-xl border border-purple-200 hover:border-purple-400 transition-colors cursor-pointer ${isSubmitting ? 'opacity-50 cursor-not-allowed' : ''}`}>
-              <div className="flex items-center space-x-4 flex-1">
+            <div className={`flex flex-col sm:flex-row items-start sm:items-center justify-between p-3 sm:p-4 bg-white rounded-xl border border-purple-200 hover:border-purple-400 transition-colors cursor-pointer ${isSubmitting ? 'opacity-50 cursor-not-allowed' : ''}`}>
+              <div className="flex items-center space-x-3 sm:space-x-4 flex-1 w-full sm:w-auto mb-2 sm:mb-0">
                 <input
                   type="checkbox"
                   id={service.id}
@@ -68,7 +68,7 @@ export const ServicesSection = ({ userType, services, onServiceToggle, isSubmitt
                 </div>
               </div>
               
-              <div className="flex items-center space-x-3">
+              <div className="flex items-center space-x-2 sm:space-x-3 w-full sm:w-auto justify-between sm:justify-end">
                 {service.popular && (
                   <span className="bg-gradient-to-r from-purple-600 to-pink-600 text-white text-xs px-2 py-1 rounded-full">
                     Most Popular

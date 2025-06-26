@@ -28,10 +28,10 @@ export const FormCardHeader = ({
             <MessageSquare className="h-6 w-6 md:h-8 md:w-8 text-white" />
           )}
         </div>
-        <CardTitle className="text-xl md:text-2xl text-center text-gray-800 mb-2">
+        <CardTitle className="text-lg sm:text-xl md:text-2xl text-center text-gray-800 mb-2 px-2">
           {demoSubmitted ? "Complete Your Purchase" : "Free Demo Request"}
         </CardTitle>
-        <p className="text-sm md:text-base text-gray-600 px-4">
+        <p className="text-xs sm:text-sm md:text-base text-gray-600 px-2 sm:px-4">
           {demoSubmitted ? (
             <>✨ <span className="font-semibold">Demo submitted!</span> Select your services and complete your purchase</>
           ) : (

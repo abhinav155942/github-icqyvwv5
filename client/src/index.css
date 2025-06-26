@@ -5,6 +5,44 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Mobile-first responsive improvements */
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+  
+  body {
+    min-width: 320px;
+    overflow-x: hidden;
+  }
+  
+  /* Ensure proper mobile viewport */
+  @media (max-width: 640px) {
+    .container {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+    
+    /* Fix text overflow on mobile */
+    h1, h2, h3, h4, h5, h6 {
+      word-wrap: break-word;
+      hyphens: auto;
+    }
+    
+    /* Improve button responsiveness */
+    button {
+      min-height: 44px;
+      touch-action: manipulation;
+    }
+    
+    /* Fix form inputs on mobile */
+    input, select, textarea {
+      font-size: 16px; /* Prevents zoom on iOS */
+    }
+  }
+}
+
 /* Definition of the design system. All colors, gradients, fonts, etc should be defined here. */
 
 @layer base {

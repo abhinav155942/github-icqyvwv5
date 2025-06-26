@@ -26,13 +26,13 @@ export const FormHeader = ({ demoSubmitted, submitAttempts = 0, progress }: Form
       )}
 
       <div className="text-center mb-8 md:mb-12">
-        <h2 className="text-2xl md:text-3xl lg:text-5xl font-bold text-gray-800 mb-4 md:mb-6">
+        <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-gray-800 mb-4 md:mb-6 px-2">
           {demoSubmitted ? "Ready to Get Started?" : "Get Your"}{" "}
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600">
             {demoSubmitted ? "Purchase Now" : "Free Demo"}
           </span>
         </h2>
-        <p className="text-lg md:text-xl text-gray-600 mb-6 md:mb-8 px-4">
+        <p className="text-sm sm:text-base md:text-lg text-gray-600 mb-4 sm:mb-6 md:mb-8 px-4 max-w-2xl mx-auto">
           {demoSubmitted 
             ? "Your demo request has been submitted! Ready to purchase your AI solution?"
             : "Tell us about your business and we'll create a tailored AI solution for you"

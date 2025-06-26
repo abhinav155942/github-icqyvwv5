@@ -11,7 +11,7 @@ const Footer = () => {
             Join hundreds of coaches who've automated their lead generation and client communication with our AI-powered solutions.
           </p>
           
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center mb-6 sm:mb-8 text-center">
             <span className="text-green-400 font-medium">✓ 2-day delivery guaranteed</span>
             <span className="text-green-400 font-medium">✓ 24/7 AI support</span>
             <span className="text-green-400 font-medium">✓ Growth guarantee</span>

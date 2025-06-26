@@ -56,12 +56,12 @@ const Hero = () => {
       </div>
 
       <div className="max-w-5xl mx-auto text-center relative z-10">
-        <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold text-gray-800 mb-6 md:mb-8 leading-tight px-4" style={{ fontFamily: 'Poppins, sans-serif' }}>
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-purple-600 to-purple-800 text-[59px]">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-gray-800 mb-6 md:mb-8 leading-tight px-2 sm:px-4" style={{ fontFamily: 'Poppins, sans-serif' }}>
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-purple-600 to-purple-800 text-3xl sm:text-4xl md:text-5xl lg:text-6xl">
             Let
           </span>{" "}
           <span className="relative inline-block">
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-purple-600 to-purple-800 sm:text-4xl md:text-[56px] lg:text-[63px] text-[63px]">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-purple-600 to-purple-800 text-3xl sm:text-4xl md:text-5xl lg:text-6xl">
               AI handle it. 
             </span>
             {/* Animated underline with pen */}

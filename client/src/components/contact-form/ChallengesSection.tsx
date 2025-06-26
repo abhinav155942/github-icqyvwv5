@@ -25,7 +25,7 @@ export const ChallengesSection = ({ currentChallenges, onUpdate, isSubmitting }:
           name="challenges"
           value={currentChallenges}
           onChange={(e) => onUpdate(e.target.value)}
-          className="mt-2 border-purple-200 focus:border-purple-500 focus:ring-purple-500/20 min-h-[140px] rounded-xl"
+          className="mt-2 border-purple-200 focus:border-purple-500 focus:ring-purple-500/20 min-h-[100px] sm:min-h-[120px] md:min-h-[140px] rounded-xl text-base resize-y"
           placeholder="Tell us about your biggest challenges in lead generation, client communication, content creation, etc. What would success look like for you?"
           required
           disabled={isSubmitting}
