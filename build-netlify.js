@@ -6,28 +6,14 @@ import path from 'path';
 
 console.log('Building React app for Netlify deployment...');
 
-// Build the client
+// Change to client directory and build
+process.chdir('client');
+execSync('npm install', { stdio: 'inherit' });
 execSync('npm run build', { stdio: 'inherit' });
 
-// Ensure video assets are copied to the build output
-const videoSource = path.join('client', 'public', 'assets', 'videos');
-const videoDest = path.join('dist', 'public', 'assets', 'videos');
-
-if (fs.existsSync(videoSource)) {
-  fs.mkdirSync(videoDest, { recursive: true });
-  
-  const videoFiles = fs.readdirSync(videoSource);
-  videoFiles.forEach(file => {
-    const src = path.join(videoSource, file);
-    const dest = path.join(videoDest, file);
-    fs.copyFileSync(src, dest);
-    console.log(`Copied video: ${file}`);
-  });
-}
-
-// Create _redirects file for client-side routing
+// Create _redirects file for client-side routing in dist folder
 const redirectsContent = '/*    /index.html   200';
-fs.writeFileSync(path.join('dist', 'public', '_redirects'), redirectsContent);
+fs.writeFileSync(path.join('dist', '_redirects'), redirectsContent);
 
 console.log('Netlify build complete!');
-console.log('Deploy the "dist/public" folder to Netlify');
+console.log('Deploy the "client/dist" folder to Netlify');
