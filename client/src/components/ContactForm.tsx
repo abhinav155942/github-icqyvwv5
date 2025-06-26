@@ -334,7 +334,8 @@ const ContactForm = ({ userType }: ContactFormProps) => {
                     serviceName={
                       serviceId === 'chatbot' ? 'AI Assistant' :
                       serviceId === 'funnel' ? 'Sales Funnel' :
-                      serviceId === 'video' ? 'Content Clips' : serviceId
+                      serviceId === 'video' ? 'Content Clips' :
+                      serviceId === 'website' ? 'Professional Website' : serviceId
                     }
                     isSelected={true}
                     config={serviceConfigs[serviceId] || { description: '', links: [], platforms: [] }}
