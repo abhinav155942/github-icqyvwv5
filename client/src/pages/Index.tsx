@@ -14,8 +14,9 @@ import { OnboardingOverlay } from "@/components/onboarding/OnboardingOverlay";
 import { OnboardingTrigger } from "@/components/onboarding/OnboardingTrigger";
 import { WelcomeModal } from "@/components/onboarding/WelcomeModal";
 import { CompletionCelebration } from "@/components/onboarding/CompletionCelebration";
-import { OnboardingDebug } from "@/components/onboarding/OnboardingDebug";
 import { useOnboarding } from "@/hooks/useOnboarding";
+import { LoadingWrapper } from "@/components/LoadingWrapper";
+import { HeroSkeleton, ServiceBenefitSkeleton, ProcessSkeleton, FAQSkeleton } from "@/components/ui/loading-skeletons";
 
 const Index = () => {
   const [userType, setUserType] = useState<string>("coach");
@@ -66,18 +67,28 @@ const Index = () => {
       />
       <RecommendationPopup userType={userType} />
       <div data-onboarding="hero">
-        <Hero />
+        <LoadingWrapper skeleton={<HeroSkeleton />} delay={100}>
+          <Hero />
+        </LoadingWrapper>
       </div>
       <div data-onboarding="services">
-        {renderServices()}
+        <LoadingWrapper skeleton={<ServiceBenefitSkeleton />} delay={300}>
+          {renderServices()}
+        </LoadingWrapper>
       </div>
-      {renderBenefits()}
-      <Process />
+      <LoadingWrapper skeleton={<ServiceBenefitSkeleton />} delay={500}>
+        {renderBenefits()}
+      </LoadingWrapper>
+      <LoadingWrapper skeleton={<ProcessSkeleton />} delay={700}>
+        <Process />
+      </LoadingWrapper>
       <div data-onboarding="contact-form">
         <ContactForm userType={userType} />
       </div>
       <div data-onboarding="testimonials">
-        <FAQ />
+        <LoadingWrapper skeleton={<FAQSkeleton />} delay={900}>
+          <FAQ />
+        </LoadingWrapper>
       </div>
       <Footer />
       <div data-onboarding="chat-button">

@@ -16,6 +16,8 @@ import { SuccessDialog } from "./contact-form/SuccessDialog";
 import { useFormPersistence } from "@/hooks/useFormPersistence";
 import { SoundEffects } from "@/utils/soundEffects";
 import { LocalStorageManager } from "@/utils/localStorageManager";
+import { ContactFormSkeleton } from "@/components/ui/loading-skeletons";
+import { useLoadingState } from "@/hooks/useLoadingState";
 
 
 interface ContactFormProps {
@@ -35,6 +37,10 @@ const ContactForm = ({ userType }: ContactFormProps) => {
   const [demoSubmitted, setDemoSubmitted] = useState(false);
   const [totalCost, setTotalCost] = useState(0);
   const [serviceConfigs, setServiceConfigs] = useState<Record<string, ServiceConfig>>({});
+  const { isLoading: isFormLoading, finishLoading } = useLoadingState({ 
+    initialLoading: true, 
+    minLoadingTime: 600 
+  });
 
   // Use custom hooks for enhanced functionality
   const {
@@ -50,6 +56,15 @@ const ContactForm = ({ userType }: ContactFormProps) => {
 
 
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  useEffect(() => {
+    // Simulate form loading and initialization
+    const timer = setTimeout(() => {
+      finishLoading();
+    }, 400);
+
+    return () => clearTimeout(timer);
+  }, [finishLoading]);
 
   useEffect(() => {
     // Free demo version - no cost calculation needed

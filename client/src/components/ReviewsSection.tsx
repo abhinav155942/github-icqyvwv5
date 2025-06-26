@@ -1,7 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Star, StarHalf } from "lucide-react";
+import { ReviewSkeleton } from "@/components/ui/loading-skeletons";
+import { useLoadingState } from "@/hooks/useLoadingState";
 
 interface Review {
   id: number;
@@ -17,6 +19,19 @@ interface Review {
 
 const ReviewsSection = () => {
   const [showAllReviews, setShowAllReviews] = useState(false);
+  const { isLoading, finishLoading } = useLoadingState({ 
+    initialLoading: true, 
+    minLoadingTime: 1200 
+  });
+
+  useEffect(() => {
+    // Simulate loading reviews data
+    const timer = setTimeout(() => {
+      finishLoading();
+    }, 600);
+
+    return () => clearTimeout(timer);
+  }, [finishLoading]);
 
   const reviews: Review[] = [
     {
@@ -244,6 +259,34 @@ const ReviewsSection = () => {
 
   const averageRating = reviews.reduce((sum, review) => sum + review.rating, 0) / reviews.length;
   const displayedReviews = showAllReviews ? reviews : reviews.slice(0, 6);
+
+  if (isLoading) {
+    return (
+      <section className="py-16 px-4 bg-white">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+              Customer Reviews
+            </h2>
+            <div className="flex items-center justify-center gap-2 mb-4">
+              <div className="flex space-x-1">
+                {[1, 2, 3, 4, 5].map((i) => (
+                  <div key={i} className="h-4 w-4 bg-gray-200 animate-pulse rounded-sm"></div>
+                ))}
+              </div>
+              <div className="h-5 w-24 bg-gray-200 animate-pulse rounded"></div>
+              <div className="h-4 w-20 bg-gray-200 animate-pulse rounded"></div>
+            </div>
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[1, 2, 3, 4, 5, 6].map((i) => (
+              <ReviewSkeleton key={i} />
+            ))}
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section className="py-16 px-4 bg-white">
