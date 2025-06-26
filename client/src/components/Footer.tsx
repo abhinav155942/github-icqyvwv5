@@ -14,7 +14,7 @@ const Footer = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
             <span className="text-green-400 font-medium">✓ 2-day delivery guaranteed</span>
             <span className="text-green-400 font-medium">✓ 24/7 AI support</span>
-            <span className="text-green-400 font-medium">✓ Results or refund</span>
+            <span className="text-green-400 font-medium">✓ 65% refund in 2 days</span>
           </div>
           
           <div className="flex justify-center space-x-6 mb-6 text-sm">

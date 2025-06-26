@@ -86,7 +86,7 @@ const TermsAndConditions = () => {
               <div className="space-y-3">
                 <p><strong>5.1 Pricing:</strong> Service prices are clearly displayed during the quote process.</p>
                 <p><strong>5.2 Payment Methods:</strong> We accept major credit cards and digital payment methods.</p>
-                <p><strong>5.3 Refund Policy:</strong> We offer a satisfaction guarantee with refunds available within 30 days of service delivery if you're not satisfied with our work.</p>
+                <p><strong>5.3 Refund Policy:</strong> We offer a 65% money refund within 2 days after delivery if you're not satisfied with our work.</p>
               </div>
             </section>
 
