@@ -23,17 +23,19 @@ export default defineConfig({
     emptyOutDir: true,
     assetsDir: "assets",
     sourcemap: false,
+    target: "es2015",
+    cssCodeSplit: false,
     rollupOptions: {
       output: {
-        manualChunks: {
-          vendor: ['react', 'react-dom'],
-          router: ['react-router-dom']
-        }
+        manualChunks: undefined
       }
     }
   },
-  base: "./",
+  base: "/",
   css: {
     postcss: "./postcss.config.js"
+  },
+  define: {
+    'process.env': {}
   }
 });

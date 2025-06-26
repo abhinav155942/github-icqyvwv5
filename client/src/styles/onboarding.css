@@ -1,177 +1,87 @@
-/* Onboarding highlight styles */
-.onboarding-highlight {
-  box-shadow: 0 0 0 4px rgba(147, 51, 234, 0.3), 0 0 20px rgba(147, 51, 234, 0.2) !important;
-  border-radius: 8px !important;
-  background: rgba(147, 51, 234, 0.05) !important;
-  transition: all 0.3s ease !important;
-}
-
-/* Bounce animation */
-@keyframes onboardingBounce {
-  0%, 20%, 53%, 80%, 100% {
-    transform: translate3d(0, 0, 0);
-  }
-  40%, 43% {
-    transform: translate3d(0, -8px, 0);
-  }
-  70% {
-    transform: translate3d(0, -4px, 0);
-  }
-  90% {
-    transform: translate3d(0, -2px, 0);
-  }
-}
-
-.onboarding-bounce {
-  animation: onboardingBounce 1.5s ease-in-out infinite !important;
-}
-
-/* Pulse animation */
-@keyframes onboardingPulse {
-  0% {
-    transform: scale(1);
-    box-shadow: 0 0 0 0 rgba(147, 51, 234, 0.4);
-  }
-  50% {
-    transform: scale(1.05);
-    box-shadow: 0 0 0 10px rgba(147, 51, 234, 0);
-  }
-  100% {
-    transform: scale(1);
-    box-shadow: 0 0 0 0 rgba(147, 51, 234, 0);
-  }
-}
-
-.onboarding-pulse {
-  animation: onboardingPulse 2s ease-in-out infinite !important;
-}
-
-/* Shake animation */
-@keyframes onboardingShake {
-  0%, 100% {
-    transform: translateX(0);
-  }
-  10%, 30%, 50%, 70%, 90% {
-    transform: translateX(-3px);
-  }
-  20%, 40%, 60%, 80% {
-    transform: translateX(3px);
-  }
-}
-
-.onboarding-shake {
-  animation: onboardingShake 0.8s ease-in-out infinite !important;
-}
-
-/* Glow animation */
-@keyframes onboardingGlow {
-  0%, 100% {
-    box-shadow: 0 0 0 4px rgba(147, 51, 234, 0.3), 0 0 20px rgba(147, 51, 234, 0.2);
-  }
-  50% {
-    box-shadow: 0 0 0 8px rgba(147, 51, 234, 0.5), 0 0 30px rgba(147, 51, 234, 0.4);
-  }
-}
-
-.onboarding-glow {
-  animation: onboardingGlow 2s ease-in-out infinite !important;
-}
-
-/* Floating elements animation */
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
-}
-
-.onboarding-float {
-  animation: float 3s ease-in-out infinite;
-}
-
-/* Confetti animation for completion */
-@keyframes confetti {
-  0% {
-    transform: translateY(-100vh) rotate(0deg);
-    opacity: 1;
-  }
-  100% {
-    transform: translateY(100vh) rotate(720deg);
-    opacity: 0;
-  }
-}
-
-.confetti-piece {
+/* Onboarding Tour Styles */
+.onboarding-overlay {
   position: fixed;
-  width: 10px;
-  height: 10px;
-  background: linear-gradient(45deg, #9333ea, #ec4899);
-  animation: confetti 3s linear infinite;
-  z-index: 1002;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 9999;
+  pointer-events: none;
 }
 
-/* Sparkle effect */
-@keyframes sparkle {
-  0%, 100% {
-    opacity: 0;
-    transform: scale(0);
-  }
-  50% {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-.sparkle {
+.onboarding-highlight {
   position: absolute;
-  width: 4px;
-  height: 4px;
-  background: radial-gradient(circle, #fbbf24, #f59e0b);
-  border-radius: 50%;
-  animation: sparkle 1.5s ease-in-out infinite;
+  border: 2px solid #8b5cf6;
+  border-radius: 8px;
+  box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.3);
+  animation: pulse-border 2s infinite;
 }
 
-/* Tooltip pointer arrows */
-.tooltip-arrow {
+.onboarding-tooltip {
+  position: fixed;
+  background: white;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  max-width: 300px;
+  z-index: 10000;
+  border: 1px solid #e5e7eb;
+}
+
+.onboarding-arrow {
   position: absolute;
   width: 0;
   height: 0;
 }
 
-.tooltip-arrow-top {
-  bottom: -8px;
-  left: 50%;
-  transform: translateX(-50%);
-  border-left: 8px solid transparent;
-  border-right: 8px solid transparent;
-  border-top: 8px solid white;
-}
-
-.tooltip-arrow-bottom {
-  top: -8px;
-  left: 50%;
-  transform: translateX(-50%);
+.onboarding-arrow.top {
   border-left: 8px solid transparent;
   border-right: 8px solid transparent;
   border-bottom: 8px solid white;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
-.tooltip-arrow-left {
-  right: -8px;
-  top: 50%;
-  transform: translateY(-50%);
-  border-top: 8px solid transparent;
-  border-bottom: 8px solid transparent;
-  border-left: 8px solid white;
+.onboarding-arrow.bottom {
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-top: 8px solid white;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
-.tooltip-arrow-right {
-  left: -8px;
-  top: 50%;
-  transform: translateY(-50%);
+.onboarding-arrow.left {
   border-top: 8px solid transparent;
   border-bottom: 8px solid transparent;
   border-right: 8px solid white;
+  left: -8px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.onboarding-arrow.right {
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-left: 8px solid white;
+  right: -8px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+@keyframes pulse-border {
+  0%, 100% {
+    box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(139, 92, 246, 0.2);
+  }
+}
+
+/* Ensure proper stacking context */
+.onboarding-active {
+  position: relative;
+  z-index: 10001;
 }

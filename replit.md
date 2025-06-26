@@ -4,6 +4,11 @@
 AI-powered business solutions platform offering sales funnels, chatbots, and content creation services for coaches, creators, and e-commerce businesses.
 
 ## Recent Changes
+- **2025-06-26**: Fixed Netlify deployment CSS loading issues by creating standalone client configuration
+- **2025-06-26**: Updated build process to remove TypeScript compilation step for faster deployments
+- **2025-06-26**: Created proper netlify.toml configuration with client-specific build settings
+- **2025-06-26**: Added missing onboarding CSS styles and simplified Tailwind configuration
+- **2025-06-26**: Fixed responsive design issues for mobile deployment with proper viewport settings
 - **2025-01-22**: Successfully completed project migration from Replit Agent to Replit environment
 - **2025-01-22**: Fixed Vite host configuration to allow proper access to the application
 - **2025-01-22**: Created PostgreSQL database and configured all environment variables
