@@ -1,9 +1,12 @@
 # HookAI
 
 ## Project Overview
-AI-powered business solutions platform offering sales funnels, chatbots, and content creation services for coaches, creators, and e-commerce businesses.
+AI-powered business solutions platform offering sales funnels, chatbots, content creation, and website services exclusively for coaches and consultants.
 
 ## Recent Changes
+- **2025-06-26**: Simplified platform to coach & consultant niche only - removed creator and ecommerce user types permanently
+- **2025-06-26**: Enhanced all 4 services with comprehensive descriptions: Sales Funnel Setup, AI Coach Assistant, Viral Content Clips, and Professional Coach Website
+- **2025-06-26**: Updated service configuration to ensure 4th service (website) is clearly visible in contact form
 - **2025-06-26**: Successfully completed migration from Replit Agent to standard Replit environment
 - **2025-06-26**: Updated Vite configuration with proper host allowlist for Replit deployment
 - **2025-06-26**: Enhanced reviews section with ultra-realistic styling - removed quotes, added natural line spacing, default fonts, and improved profile image error handling

@@ -2,11 +2,7 @@
 import { useState, useEffect } from "react";
 import Hero from "@/components/Hero";
 import CoachServices from "@/components/CoachServices";
-import CreatorServices from "@/components/CreatorServices";
-import EcommerceServices from "@/components/EcommerceServices";
 import CoachBenefits from "@/components/CoachBenefits";
-import CreatorBenefits from "@/components/CreatorBenefits";
-import EcommerceBenefits from "@/components/EcommerceBenefits";
 import Process from "@/components/Process";
 import ContactForm from "@/components/ContactForm";
 import FAQ from "@/components/FAQ";
@@ -22,8 +18,8 @@ import { OnboardingDebug } from "@/components/onboarding/OnboardingDebug";
 import { useOnboarding } from "@/hooks/useOnboarding";
 
 const Index = () => {
-  const [userType, setUserType] = useState<string>("");
-  const [showUserTypeSelector, setShowUserTypeSelector] = useState(true);
+  const [userType, setUserType] = useState<string>("coach");
+  const [showUserTypeSelector, setShowUserTypeSelector] = useState(false);
   
   const {
     isOnboardingVisible,
@@ -55,29 +51,11 @@ const Index = () => {
   };
 
   const renderServices = () => {
-    switch(userType) {
-      case "coach":
-        return <CoachServices />;
-      case "creator":
-        return <CreatorServices />;
-      case "ecommerce":
-        return <EcommerceServices />;
-      default:
-        return <CoachServices />; // Default fallback
-    }
+    return <CoachServices />;
   };
 
   const renderBenefits = () => {
-    switch(userType) {
-      case "coach":
-        return <CoachBenefits />;
-      case "creator":
-        return <CreatorBenefits />;
-      case "ecommerce":
-        return <EcommerceBenefits />;
-      default:
-        return <CoachBenefits />; // Default fallback
-    }
+    return <CoachBenefits />;
   };
 
   return (

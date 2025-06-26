@@ -1,8 +1,7 @@
 
-import { useState } from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { User, Users, Video, ShoppingCart } from "lucide-react";
+import { User } from "lucide-react";
 
 interface UserTypeSelectorProps {
   open: boolean;
@@ -17,20 +16,6 @@ const UserTypeSelector = ({ open, onSelect }: UserTypeSelectorProps) => {
       description: "Life coach, business coach, consultant, or any coaching service",
       icon: User,
       color: "purple"
-    },
-    {
-      id: "creator",
-      title: "Content Creator",
-      description: "YouTuber, influencer, podcaster, or content producer",
-      icon: Video,
-      color: "pink"
-    },
-    {
-      id: "ecommerce",
-      title: "E-commerce Business",
-      description: "Online store, product seller, or e-commerce entrepreneur",
-      icon: ShoppingCart,
-      color: "blue"
     }
   ];
 
