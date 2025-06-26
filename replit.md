@@ -48,8 +48,9 @@ AI-powered business solutions platform offering sales funnels, chatbots, and con
 - **Frontend**: React with TypeScript, Vite build system (port 5000)
 - **Styling**: Tailwind CSS with shadcn/ui components
 - **Routing**: React Router DOM for client-side navigation
-- **Form Handling**: Pure client-side form with local storage for drafts
-- **Data Persistence**: LocalStorage for form draft saving only
+- **Form Handling**: Client-side form with Make.com webhook integration
+- **Webhook Integration**: Single Make.com webhook for form submissions with plain text data format
+- **Data Persistence**: LocalStorage for form drafts and submission backup
 - **Build System**: Vite with modern TypeScript configuration
 
 ## Key Features

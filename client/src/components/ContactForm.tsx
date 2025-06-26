@@ -194,32 +194,81 @@ const ContactForm = ({ userType }: ContactFormProps) => {
     }
 
     try {
-      // Debug: Log current form data
-      console.log('Form submitted locally:', formData);
-      console.log('Current files:', files);
-      console.log('Current links:', links);
-      console.log('Current serviceConfigs:', serviceConfigs);
+      // Prepare webhook data - each field as individual string
+      const webhookData = {
+        name: formData.name || 'Not provided',
+        email: formData.email || 'Not provided',
+        phone: formData.phone || 'Not provided',
+        business: formData.business || 'Not provided',
+        coaching_niche: formData.coachingNiche === "other" ? formData.otherNiche : formData.coachingNiche || 'Not provided',
+        monthly_revenue: formData.monthlyRevenue || 'Not provided',
+        current_challenges: formData.currentChallenges || 'Not provided',
+        selected_services: formData.services.length > 0 ? formData.services.join(', ') : 'No services selected',
+        user_type: userType || 'Not specified',
+        submission_date: new Date().toLocaleDateString(),
+        submission_time: new Date().toLocaleTimeString(),
+        website_links: links.length > 0 ? links.map(link => `${link.description}: ${link.url}`).join(' | ') : 'No links provided',
+        uploaded_files: files.length > 0 ? files.map(f => f.name).join(', ') : 'No files uploaded',
+        service_configurations: Object.keys(serviceConfigs).length > 0 ? 
+          Object.entries(serviceConfigs).map(([service, config]) => 
+            `${service}: ${config.description}`
+          ).join(' | ') : 'No service configurations'
+      };
+
+      console.log('Sending to Make.com webhook:', webhookData);
+
+      // Send to Make.com webhook
+      const webhookUrl = "https://hook.us2.make.com/zgk94s652bfrodb93eudl9rjsiay0524";
       
-      // Simulate form submission without any external calls
-      setTimeout(() => {
-        SoundEffects.playSuccess();
-        setDemoSubmitted(true);
-        clearSavedData();
-        setShowSuccessDialog(true);
-        
-        toast({
-          title: "Success!",
-          description: "Your form has been submitted locally!",
-        });
-        setIsSubmitting(false);
-      }, 1000);
+      const response = await fetch(webhookUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        },
+        body: JSON.stringify(webhookData)
+      });
+
+      if (!response.ok) {
+        throw new Error(`Webhook failed: ${response.status} ${response.statusText}`);
+      }
+
+      console.log('Webhook response:', response.status);
+      
+      // Store submission locally as backup
+      LocalStorageManager.saveFormDraft({
+        ...formData,
+        submissionStatus: 'sent',
+        submissionTime: new Date().toISOString()
+      }, links);
+      
+      SoundEffects.playSuccess();
+      setDemoSubmitted(true);
+      clearSavedData();
+      setShowSuccessDialog(true);
+      
+      toast({
+        title: "Success!",
+        description: "Your request has been sent successfully!",
+      });
       
     } catch (error) {
+      console.error('Webhook submission error:', error);
+      
+      // Store failed submission locally
+      LocalStorageManager.saveFormDraft({
+        ...formData,
+        submissionStatus: 'failed',
+        submissionTime: new Date().toISOString(),
+        error: error instanceof Error ? error.message : 'Unknown error'
+      }, links);
+      
       toast({
         title: "Submission Failed",
-        description: "Unable to process your request. Please try again.",
+        description: "Unable to send your request. Please try again.",
         variant: "destructive",
       });
+    } finally {
       setIsSubmitting(false);
     }
   };
