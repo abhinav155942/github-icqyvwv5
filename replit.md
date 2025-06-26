@@ -4,6 +4,11 @@
 AI-powered business solutions platform offering sales funnels, chatbots, content creation, and website services exclusively for coaches and consultants.
 
 ## Recent Changes
+- **2025-06-26**: Completely refactored "Preview Our Work" section to focus exclusively on coaches and consultants
+- **2025-06-26**: Added detailed automation workflows showing zero-effort client acquisition process with 5-step email sequences
+- **2025-06-26**: Enhanced all service demonstrations with coaching-specific scenarios and realistic conversion metrics
+- **2025-06-26**: Updated reviews section with authentic coaching testimonials covering life coaching, business coaching, wellness coaching, and executive coaching
+- **2025-06-26**: Added comprehensive workflow explanations for all 4 services showing client journey from prospect to paying client
 - **2025-06-26**: Simplified platform to coach & consultant niche only - removed creator and ecommerce user types permanently
 - **2025-06-26**: Enhanced all 4 services with comprehensive descriptions: Sales Funnel Setup, AI Coach Assistant, Viral Content Clips, and Professional Coach Website
 - **2025-06-26**: Updated service configuration to ensure 4th service (website) is clearly visible in contact form
