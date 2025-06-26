@@ -27,7 +27,7 @@ const Footer = () => {
           </div>
           
           <div className="text-sm text-gray-500 pt-8 border-t border-gray-800">
-            © 2024-25 AI Coach Growth Suite. All rights reserved.
+            © 2024-25 HookAI. All rights reserved.
           </div>
         </div>
       </div>

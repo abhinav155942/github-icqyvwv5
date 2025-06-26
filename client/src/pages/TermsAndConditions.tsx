@@ -45,14 +45,14 @@ const TermsAndConditions = () => {
             <section>
               <h3 className="text-lg font-semibold text-gray-800 mb-3">1. Acceptance of Terms</h3>
               <p>
-                By accessing and using AI Coach Growth Suite ("Service", "Platform", "we", "us"), you accept and agree to be bound by the terms and provision of this agreement. If you do not agree to abide by the above, please do not use this service.
+                By accessing and using HookAI ("Service", "Platform", "we", "us"), you accept and agree to be bound by the terms and provision of this agreement. If you do not agree to abide by the above, please do not use this service.
               </p>
             </section>
 
             <section>
               <h3 className="text-lg font-semibold text-gray-800 mb-3">2. Service Description</h3>
               <p className="mb-4">
-                AI Coach Growth Suite provides AI-powered business solutions including:
+                HookAI provides AI-powered business solutions including:
               </p>
               <ul className="list-disc list-inside space-y-2 ml-4">
                 <li>Sales funnel setup and optimization</li>
@@ -109,7 +109,7 @@ const TermsAndConditions = () => {
             <section>
               <h3 className="text-lg font-semibold text-gray-800 mb-3">8. Limitation of Liability</h3>
               <p>
-                In no event shall AI Coach Growth Suite, nor its directors, employees, partners, agents, suppliers, or affiliates, be liable for any indirect, incidental, special, consequential, or punitive damages, including without limitation, loss of profits, data, use, goodwill, or other intangible losses.
+                In no event shall HookAI, nor its directors, employees, partners, agents, suppliers, or affiliates, be liable for any indirect, incidental, special, consequential, or punitive damages, including without limitation, loss of profits, data, use, goodwill, or other intangible losses.
               </p>
             </section>
 

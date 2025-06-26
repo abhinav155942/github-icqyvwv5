@@ -1,4 +1,4 @@
-# AI Coach Growth Suite
+# HookAI
 
 ## Project Overview
 AI-powered business solutions platform offering sales funnels, chatbots, and content creation services for coaches, creators, and e-commerce businesses.
