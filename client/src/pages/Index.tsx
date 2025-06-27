@@ -5,6 +5,7 @@ import CoachServices from "@/components/CoachServices";
 import CoachBenefits from "@/components/CoachBenefits";
 import Process from "@/components/Process";
 import ContactForm from "@/components/ContactForm";
+import OnboardingProcess from "@/components/OnboardingProcess";
 import FAQ from "@/components/FAQ";
 import Footer from "@/components/Footer";
 import UserTypeSelector from "@/components/UserTypeSelector";
@@ -82,6 +83,10 @@ const Index = () => {
       <LoadingWrapper skeleton={<ProcessSkeleton />} delay={700}>
         <Process />
       </LoadingWrapper>
+      
+      {/* Onboarding Process Section */}
+      <OnboardingProcess />
+      
       <div data-onboarding="contact-form">
         <ContactForm userType={userType} />
       </div>
