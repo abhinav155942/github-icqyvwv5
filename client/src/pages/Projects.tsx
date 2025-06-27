@@ -8,6 +8,7 @@ import { ArrowLeft, ExternalLink, Users, TrendingUp, ShoppingCart, Video, Zap } 
 import { useNavigate } from "react-router-dom";
 import { PieChart, Pie, Cell, BarChart, Bar, XAxis, YAxis } from "recharts";
 import ThreePieCharts from "@/components/ThreePieCharts";
+import ReviewsSection from "@/components/ReviewsSection";
 import { SoundEffects } from "@/utils/soundEffects";
 
 const Projects = () => {
@@ -424,7 +425,8 @@ const Projects = () => {
         {/* Charts Section */}
         {userType && renderCharts()}
 
-
+        {/* Reviews Section */}
+        <ReviewsSection />
 
         {/* Analytics Dashboard Section */}
         <section className="mb-16">
