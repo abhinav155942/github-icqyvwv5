@@ -209,6 +209,13 @@ const ReviewsSection = () => {
             </div>
           ))}
         </div>
+        
+        {/* Review Request Disclaimer */}
+        <div className="text-center mt-8 pt-6 border-t border-gray-200">
+          <p className="text-sm text-gray-500 max-w-2xl mx-auto">
+            We request reviews from our clients after successfully completing their projects to ensure transparency and help future clients make informed decisions.
+          </p>
+        </div>
       </div>
     </section>
   );
