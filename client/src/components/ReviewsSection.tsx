@@ -32,43 +32,43 @@ const ReviewsSection = () => {
   const reviews: Review[] = [
     {
       id: 1,
-      name: "Sarah Mitchell",
+      name: "Sarah M.",
       rating: 4,
-      comment: "The sales funnel they built for my life coaching practice has been a complete game changer. I was manually following up with every lead before, which was exhausting and time-consuming. Now the system handles most of the nurturing automatically. My discovery call booking rate went from maybe 20% to over 65%. The automated email sequence is incredibly well-written and feels personal.",
+      comment: "Honestly wasn't sure about this at first, but after 3 months my coaching business has completely changed. Before I was chasing leads all day and barely converting anyone. Now I'm getting 3-4 qualified calls per week without doing any of the follow-up myself. The setup took about 2 weeks but it's been worth every penny. My only complaint is I wish I'd done this sooner.",
       date: "2025-06-14",
       verified: true,
       emoji: "💼",
-      avatar: "/attached_assets/Screenshot 2025-06-27 122508_1751008652254.png"
+      avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b977?w=100&h=100&fit=crop&crop=face"
     },
     {
       id: 2,
-      name: "Marcus Johnson",
+      name: "Marcus J.",
       rating: 3,
-      comment: "As a business coach, I needed something to help qualify leads before they got on my calendar. The AI assistant they set up asks all the right questions and provides immediate value to prospects. It saves me probably 12 hours a week screening calls. Only serious, qualified prospects make it through now.",
+      comment: "The AI chatbot thing seemed gimmicky but actually works pretty well. It screens out the tire kickers before they even get to my calendar. Still working out some kinks with the responses but overall saves me time. Team was responsive when I had questions during setup.",
       date: "2025-06-11",
       verified: true,
       emoji: "🎯",
-      avatar: "/attached_assets/Screenshot 2025-06-27 123152_1751008658265.png"
+      avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face"
     },
     {
       id: 3,
-      name: "Lisa Rodriguez",
+      name: "Lisa R.",
       rating: 4,
-      comment: "I run a wellness coaching business and was struggling to get my content seen on social media. The viral clips service took my hour-long workshops and transformed them into these powerful, bite-sized videos. My Instagram following grew from 800 to over 15,000 in 5 months. More importantly, I'm getting actual high-quality coaching clients from the content now.",
+      comment: "The video clips they made from my long-form content actually get views now. I was posting hour-long videos that maybe 20 people watched. Now these short clips are getting thousands of views and I'm booking discovery calls from people who found me through them. Takes about a week to get the clips back but the quality is solid.",
       date: "2025-06-08",
       verified: true,
       emoji: "📈",
-      avatar: "/attached_assets/Screenshot 2025-06-27 122930_1751008660917.png"
+      avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face"
     },
     {
       id: 4,
-      name: "Robert Thompson",
+      name: "Robert T.",
       rating: 3,
-      comment: "The professional website they built for my executive coaching practice exceeded my expectations. The booking calendar integration works flawlessly and my clients love the clean, professional design. The client portal where they can access resources and track progress has been a huge hit. Bookings are definitely up since the launch.",
+      comment: "Website looks professional and the booking system works. Clients can schedule directly without the back-and-forth emails. Had a few small issues with the calendar integration at first but they fixed it quickly. Not cheap but definitely an upgrade from my old site.",
       date: "2025-06-05",
       verified: true,
       emoji: "💻",
-      avatar: "/attached_assets/Screenshot 2025-06-27 122604_1751008665347.png"
+      avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face"
     }
   ];
 
