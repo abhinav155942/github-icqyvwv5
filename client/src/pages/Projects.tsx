@@ -7,8 +7,7 @@ import { ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/
 import { ArrowLeft, ExternalLink, Users, TrendingUp, ShoppingCart, Video, Zap } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { PieChart, Pie, Cell, BarChart, Bar, XAxis, YAxis } from "recharts";
-import ReviewsSection from "@/components/ReviewsSection";
-import GrowthCharts from "@/components/GrowthCharts";
+import ThreePieCharts from "@/components/ThreePieCharts";
 import { SoundEffects } from "@/utils/soundEffects";
 
 const Projects = () => {
@@ -425,20 +424,19 @@ const Projects = () => {
         {/* Charts Section */}
         {userType && renderCharts()}
 
-        {/* Reviews Section - Replacing fake success stories */}
-        <ReviewsSection />
 
-        {/* Growth Analytics Section */}
+
+        {/* Analytics Dashboard Section */}
         <section className="mb-16">
           <div className="text-center mb-12">
             <h3 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
-              Client Growth Analytics
+              Business Analytics Dashboard
             </h3>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Real performance data from coaching clients who implemented our AI automation systems
+              Comprehensive breakdown of our coaching services, revenue streams, and client success metrics
             </p>
           </div>
-          <GrowthCharts />
+          <ThreePieCharts />
         </section>
 
         {/* CTA Section */}
