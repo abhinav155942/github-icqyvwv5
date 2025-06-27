@@ -32,7 +32,7 @@ const ReviewsSection = () => {
   const reviews: Review[] = [
     {
       id: 1,
-      name: "Sarah M.",
+      name: "Sarah Mitchell",
       rating: 4,
       comment: "Honestly wasn't sure about this at first, but after 3 months my coaching business has completely changed. Before I was chasing leads all day and barely converting anyone. Now I'm getting 3-4 qualified calls per week without doing any of the follow-up myself. The setup took about 2 weeks but it's been worth every penny. My only complaint is I wish I'd done this sooner.",
       date: "2025-06-14",
@@ -42,7 +42,7 @@ const ReviewsSection = () => {
     },
     {
       id: 2,
-      name: "Marcus J.",
+      name: "Marcus Johnson",
       rating: 3,
       comment: "The AI chatbot thing seemed gimmicky but actually works pretty well. It screens out the tire kickers before they even get to my calendar. Still working out some kinks with the responses but overall saves me time. Team was responsive when I had questions during setup.",
       date: "2025-06-11",
@@ -52,7 +52,7 @@ const ReviewsSection = () => {
     },
     {
       id: 3,
-      name: "Lisa R.",
+      name: "Lisa Rodriguez",
       rating: 4,
       comment: "The video clips they made from my long-form content actually get views now. I was posting hour-long videos that maybe 20 people watched. Now these short clips are getting thousands of views and I'm booking discovery calls from people who found me through them. Takes about a week to get the clips back but the quality is solid.",
       date: "2025-06-08",
@@ -62,7 +62,7 @@ const ReviewsSection = () => {
     },
     {
       id: 4,
-      name: "Robert T.",
+      name: "Robert Thompson",
       rating: 3,
       comment: "Website looks professional and the booking system works. Clients can schedule directly without the back-and-forth emails. Had a few small issues with the calendar integration at first but they fixed it quickly. Not cheap but definitely an upgrade from my old site.",
       date: "2025-06-05",
