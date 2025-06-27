@@ -19,28 +19,44 @@ const ThreePieCharts: React.FC<ThreePieChartsProps> = ({ className = "" }) => {
     return () => clearTimeout(timer);
   }, []);
 
-  // Service Distribution
-  const serviceData = [
-    { name: 'Sales Funnels', value: 45, color: '#8b5cf6' },
+  // Lead Generation - Before vs After
+  const leadGenerationBefore = [
+    { name: 'Manual Outreach', value: 70, color: '#ef4444' },
+    { name: 'Referrals', value: 20, color: '#f97316' },
+    { name: 'Social Media', value: 10, color: '#eab308' }
+  ];
+
+  const leadGenerationAfter = [
+    { name: 'Automated Funnels', value: 45, color: '#8b5cf6' },
     { name: 'AI Chatbots', value: 25, color: '#ec4899' },
-    { name: 'Content Creation', value: 20, color: '#06b6d4' },
-    { name: 'Website Development', value: 10, color: '#10b981' }
+    { name: 'Content Marketing', value: 20, color: '#06b6d4' },
+    { name: 'Referrals', value: 10, color: '#10b981' }
   ];
 
-  // Revenue Sources
-  const revenueData = [
-    { name: 'Coaching Sessions', value: 55, color: '#8b5cf6' },
-    { name: 'Course Sales', value: 25, color: '#ec4899' },
-    { name: 'Consulting', value: 15, color: '#06b6d4' },
-    { name: 'Workshops', value: 5, color: '#10b981' }
+  // Time Allocation - Before vs After
+  const timeBefore = [
+    { name: 'Admin Tasks', value: 40, color: '#ef4444' },
+    { name: 'Client Acquisition', value: 35, color: '#f97316' },
+    { name: 'Actual Coaching', value: 25, color: '#eab308' }
   ];
 
-  // Client Success Levels
-  const successData = [
-    { name: 'High Performers', value: 35, color: '#8b5cf6' },
-    { name: 'Good Progress', value: 40, color: '#ec4899' },
-    { name: 'Steady Growth', value: 20, color: '#06b6d4' },
-    { name: 'Getting Started', value: 5, color: '#10b981' }
+  const timeAfter = [
+    { name: 'Actual Coaching', value: 60, color: '#8b5cf6' },
+    { name: 'Strategy & Growth', value: 25, color: '#ec4899' },
+    { name: 'Admin Tasks', value: 15, color: '#06b6d4' }
+  ];
+
+  // Revenue Sources - Before vs After
+  const revenueBefore = [
+    { name: '1-on-1 Sessions', value: 85, color: '#ef4444' },
+    { name: 'Workshops', value: 15, color: '#f97316' }
+  ];
+
+  const revenueAfter = [
+    { name: '1-on-1 Sessions', value: 45, color: '#8b5cf6' },
+    { name: 'Automated Courses', value: 30, color: '#ec4899' },
+    { name: 'Group Coaching', value: 15, color: '#06b6d4' },
+    { name: 'Consulting', value: 10, color: '#10b981' }
   ];
 
   const CustomTooltip = ({ active, payload }: any) => {
@@ -66,7 +82,7 @@ const ThreePieCharts: React.FC<ThreePieChartsProps> = ({ className = "" }) => {
 
   return (
     <div className={`space-y-12 ${className}`}>
-      {/* Service Distribution Chart */}
+      {/* Lead Generation - Before vs After */}
       <motion.div
         variants={chartVariants}
         initial="hidden"
@@ -74,57 +90,89 @@ const ThreePieCharts: React.FC<ThreePieChartsProps> = ({ className = "" }) => {
         className="bg-white/60 rounded-3xl p-8 border border-purple-200"
       >
         <h4 className="text-2xl font-bold text-gray-800 mb-3 text-center">
-          Most Popular Services
+          Lead Generation Transformation
         </h4>
-        <p className="text-gray-600 text-center mb-6 max-w-2xl mx-auto">
-          What coaching clients request most - Sales Funnels lead at 45% because coaches need automated lead generation to scale beyond manual outreach.
+        <p className="text-gray-600 text-center mb-8 max-w-2xl mx-auto">
+          From 70% manual outreach to 45% automated funnels - see how AI automation transforms client acquisition.
         </p>
-        <div className="grid md:grid-cols-2 gap-8 items-center">
-          <div className="h-80">
-            <ResponsiveContainer width="100%" height="100%">
-              <PieChart>
-                <Pie
-                  data={serviceData}
-                  cx="50%"
-                  cy="50%"
-                  outerRadius={100}
-                  fill="#8884d8"
-                  dataKey="value"
-                  animationDuration={animateCharts ? 1500 : 0}
-                  onMouseEnter={() => SoundEffects.playChartTick()}
-                >
-                  {serviceData.map((entry, index) => (
-                    <Cell key={`cell-${index}`} fill={entry.color} />
-                  ))}
-                </Pie>
-                <Tooltip content={<CustomTooltip />} />
-              </PieChart>
-            </ResponsiveContainer>
-          </div>
-          <div className="space-y-4">
-            {serviceData.map((item, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: index * 0.1 + 0.3 }}
-                className="flex items-center justify-between p-3 bg-white/40 rounded-xl"
-              >
-                <div className="flex items-center">
-                  <div 
-                    className="w-4 h-4 rounded-full mr-3" 
-                    style={{ backgroundColor: item.color }}
-                  ></div>
-                  <span className="font-medium text-gray-700">{item.name}</span>
+        <div className="grid md:grid-cols-2 gap-12">
+          {/* Before Chart */}
+          <div className="text-center">
+            <h5 className="text-lg font-semibold text-red-600 mb-4">BEFORE</h5>
+            <div className="h-64">
+              <ResponsiveContainer width="100%" height="100%">
+                <PieChart>
+                  <Pie
+                    data={leadGenerationBefore}
+                    cx="50%"
+                    cy="50%"
+                    outerRadius={80}
+                    fill="#8884d8"
+                    dataKey="value"
+                    animationDuration={animateCharts ? 1500 : 0}
+                    onMouseEnter={() => SoundEffects.playChartTick()}
+                  >
+                    {leadGenerationBefore.map((entry, index) => (
+                      <Cell key={`cell-${index}`} fill={entry.color} />
+                    ))}
+                  </Pie>
+                  <Tooltip content={<CustomTooltip />} />
+                </PieChart>
+              </ResponsiveContainer>
+            </div>
+            <div className="space-y-2 mt-4">
+              {leadGenerationBefore.map((item, index) => (
+                <div key={index} className="flex items-center justify-between text-sm">
+                  <div className="flex items-center">
+                    <div className="w-3 h-3 rounded mr-2" style={{ backgroundColor: item.color }}></div>
+                    <span>{item.name}</span>
+                  </div>
+                  <span className="font-semibold">{item.value}%</span>
                 </div>
-                <span className="font-bold text-gray-800">{item.value}%</span>
-              </motion.div>
-            ))}
+              ))}
+            </div>
+          </div>
+          
+          {/* After Chart */}
+          <div className="text-center">
+            <h5 className="text-lg font-semibold text-purple-600 mb-4">AFTER</h5>
+            <div className="h-64">
+              <ResponsiveContainer width="100%" height="100%">
+                <PieChart>
+                  <Pie
+                    data={leadGenerationAfter}
+                    cx="50%"
+                    cy="50%"
+                    outerRadius={80}
+                    fill="#8884d8"
+                    dataKey="value"
+                    animationDuration={animateCharts ? 1800 : 0}
+                    onMouseEnter={() => SoundEffects.playChartTick()}
+                  >
+                    {leadGenerationAfter.map((entry, index) => (
+                      <Cell key={`cell-${index}`} fill={entry.color} />
+                    ))}
+                  </Pie>
+                  <Tooltip content={<CustomTooltip />} />
+                </PieChart>
+              </ResponsiveContainer>
+            </div>
+            <div className="space-y-2 mt-4">
+              {leadGenerationAfter.map((item, index) => (
+                <div key={index} className="flex items-center justify-between text-sm">
+                  <div className="flex items-center">
+                    <div className="w-3 h-3 rounded mr-2" style={{ backgroundColor: item.color }}></div>
+                    <span>{item.name}</span>
+                  </div>
+                  <span className="font-semibold">{item.value}%</span>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </motion.div>
 
-      {/* Revenue Sources Chart */}
+      {/* Time Allocation - Before vs After */}
       <motion.div
         variants={chartVariants}
         initial="hidden"
@@ -133,57 +181,89 @@ const ThreePieCharts: React.FC<ThreePieChartsProps> = ({ className = "" }) => {
         className="bg-white/60 rounded-3xl p-8 border border-purple-200"
       >
         <h4 className="text-2xl font-bold text-gray-800 mb-3 text-center">
-          How Coaches Make Money
+          Time Allocation Transformation
         </h4>
-        <p className="text-gray-600 text-center mb-6 max-w-2xl mx-auto">
-          Revenue breakdown after implementing our automation - One-on-one coaching remains primary income (55%), while automated courses provide 25% passive revenue.
+        <p className="text-gray-600 text-center mb-8 max-w-2xl mx-auto">
+          From 40% admin tasks to 60% actual coaching - automation frees up time for what matters most.
         </p>
-        <div className="grid md:grid-cols-2 gap-8 items-center">
-          <div className="h-80">
-            <ResponsiveContainer width="100%" height="100%">
-              <PieChart>
-                <Pie
-                  data={revenueData}
-                  cx="50%"
-                  cy="50%"
-                  outerRadius={100}
-                  fill="#8884d8"
-                  dataKey="value"
-                  animationDuration={animateCharts ? 1800 : 0}
-                  onMouseEnter={() => SoundEffects.playChartTick()}
-                >
-                  {revenueData.map((entry, index) => (
-                    <Cell key={`cell-${index}`} fill={entry.color} />
-                  ))}
-                </Pie>
-                <Tooltip content={<CustomTooltip />} />
-              </PieChart>
-            </ResponsiveContainer>
-          </div>
-          <div className="space-y-4">
-            {revenueData.map((item, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: index * 0.1 + 0.5 }}
-                className="flex items-center justify-between p-3 bg-white/40 rounded-xl"
-              >
-                <div className="flex items-center">
-                  <div 
-                    className="w-4 h-4 rounded-full mr-3" 
-                    style={{ backgroundColor: item.color }}
-                  ></div>
-                  <span className="font-medium text-gray-700">{item.name}</span>
+        <div className="grid md:grid-cols-2 gap-12">
+          {/* Before Chart */}
+          <div className="text-center">
+            <h5 className="text-lg font-semibold text-red-600 mb-4">BEFORE</h5>
+            <div className="h-64">
+              <ResponsiveContainer width="100%" height="100%">
+                <PieChart>
+                  <Pie
+                    data={timeBefore}
+                    cx="50%"
+                    cy="50%"
+                    outerRadius={80}
+                    fill="#8884d8"
+                    dataKey="value"
+                    animationDuration={animateCharts ? 1800 : 0}
+                    onMouseEnter={() => SoundEffects.playChartTick()}
+                  >
+                    {timeBefore.map((entry, index) => (
+                      <Cell key={`cell-${index}`} fill={entry.color} />
+                    ))}
+                  </Pie>
+                  <Tooltip content={<CustomTooltip />} />
+                </PieChart>
+              </ResponsiveContainer>
+            </div>
+            <div className="space-y-2 mt-4">
+              {timeBefore.map((item, index) => (
+                <div key={index} className="flex items-center justify-between text-sm">
+                  <div className="flex items-center">
+                    <div className="w-3 h-3 rounded mr-2" style={{ backgroundColor: item.color }}></div>
+                    <span>{item.name}</span>
+                  </div>
+                  <span className="font-semibold">{item.value}%</span>
                 </div>
-                <span className="font-bold text-gray-800">{item.value}%</span>
-              </motion.div>
-            ))}
+              ))}
+            </div>
+          </div>
+          
+          {/* After Chart */}
+          <div className="text-center">
+            <h5 className="text-lg font-semibold text-purple-600 mb-4">AFTER</h5>
+            <div className="h-64">
+              <ResponsiveContainer width="100%" height="100%">
+                <PieChart>
+                  <Pie
+                    data={timeAfter}
+                    cx="50%"
+                    cy="50%"
+                    outerRadius={80}
+                    fill="#8884d8"
+                    dataKey="value"
+                    animationDuration={animateCharts ? 2100 : 0}
+                    onMouseEnter={() => SoundEffects.playChartTick()}
+                  >
+                    {timeAfter.map((entry, index) => (
+                      <Cell key={`cell-${index}`} fill={entry.color} />
+                    ))}
+                  </Pie>
+                  <Tooltip content={<CustomTooltip />} />
+                </PieChart>
+              </ResponsiveContainer>
+            </div>
+            <div className="space-y-2 mt-4">
+              {timeAfter.map((item, index) => (
+                <div key={index} className="flex items-center justify-between text-sm">
+                  <div className="flex items-center">
+                    <div className="w-3 h-3 rounded mr-2" style={{ backgroundColor: item.color }}></div>
+                    <span>{item.name}</span>
+                  </div>
+                  <span className="font-semibold">{item.value}%</span>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </motion.div>
 
-      {/* Client Success Levels Chart */}
+      {/* Revenue Sources - Before vs After */}
       <motion.div
         variants={chartVariants}
         initial="hidden"
@@ -192,52 +272,84 @@ const ThreePieCharts: React.FC<ThreePieChartsProps> = ({ className = "" }) => {
         className="bg-white/60 rounded-3xl p-8 border border-purple-200"
       >
         <h4 className="text-2xl font-bold text-gray-800 mb-3 text-center">
-          Client Success Distribution
+          Revenue Diversification
         </h4>
-        <p className="text-gray-600 text-center mb-6 max-w-2xl mx-auto">
-          Real performance outcomes - 35% achieve high-performer status with 6-figure+ growth, while 40% show good progress with 3-5x revenue increases.
+        <p className="text-gray-600 text-center mb-8 max-w-2xl mx-auto">
+          From 85% dependency on 1-on-1 sessions to diversified income streams - automation creates multiple revenue sources.
         </p>
-        <div className="grid md:grid-cols-2 gap-8 items-center">
-          <div className="h-80">
-            <ResponsiveContainer width="100%" height="100%">
-              <PieChart>
-                <Pie
-                  data={successData}
-                  cx="50%"
-                  cy="50%"
-                  outerRadius={100}
-                  fill="#8884d8"
-                  dataKey="value"
-                  animationDuration={animateCharts ? 2100 : 0}
-                  onMouseEnter={() => SoundEffects.playChartTick()}
-                >
-                  {successData.map((entry, index) => (
-                    <Cell key={`cell-${index}`} fill={entry.color} />
-                  ))}
-                </Pie>
-                <Tooltip content={<CustomTooltip />} />
-              </PieChart>
-            </ResponsiveContainer>
-          </div>
-          <div className="space-y-4">
-            {successData.map((item, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: index * 0.1 + 0.7 }}
-                className="flex items-center justify-between p-3 bg-white/40 rounded-xl"
-              >
-                <div className="flex items-center">
-                  <div 
-                    className="w-4 h-4 rounded-full mr-3" 
-                    style={{ backgroundColor: item.color }}
-                  ></div>
-                  <span className="font-medium text-gray-700">{item.name}</span>
+        <div className="grid md:grid-cols-2 gap-12">
+          {/* Before Chart */}
+          <div className="text-center">
+            <h5 className="text-lg font-semibold text-red-600 mb-4">BEFORE</h5>
+            <div className="h-64">
+              <ResponsiveContainer width="100%" height="100%">
+                <PieChart>
+                  <Pie
+                    data={revenueBefore}
+                    cx="50%"
+                    cy="50%"
+                    outerRadius={80}
+                    fill="#8884d8"
+                    dataKey="value"
+                    animationDuration={animateCharts ? 2100 : 0}
+                    onMouseEnter={() => SoundEffects.playChartTick()}
+                  >
+                    {revenueBefore.map((entry, index) => (
+                      <Cell key={`cell-${index}`} fill={entry.color} />
+                    ))}
+                  </Pie>
+                  <Tooltip content={<CustomTooltip />} />
+                </PieChart>
+              </ResponsiveContainer>
+            </div>
+            <div className="space-y-2 mt-4">
+              {revenueBefore.map((item, index) => (
+                <div key={index} className="flex items-center justify-between text-sm">
+                  <div className="flex items-center">
+                    <div className="w-3 h-3 rounded mr-2" style={{ backgroundColor: item.color }}></div>
+                    <span>{item.name}</span>
+                  </div>
+                  <span className="font-semibold">{item.value}%</span>
                 </div>
-                <span className="font-bold text-gray-800">{item.value}%</span>
-              </motion.div>
-            ))}
+              ))}
+            </div>
+          </div>
+          
+          {/* After Chart */}
+          <div className="text-center">
+            <h5 className="text-lg font-semibold text-purple-600 mb-4">AFTER</h5>
+            <div className="h-64">
+              <ResponsiveContainer width="100%" height="100%">
+                <PieChart>
+                  <Pie
+                    data={revenueAfter}
+                    cx="50%"
+                    cy="50%"
+                    outerRadius={80}
+                    fill="#8884d8"
+                    dataKey="value"
+                    animationDuration={animateCharts ? 2400 : 0}
+                    onMouseEnter={() => SoundEffects.playChartTick()}
+                  >
+                    {revenueAfter.map((entry, index) => (
+                      <Cell key={`cell-${index}`} fill={entry.color} />
+                    ))}
+                  </Pie>
+                  <Tooltip content={<CustomTooltip />} />
+                </PieChart>
+              </ResponsiveContainer>
+            </div>
+            <div className="space-y-2 mt-4">
+              {revenueAfter.map((item, index) => (
+                <div key={index} className="flex items-center justify-between text-sm">
+                  <div className="flex items-center">
+                    <div className="w-3 h-3 rounded mr-2" style={{ backgroundColor: item.color }}></div>
+                    <span>{item.name}</span>
+                  </div>
+                  <span className="font-semibold">{item.value}%</span>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </motion.div>
