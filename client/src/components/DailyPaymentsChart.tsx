@@ -17,12 +17,12 @@ const DailyPaymentsChart: React.FC<DailyPaymentsChartProps> = ({ className = "" 
       <div className="bg-white rounded-3xl shadow-2xl overflow-hidden">
         <svg 
           width="100%" 
-          height="500" 
-          viewBox="0 0 400 500" 
+          height="520" 
+          viewBox="0 0 400 520" 
           className="w-full h-auto">
           
           {/* Background */}
-          <rect width="400" height="500" fill="#ffffff" rx="24"/>
+          <rect width="400" height="520" fill="#ffffff" rx="24"/>
           
           {/* Header */}
           <text x="40" y="60" fontSize="20" fontWeight="600" fill="#374151">Daily Payments</text>
@@ -69,7 +69,8 @@ const DailyPaymentsChart: React.FC<DailyPaymentsChartProps> = ({ className = "" 
           
           {/* Revenue Text */}
           <text x="200" y="465" fontSize="24" fontWeight="700" fill="#374151" textAnchor="middle">$3,000</text>
-          <text x="200" y="485" fontSize="14" fill="#6b7280" textAnchor="middle">Your potential daily revenue if you implement right steps with us</text>
+          <text x="200" y="485" fontSize="12" fill="#6b7280" textAnchor="middle">Your potential daily revenue if you implement</text>
+          <text x="200" y="500" fontSize="12" fill="#6b7280" textAnchor="middle">right steps with us</text>
         </svg>
       </div>
     </motion.div>
