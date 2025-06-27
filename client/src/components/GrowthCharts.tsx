@@ -126,7 +126,6 @@ const GrowthCharts: React.FC<GrowthChartsProps> = ({ className = "" }) => {
                   fill="#8884d8"
                   dataKey="value"
                   animationDuration={animateCharts ? 1500 : 0}
-                  animationDelay={500}
                 >
                   {channelData.map((entry, index) => (
                     <Cell key={`cell-${index}`} fill={entry.color} />
@@ -188,7 +187,6 @@ const GrowthCharts: React.FC<GrowthChartsProps> = ({ className = "" }) => {
                 fill="#8b5cf6" 
                 name="After"
                 animationDuration={animateCharts ? 1500 : 0}
-                animationDelay={300}
               />
             </BarChart>
           </ResponsiveContainer>

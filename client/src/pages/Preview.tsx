@@ -3,6 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { ArrowLeft, MessageSquare, TrendingUp, Video, Bot, Zap, Play, History, X, Target, Users, DollarSign, BarChart3, ShoppingCart, Mail, Globe, Smartphone } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import GrowthCharts from "@/components/GrowthCharts";
 
 const Preview = () => {
   const navigate = useNavigate();
@@ -41,6 +42,19 @@ const Preview = () => {
             See how our automation transforms your coaching business into a client-acquisition machine with zero effort
           </p>
         </div>
+
+        {/* Growth Charts Section */}
+        <section className="mb-24">
+          <div className="text-center mb-12">
+            <h3 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+              Real Growth Results
+            </h3>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Actual performance data from our coaching clients who implemented our automation systems
+            </p>
+          </div>
+          <GrowthCharts />
+        </section>
 
         {/* Preview Sections */}
         <div className="space-y-24">
