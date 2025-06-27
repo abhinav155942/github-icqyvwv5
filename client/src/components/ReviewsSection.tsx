@@ -34,8 +34,8 @@ const ReviewsSection = () => {
       id: 1,
       name: "Sarah Mitchell",
       rating: 4,
-      comment: "Honestly wasn't sure about this at first, but after 3 months my coaching business has completely changed. Before I was chasing leads all day and barely converting anyone. Now I'm getting 3-4 qualified calls per week without doing any of the follow-up myself. The setup took about 2 weeks but it's been worth every penny. My only complaint is I wish I'd done this sooner.",
-      date: "2025-06-14",
+      comment: "I used to spend hours chasing leads and following up manually—it was draining. Since they built the sales funnel for my coaching business, everything's changed. The system handles follow-ups automatically, and my booking rate for discovery calls jumped from around 20% to over 65%. The emails they wrote feel super personal too, like I wrote them myself. It's saved me a ton of time and energy.",
+      date: "2025-06-27",
       verified: true,
       emoji: "💼",
       avatar: "/attached_assets/Screenshot 2025-06-27 122508_1751008652254.png"
@@ -43,9 +43,9 @@ const ReviewsSection = () => {
     {
       id: 2,
       name: "Marcus Johnson",
-      rating: 3,
-      comment: "The AI chatbot thing seemed gimmicky but actually works pretty well. It screens out the tire kickers before they even get to my calendar. Still working out some kinks with the responses but overall saves me time. Team was responsive when I had questions during setup.",
-      date: "2025-06-11",
+      rating: 4,
+      comment: "I'm a business coach, and honestly, I just didn't have time to weed through unqualified leads. Their AI assistant asks smart questions up front, so only serious prospects get through. I probably save around 10–12 hours a week now just by not having to do those initial calls. It's not perfect, but it definitely helps.",
+      date: "2025-06-03",
       verified: true,
       emoji: "🎯",
       avatar: "/attached_assets/Screenshot 2025-06-27 123152_1751008658265.png"
@@ -53,9 +53,9 @@ const ReviewsSection = () => {
     {
       id: 3,
       name: "Lisa Rodriguez",
-      rating: 4,
-      comment: "The video clips they made from my long-form content actually get views now. I was posting hour-long videos that maybe 20 people watched. Now these short clips are getting thousands of views and I'm booking discovery calls from people who found me through them. Takes about a week to get the clips back but the quality is solid.",
-      date: "2025-06-08",
+      rating: 3,
+      comment: "I was really struggling to get visibility on social media. Their video team took my long-form content and turned it into short clips that actually perform. Since then, my Instagram has grown from a few hundred followers to over 15,000 in a few months. But more importantly, the content is bringing in real clients. It took a few tweaks early on, but now it's working great.",
+      date: "2025-05-19",
       verified: true,
       emoji: "📈",
       avatar: "/attached_assets/Screenshot 2025-06-27 122930_1751008660917.png"
@@ -63,9 +63,9 @@ const ReviewsSection = () => {
     {
       id: 4,
       name: "Robert Thompson",
-      rating: 3,
-      comment: "Website looks professional and the booking system works. Clients can schedule directly without the back-and-forth emails. Had a few small issues with the calendar integration at first but they fixed it quickly. Not cheap but definitely an upgrade from my old site.",
-      date: "2025-06-05",
+      rating: 4,
+      comment: "I didn't expect much when I signed up, but the website they built for my coaching business turned out amazing. It looks sharp, runs smoothly, and my clients love how easy the booking system is. The portal they made for tracking client progress has been a nice bonus too. Since the site went live, I've noticed more bookings and better engagement overall.",
+      date: "2025-03-29",
       verified: true,
       emoji: "💻",
       avatar: "/attached_assets/Screenshot 2025-06-27 122604_1751008665347.png"
