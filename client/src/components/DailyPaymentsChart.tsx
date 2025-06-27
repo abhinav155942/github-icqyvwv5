@@ -69,7 +69,7 @@ const DailyPaymentsChart: React.FC<DailyPaymentsChartProps> = ({ className = "" 
           
           {/* Revenue Text */}
           <text x="200" y="465" fontSize="24" fontWeight="700" fill="#374151" textAnchor="middle">$3,000</text>
-          <text x="200" y="485" fontSize="14" fill="#6b7280" textAnchor="middle">Your Potential Daily Revenue</text>
+          <text x="200" y="485" fontSize="14" fill="#6b7280" textAnchor="middle">Your potential daily revenue if you implement right steps with us</text>
         </svg>
       </div>
     </motion.div>
