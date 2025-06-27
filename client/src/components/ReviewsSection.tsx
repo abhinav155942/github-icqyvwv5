@@ -38,7 +38,7 @@ const ReviewsSection = () => {
       date: "2025-06-14",
       verified: true,
       emoji: "💼",
-      avatar: "/attached_assets/Screenshot 2025-06-27 122508_1751008044615.png"
+      avatar: "/attached_assets/Screenshot 2025-06-27 122508_1751008652254.png"
     },
     {
       id: 2,
@@ -48,7 +48,7 @@ const ReviewsSection = () => {
       date: "2025-06-11",
       verified: true,
       emoji: "🎯",
-      avatar: "/attached_assets/Screenshot 2025-06-27 123152_1751008061200.png"
+      avatar: "/attached_assets/Screenshot 2025-06-27 123152_1751008658265.png"
     },
     {
       id: 3,
@@ -58,7 +58,7 @@ const ReviewsSection = () => {
       date: "2025-06-08",
       verified: true,
       emoji: "📈",
-      avatar: "/attached_assets/Screenshot 2025-06-27 122930_1751008065365.png"
+      avatar: "/attached_assets/Screenshot 2025-06-27 122930_1751008660917.png"
     },
     {
       id: 4,
@@ -68,7 +68,7 @@ const ReviewsSection = () => {
       date: "2025-06-05",
       verified: true,
       emoji: "💻",
-      avatar: "/attached_assets/Screenshot 2025-06-27 122604_1751008071318.png"
+      avatar: "/attached_assets/Screenshot 2025-06-27 122604_1751008665347.png"
     }
   ];
 
@@ -174,13 +174,6 @@ const ReviewsSection = () => {
                       src={review.avatar}
                       alt={review.name}
                       className="w-full h-full object-cover"
-                      onError={(e) => {
-                        const target = e.target as HTMLImageElement;
-                        const initials = review.name.split(' ').map(n => n[0]).join('');
-                        const colors = ['bg-blue-500', 'bg-green-500', 'bg-purple-500', 'bg-red-500'];
-                        const colorClass = colors[review.id % colors.length];
-                        target.outerHTML = `<div class="w-full h-full ${colorClass} flex items-center justify-center text-white font-semibold text-xl">${initials}</div>`;
-                      }}
                     />
                   </div>
                 </div>
