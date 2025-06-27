@@ -188,7 +188,7 @@ const ReviewsSection = () => {
                           {renderStars(review.rating)}
                         </div>
                         <span className="text-sm text-gray-500">
-                          {new Date(review.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long' })}
+                          {new Date(review.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
                         </span>
                       </div>
                     </div>
