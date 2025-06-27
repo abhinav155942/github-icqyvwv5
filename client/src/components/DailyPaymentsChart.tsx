@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 
 interface DailyPaymentsChartProps {
@@ -6,130 +6,74 @@ interface DailyPaymentsChartProps {
 }
 
 const DailyPaymentsChart: React.FC<DailyPaymentsChartProps> = ({ className = "" }) => {
-  const [isVisible, setIsVisible] = useState(false);
-  const [animateChart, setAnimateChart] = useState(false);
-
-  // Chart data matching the exact image layout
-  const chartData = [
-    { label: '20', height: 75 },
-    { label: '30', height: 50 },
-    { label: '35', height: 90 },
-    { label: '40', height: 60 },
-    { label: '45', height: 95 },
-    { label: '50+', height: 70 }
-  ];
-
-  useEffect(() => {
-    setIsVisible(true);
-    const timer = setTimeout(() => {
-      setAnimateChart(true);
-    }, 800);
-    return () => clearTimeout(timer);
-  }, []);
-
   return (
     <motion.div
       initial={{ opacity: 0, y: 50 }}
-      animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 50 }}
+      animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
-      className={`bg-white rounded-3xl shadow-2xl p-8 max-w-md mx-auto ${className}`}
+      className={`max-w-md mx-auto ${className}`}
     >
-      {/* Header */}
-      <div className="flex justify-between items-center mb-8">
-        <h3 className="text-xl font-semibold text-gray-800">Daily Payments</h3>
-        <button className="bg-slate-800 hover:bg-slate-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors">
-          Publish
-        </button>
+      {/* Static Chart Image */}
+      <div className="bg-white rounded-3xl shadow-2xl overflow-hidden">
+        <svg 
+          width="100%" 
+          height="500" 
+          viewBox="0 0 400 500" 
+          className="w-full h-auto">
+          
+          {/* Background */}
+          <rect width="400" height="500" fill="#ffffff" rx="24"/>
+          
+          {/* Header */}
+          <text x="40" y="60" fontSize="20" fontWeight="600" fill="#374151">Daily Payments</text>
+          <rect x="320" y="40" width="60" height="32" rx="8" fill="#1f2937"/>
+          <text x="350" y="58" fontSize="12" fontWeight="500" fill="#ffffff" textAnchor="middle">Publish</text>
+          
+          {/* Tooltip */}
+          <rect x="150" y="200" width="100" height="50" rx="8" fill="#1f2937"/>
+          <text x="200" y="218" fontSize="14" fontWeight="600" fill="#ffffff" textAnchor="middle">Avg: 3K</text>
+          <text x="200" y="235" fontSize="10" fill="#9ca3af" textAnchor="middle">Date: Jul 18</text>
+          <polygon points="200,250 195,255 205,255" fill="#1f2937"/>
+          
+          {/* Chart Bars */}
+          <defs>
+            <linearGradient id="barGradient" x1="0%" y1="100%" x2="0%" y2="0%">
+              <stop offset="0%" stopColor="#a855f7"/>
+              <stop offset="100%" stopColor="#c084fc"/>
+            </linearGradient>
+          </defs>
+          
+          {/* Bar 1 - 20 */}
+          <rect x="50" y="280" width="25" height="120" rx="12" fill="url(#barGradient)"/>
+          <text x="62.5" y="420" fontSize="12" fill="#6b7280" textAnchor="middle">20</text>
+          
+          {/* Bar 2 - 30 */}
+          <rect x="105" y="320" width="25" height="80" rx="12" fill="url(#barGradient)"/>
+          <text x="117.5" y="420" fontSize="12" fill="#6b7280" textAnchor="middle">30</text>
+          
+          {/* Bar 3 - 35 */}
+          <rect x="160" y="260" width="25" height="140" rx="12" fill="url(#barGradient)"/>
+          <text x="172.5" y="420" fontSize="12" fill="#6b7280" textAnchor="middle">35</text>
+          
+          {/* Bar 4 - 40 */}
+          <rect x="215" y="310" width="25" height="90" rx="12" fill="url(#barGradient)"/>
+          <text x="227.5" y="420" fontSize="12" fill="#6b7280" textAnchor="middle">40</text>
+          
+          {/* Bar 5 - 45 */}
+          <rect x="270" y="250" width="25" height="150" rx="12" fill="url(#barGradient)"/>
+          <text x="282.5" y="420" fontSize="12" fill="#6b7280" textAnchor="middle">45</text>
+          
+          {/* Bar 6 - 50+ */}
+          <rect x="325" y="290" width="25" height="110" rx="12" fill="url(#barGradient)"/>
+          <text x="337.5" y="420" fontSize="12" fill="#6b7280" textAnchor="middle">50+</text>
+          
+          {/* Revenue Text */}
+          <text x="200" y="465" fontSize="24" fontWeight="700" fill="#374151" textAnchor="middle">$3,000</text>
+          <text x="200" y="485" fontSize="14" fill="#6b7280" textAnchor="middle">Your Potential Daily Revenue</text>
+        </svg>
       </div>
-
-      {/* Chart Area */}
-      <div className="relative h-72 mb-8">
-        {/* Tooltip */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: animateChart ? 1 : 0, scale: animateChart ? 1 : 0.8 }}
-          transition={{ delay: 1.5, duration: 0.5 }}
-          className="absolute top-16 left-1/2 transform -translate-x-1/2 bg-slate-800 text-white px-4 py-3 rounded-lg text-sm z-10"
-        >
-          <div className="font-semibold text-white">Avg: 3K</div>
-          <div className="text-slate-300 text-xs">Date: Jul 18</div>
-          <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-full">
-            <div className="w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-slate-800"></div>
-          </div>
-        </motion.div>
-
-        {/* Chart Bars */}
-        <div className="flex items-end justify-center space-x-6 h-48 pt-24">
-          {chartData.map((item, index) => (
-            <div key={item.label} className="flex flex-col items-center">
-              <motion.div
-                initial={{ height: 0 }}
-                animate={{ height: animateChart ? `${item.height}%` : 0 }}
-                transition={{ 
-                  delay: 1 + (index * 0.1), 
-                  duration: 0.8, 
-                  ease: "easeOut" 
-                }}
-                className="w-10 bg-gradient-to-t from-purple-500 to-purple-300 rounded-t-xl mb-3"
-                style={{ minHeight: '8px', maxHeight: '120px' }}
-              />
-              <span className="text-sm text-gray-500 font-medium">{item.label}</span>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Animated Revenue Counter */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: animateChart ? 1 : 0 }}
-        transition={{ delay: 2, duration: 0.5 }}
-        className="text-center"
-      >
-        <div className="text-2xl font-bold text-gray-800 mb-1">
-          $<CountUp end={3000} duration={2} delay={2.2} />
-        </div>
-        <div className="text-sm text-gray-500">Your Potential Daily Revenue</div>
-        <div className="text-xs text-purple-600 mt-1 font-medium">
-          Based on our coaching client success rates
-        </div>
-      </motion.div>
     </motion.div>
   );
-};
-
-// CountUp animation component
-const CountUp: React.FC<{ end: number; duration: number; delay: number }> = ({ 
-  end, 
-  duration, 
-  delay 
-}) => {
-  const [count, setCount] = useState(0);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      const startTime = Date.now();
-      const startValue = 0;
-      
-      const animate = () => {
-        const elapsed = Date.now() - startTime;
-        const progress = Math.min(elapsed / (duration * 1000), 1);
-        const easeOut = 1 - Math.pow(1 - progress, 3);
-        
-        setCount(Math.floor(startValue + (end - startValue) * easeOut));
-        
-        if (progress < 1) {
-          requestAnimationFrame(animate);
-        }
-      };
-      
-      animate();
-    }, delay * 1000);
-
-    return () => clearTimeout(timer);
-  }, [end, duration, delay]);
-
-  return <span>{count.toLocaleString()}</span>;
 };
 
 export default DailyPaymentsChart;
