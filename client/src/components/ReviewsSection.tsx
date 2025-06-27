@@ -230,17 +230,7 @@ const ReviewsSection = () => {
           ))}
         </div>
 
-        {reviews.length > 6 && (
-          <div className="text-center">
-            <Button
-              variant="outline"
-              onClick={() => setShowAllReviews(!showAllReviews)}
-              className="border-purple-200 text-purple-600 hover:bg-purple-50"
-            >
-              {showAllReviews ? 'Show Less Reviews' : 'Show All Reviews'}
-            </Button>
-          </div>
-        )}
+
       </div>
     </section>
   );
