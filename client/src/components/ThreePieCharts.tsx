@@ -73,9 +73,12 @@ const ThreePieCharts: React.FC<ThreePieChartsProps> = ({ className = "" }) => {
         animate="visible"
         className="bg-white/60 rounded-3xl p-8 border border-purple-200"
       >
-        <h4 className="text-2xl font-bold text-gray-800 mb-6 text-center">
-          Service Distribution
+        <h4 className="text-2xl font-bold text-gray-800 mb-3 text-center">
+          Most Popular Services
         </h4>
+        <p className="text-gray-600 text-center mb-6 max-w-2xl mx-auto">
+          What coaching clients request most - Sales Funnels lead at 45% because coaches need automated lead generation to scale beyond manual outreach.
+        </p>
         <div className="grid md:grid-cols-2 gap-8 items-center">
           <div className="h-80">
             <ResponsiveContainer width="100%" height="100%">
@@ -129,9 +132,12 @@ const ThreePieCharts: React.FC<ThreePieChartsProps> = ({ className = "" }) => {
         transition={{ delay: 0.2 }}
         className="bg-white/60 rounded-3xl p-8 border border-purple-200"
       >
-        <h4 className="text-2xl font-bold text-gray-800 mb-6 text-center">
-          Revenue Sources
+        <h4 className="text-2xl font-bold text-gray-800 mb-3 text-center">
+          How Coaches Make Money
         </h4>
+        <p className="text-gray-600 text-center mb-6 max-w-2xl mx-auto">
+          Revenue breakdown after implementing our automation - One-on-one coaching remains primary income (55%), while automated courses provide 25% passive revenue.
+        </p>
         <div className="grid md:grid-cols-2 gap-8 items-center">
           <div className="h-80">
             <ResponsiveContainer width="100%" height="100%">
@@ -185,9 +191,12 @@ const ThreePieCharts: React.FC<ThreePieChartsProps> = ({ className = "" }) => {
         transition={{ delay: 0.4 }}
         className="bg-white/60 rounded-3xl p-8 border border-purple-200"
       >
-        <h4 className="text-2xl font-bold text-gray-800 mb-6 text-center">
-          Client Success Levels
+        <h4 className="text-2xl font-bold text-gray-800 mb-3 text-center">
+          Client Success Distribution
         </h4>
+        <p className="text-gray-600 text-center mb-6 max-w-2xl mx-auto">
+          Real performance outcomes - 35% achieve high-performer status with 6-figure+ growth, while 40% show good progress with 3-5x revenue increases.
+        </p>
         <div className="grid md:grid-cols-2 gap-8 items-center">
           <div className="h-80">
             <ResponsiveContainer width="100%" height="100%">
