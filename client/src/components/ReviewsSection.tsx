@@ -38,7 +38,7 @@ const ReviewsSection = () => {
       date: "2025-06-14",
       verified: true,
       emoji: "💼",
-      avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b977?w=100&h=100&fit=crop&crop=face"
+      avatar: "/attached_assets/Screenshot 2025-06-27 122508_1751008652254.png"
     },
     {
       id: 2,
@@ -48,7 +48,7 @@ const ReviewsSection = () => {
       date: "2025-06-11",
       verified: true,
       emoji: "🎯",
-      avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face"
+      avatar: "/attached_assets/Screenshot 2025-06-27 123152_1751008658265.png"
     },
     {
       id: 3,
@@ -58,7 +58,7 @@ const ReviewsSection = () => {
       date: "2025-06-08",
       verified: true,
       emoji: "📈",
-      avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face"
+      avatar: "/attached_assets/Screenshot 2025-06-27 122930_1751008660917.png"
     },
     {
       id: 4,
@@ -68,7 +68,7 @@ const ReviewsSection = () => {
       date: "2025-06-05",
       verified: true,
       emoji: "💻",
-      avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face"
+      avatar: "/attached_assets/Screenshot 2025-06-27 122604_1751008665347.png"
     }
   ];
 
