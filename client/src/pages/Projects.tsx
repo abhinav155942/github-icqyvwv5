@@ -8,6 +8,7 @@ import { ArrowLeft, ExternalLink, Users, TrendingUp, ShoppingCart, Video, Zap } 
 import { useNavigate } from "react-router-dom";
 import { PieChart, Pie, Cell, BarChart, Bar, XAxis, YAxis } from "recharts";
 import ReviewsSection from "@/components/ReviewsSection";
+import GrowthCharts from "@/components/GrowthCharts";
 import { SoundEffects } from "@/utils/soundEffects";
 
 const Projects = () => {
@@ -426,6 +427,19 @@ const Projects = () => {
 
         {/* Reviews Section - Replacing fake success stories */}
         <ReviewsSection />
+
+        {/* Growth Analytics Section */}
+        <section className="mb-16">
+          <div className="text-center mb-12">
+            <h3 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+              Client Growth Analytics
+            </h3>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Real performance data from coaching clients who implemented our AI automation systems
+            </p>
+          </div>
+          <GrowthCharts />
+        </section>
 
         {/* CTA Section */}
         <div className="text-center bg-white/60 rounded-3xl p-12 border border-purple-200">
