@@ -164,12 +164,12 @@ const ReviewsSection = () => {
           </p>
         </div>
 
-        <div className="space-y-6">
+        <div className="space-y-4 md:space-y-6">
           {reviews.map((review) => (
-            <div key={review.id} className="bg-white rounded-lg shadow-sm border border-gray-200 p-6 hover:shadow-md transition-shadow duration-200">
-              <div className="flex items-start gap-6">
+            <div key={review.id} className="bg-white rounded-lg shadow-sm border border-gray-200 p-4 md:p-6 hover:shadow-md transition-shadow duration-200">
+              <div className="flex flex-col sm:flex-row items-start gap-4 sm:gap-6">
                 <div className="flex-shrink-0">
-                  <div className="w-20 h-20 rounded-full overflow-hidden border-3 border-gray-200">
+                  <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full overflow-hidden border-3 border-gray-200">
                     <img
                       src={review.avatar}
                       alt={review.name}
@@ -177,31 +177,31 @@ const ReviewsSection = () => {
                     />
                   </div>
                 </div>
-                <div className="flex-1">
-                  <div className="flex items-start justify-between mb-3">
-                    <div>
-                      <h4 className="font-bold text-lg text-gray-800 mb-1">
+                <div className="flex-1 w-full">
+                  <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between mb-3 gap-2">
+                    <div className="flex-1">
+                      <h4 className="font-bold text-base md:text-lg text-gray-800 mb-1">
                         {review.name}
                       </h4>
-                      <div className="flex items-center gap-2">
+                      <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2">
                         <div className="flex">
                           {renderStars(review.rating)}
                         </div>
-                        <span className="text-sm text-gray-500">
+                        <span className="text-xs sm:text-sm text-gray-500">
                           {new Date(review.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
                         </span>
                       </div>
                     </div>
                     {review.verified && (
-                      <div className="flex items-center gap-1 text-green-600 text-sm">
-                        <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                      <div className="flex items-center gap-1 text-green-600 text-xs sm:text-sm flex-shrink-0">
+                        <svg className="w-3 h-3 sm:w-4 sm:h-4" fill="currentColor" viewBox="0 0 20 20">
                           <path fillRule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                         </svg>
                         Verified
                       </div>
                     )}
                   </div>
-                  <p className="text-gray-700 text-base leading-relaxed">
+                  <p className="text-gray-700 text-sm md:text-base leading-relaxed">
                     {review.comment}
                   </p>
                 </div>
