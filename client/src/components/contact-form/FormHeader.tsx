@@ -8,9 +8,10 @@ interface FormHeaderProps {
   demoSubmitted: boolean;
   submitAttempts?: number;
   progress: number;
+  hasUsedFreeDemo?: boolean;
 }
 
-export const FormHeader = ({ demoSubmitted, submitAttempts = 0, progress }: FormHeaderProps) => {
+export const FormHeader = ({ demoSubmitted, submitAttempts = 0, progress, hasUsedFreeDemo = false }: FormHeaderProps) => {
   const navigate = useNavigate();
 
   return (
@@ -27,15 +28,25 @@ export const FormHeader = ({ demoSubmitted, submitAttempts = 0, progress }: Form
 
       <div className="text-center mb-8 md:mb-12">
         <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-gray-800 mb-4 md:mb-6 px-2">
-          {demoSubmitted ? "Complete Your" : "Request Your"}{" "}
+          {demoSubmitted 
+            ? hasUsedFreeDemo ? "Complete Your" : "Demo Request" 
+            : hasUsedFreeDemo ? "Request Your" : "Get Your"
+          }{" "}
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600">
-            {demoSubmitted ? "Purchase" : "AI Services"}
+            {demoSubmitted 
+              ? hasUsedFreeDemo ? "Purchase" : "Submitted!" 
+              : hasUsedFreeDemo ? "AI Services" : "Free Demo"
+            }
           </span>
         </h2>
         <p className="text-sm sm:text-base md:text-lg text-gray-600 mb-4 sm:mb-6 md:mb-8 px-4 max-w-2xl mx-auto">
           {demoSubmitted 
-            ? "Your service request has been submitted! Complete payment to get started with your AI solution."
-            : "Since you've already used your free demo, you can now purchase our premium AI services. Tell us about your business needs and proceed to payment."
+            ? hasUsedFreeDemo 
+              ? "Your service request has been submitted! Complete payment to get started with your AI solution."
+              : "Your free demo request has been submitted! You'll receive it within 24-48 hours."
+            : hasUsedFreeDemo
+              ? "Since you've already used your free demo, you can now purchase our premium AI services. Tell us about your business needs and proceed to payment."
+              : "Tell us about your business and we'll create a tailored AI solution for you"
           }
         </p>
         

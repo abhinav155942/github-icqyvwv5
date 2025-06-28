@@ -13,7 +13,7 @@ import { FileUploadSection } from "./contact-form/FileUploadSection";
 import { LinksSection } from "./contact-form/LinksSection";
 import { FormFooter } from "./contact-form/FormFooter";
 import { SuccessDialog } from "./contact-form/SuccessDialog";
-import CheckoutDialog from "./contact-form/CheckoutDialog";
+
 import { useFormPersistence } from "@/hooks/useFormPersistence";
 import { SoundEffects } from "@/utils/soundEffects";
 import { LocalStorageManager } from "@/utils/localStorageManager";
@@ -36,8 +36,7 @@ const ContactForm = ({ userType }: ContactFormProps) => {
   const [demoSubmitted, setDemoSubmitted] = useState(false);
   const [totalCost, setTotalCost] = useState(0);
   const [serviceConfigs, setServiceConfigs] = useState<Record<string, ServiceConfig>>({});
-  const [showCheckout, setShowCheckout] = useState(false);
-  const [checkoutUrl, setCheckoutUrl] = useState('');
+  const [hasUsedFreeDemo, setHasUsedFreeDemo] = useState(false);
   const { finishLoading } = useLoadingState({ 
     initialLoading: true, 
     minLoadingTime: 600 
@@ -58,6 +57,12 @@ const ContactForm = ({ userType }: ContactFormProps) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
+    // Check if user has already used their free demo
+    const usedDemo = localStorage.getItem('hookai_demo_used');
+    if (usedDemo) {
+      setHasUsedFreeDemo(true);
+    }
+
     // Simulate form loading and initialization
     const timer = setTimeout(() => {
       finishLoading();
@@ -67,8 +72,8 @@ const ContactForm = ({ userType }: ContactFormProps) => {
   }, [finishLoading]);
 
   useEffect(() => {
-    // Calculate cost based on number of services selected
-    const serviceCost = formData.services.length * 300; // $300 per service
+    // Calculate cost based on number of services selected and demo status
+    const serviceCost = hasUsedFreeDemo ? formData.services.length * 300 : 0;
     setTotalCost(serviceCost);
     
     // Initialize service configs for selected services
@@ -80,7 +85,7 @@ const ContactForm = ({ userType }: ContactFormProps) => {
         }));
       }
     });
-  }, [formData.services]);
+  }, [formData.services, hasUsedFreeDemo]);
 
   // Simple form state - no external database checks needed
 
@@ -273,15 +278,28 @@ const ContactForm = ({ userType }: ContactFormProps) => {
       setDemoSubmitted(true);
       clearSavedData();
       
-      // Get the appropriate checkout URL based on selected services
-      const paymentUrl = getCheckoutUrl(formData.services.length);
-      setCheckoutUrl(paymentUrl);
-      setShowCheckout(true);
-      
-      toast({
-        title: "Demo Request Submitted!",
-        description: "Please complete your payment to proceed with the services.",
-      });
+      // Handle redirect based on demo status
+      if (hasUsedFreeDemo && formData.services.length > 0) {
+        // User has already used demo - redirect to payment
+        const paymentUrl = getCheckoutUrl(formData.services.length);
+        window.open(paymentUrl, '_blank');
+        
+        toast({
+          title: "Service Request Submitted!",
+          description: "Redirecting to secure payment...",
+        });
+      } else {
+        // First time user - mark demo as used and show success
+        localStorage.setItem('hookai_demo_used', 'true');
+        setHasUsedFreeDemo(true);
+        
+        toast({
+          title: "Free Demo Request Submitted!",
+          description: "You will receive your demo within 24-48 hours.",
+        });
+        
+        setShowSuccessDialog(true);
+      }
       
     } catch (error) {
       console.error('Webhook submission error:', error);
@@ -313,6 +331,7 @@ const ContactForm = ({ userType }: ContactFormProps) => {
         <FormHeader 
           demoSubmitted={demoSubmitted}
           progress={progress}
+          hasUsedFreeDemo={hasUsedFreeDemo}
         />
 
         <div className="relative">
@@ -355,7 +374,7 @@ const ContactForm = ({ userType }: ContactFormProps) => {
                   services={formData.services}
                   onServiceToggle={handleServiceToggle}
                   isSubmitting={isSubmitting}
-                  showActualPrice={true}
+                  showActualPrice={hasUsedFreeDemo}
                 />
 
                 {formData.services.map(serviceId => (
@@ -399,6 +418,7 @@ const ContactForm = ({ userType }: ContactFormProps) => {
                   isPurchaseDisabled={isSubmitDisabled}
                   demoSubmitted={demoSubmitted}
                   totalCost={totalCost}
+                  hasUsedFreeDemo={hasUsedFreeDemo}
                 />
               </form>
             </CardContent>
@@ -410,14 +430,7 @@ const ContactForm = ({ userType }: ContactFormProps) => {
           onOpenChange={setShowSuccessDialog}
         />
 
-        <CheckoutDialog
-          open={showCheckout}
-          onOpenChange={setShowCheckout}
-          checkoutUrl={checkoutUrl}
-          numberOfServices={formData.services.length}
-          totalCost={totalCost}
-          selectedServices={formData.services}
-        />
+
       </div>
     </section>
   );

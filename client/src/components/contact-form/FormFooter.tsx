@@ -9,13 +9,15 @@ interface FormFooterProps {
   isPurchaseDisabled: boolean;
   demoSubmitted: boolean;
   totalCost: number;
+  hasUsedFreeDemo?: boolean;
 }
 
 export const FormFooter = ({ 
   isSubmitting, 
   isPurchaseDisabled, 
   demoSubmitted, 
-  totalCost 
+  totalCost,
+  hasUsedFreeDemo = false
 }: FormFooterProps) => {
   const navigate = useNavigate();
   
@@ -38,13 +40,16 @@ export const FormFooter = ({
           <div className="flex items-center justify-center space-x-2">
             <Zap className="w-5 h-5 text-yellow-600 animate-pulse" />
             <p className="text-yellow-800 dark:text-yellow-200 font-medium text-center">
-              Please select at least one service to proceed with your order
+              {hasUsedFreeDemo 
+                ? "Please select at least one service to proceed with your order"
+                : "Please select at least one service to request your free demo"
+              }
             </p>
           </div>
         </div>
       )}
 
-      {!isPurchaseDisabled && totalCost > 0 && (
+      {!isPurchaseDisabled && hasUsedFreeDemo && totalCost > 0 && (
         <div className="bg-gradient-to-r from-green-50 to-blue-50 border-2 border-green-300 rounded-2xl p-6 mb-6">
           <div className="text-center">
             <p className="text-lg font-semibold text-gray-800 mb-2">
@@ -77,8 +82,15 @@ export const FormFooter = ({
             </>
           ) : (
             <>
-              <CreditCard className="mr-3 h-6 w-6 group-hover:animate-bounce" />
-              {totalCost > 0 ? `Submit Order - $${totalCost}` : 'Submit Service Request'}
+              {hasUsedFreeDemo ? (
+                <CreditCard className="mr-3 h-6 w-6 group-hover:animate-bounce" />
+              ) : (
+                <Gift className="mr-3 h-6 w-6 group-hover:animate-bounce" />
+              )}
+              {hasUsedFreeDemo 
+                ? (totalCost > 0 ? `Submit Order - $${totalCost}` : 'Submit Service Request')
+                : 'Get My Free Demo'
+              }
               <Rocket className="ml-3 h-6 w-6 group-hover:animate-bounce" />
             </>
           )}
@@ -87,11 +99,17 @@ export const FormFooter = ({
       
       <div className="mt-6 text-center space-y-4 animate-slide-in-up" style={{ animationDelay: '0.2s' }}>
         <p className="text-sm sm:text-base md:text-lg font-medium bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
-          Premium AI Services • Secure Payment Processing
+          {hasUsedFreeDemo 
+            ? "Premium AI Services • Secure Payment Processing"
+            : "100% free demo • No credit card needed"
+          }
         </p>
         
         <p className="text-sm text-gray-600 dark:text-gray-400">
-          Setup within 24-48 hours • Lifetime access included
+          {hasUsedFreeDemo 
+            ? "Setup within 24-48 hours • Lifetime access included"
+            : "Response within 24-48 hours • Professional consultation"
+          }
         </p>
         
         {/* Trust indicators */}
