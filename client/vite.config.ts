@@ -13,7 +13,8 @@ export default defineConfig({
       'aed65838-776b-44b3-8eb0-30ff3eba00ad-00-127z3ue8rzjtx.riker.replit.dev',
       'aaf9ed5a-3ef5-4622-abda-3bc03e89cfde-00-qvtbq5bt9vq0.kirk.replit.dev',
       '1b534582-3ba2-4768-9b1b-5fdc449249e6-00-2ldhokdcs30l4.worf.replit.dev',
-      '957b7aaf-f9b3-484f-a6c5-61e60be98409-00-32u4zbgzxht7k.spock.replit.dev'
+      '957b7aaf-f9b3-484f-a6c5-61e60be98409-00-32u4zbgzxht7k.spock.replit.dev',
+      'b7d102e3-7ea3-451a-9c43-c1e91412e638-00-125jnv01c5oji.worf.replit.dev'
     ],
   },
   resolve: {
