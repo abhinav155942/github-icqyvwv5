@@ -13,12 +13,11 @@ import { FileUploadSection } from "./contact-form/FileUploadSection";
 import { LinksSection } from "./contact-form/LinksSection";
 import { FormFooter } from "./contact-form/FormFooter";
 import { SuccessDialog } from "./contact-form/SuccessDialog";
+import CheckoutDialog from "./contact-form/CheckoutDialog";
 import { useFormPersistence } from "@/hooks/useFormPersistence";
 import { SoundEffects } from "@/utils/soundEffects";
 import { LocalStorageManager } from "@/utils/localStorageManager";
-import { ContactFormSkeleton } from "@/components/ui/loading-skeletons";
 import { useLoadingState } from "@/hooks/useLoadingState";
-
 
 interface ContactFormProps {
   userType: string;
@@ -37,7 +36,9 @@ const ContactForm = ({ userType }: ContactFormProps) => {
   const [demoSubmitted, setDemoSubmitted] = useState(false);
   const [totalCost, setTotalCost] = useState(0);
   const [serviceConfigs, setServiceConfigs] = useState<Record<string, ServiceConfig>>({});
-  const { isLoading: isFormLoading, finishLoading } = useLoadingState({ 
+  const [showCheckout, setShowCheckout] = useState(false);
+  const [checkoutUrl, setCheckoutUrl] = useState('');
+  const { finishLoading } = useLoadingState({ 
     initialLoading: true, 
     minLoadingTime: 600 
   });
@@ -50,8 +51,7 @@ const ContactForm = ({ userType }: ContactFormProps) => {
     setFiles,
     setLinks,
     updateFormData,
-    clearSavedData,
-    backupFormData
+    clearSavedData
   } = useFormPersistence();
 
 
@@ -67,8 +67,9 @@ const ContactForm = ({ userType }: ContactFormProps) => {
   }, [finishLoading]);
 
   useEffect(() => {
-    // Free demo version - no cost calculation needed
-    setTotalCost(0);
+    // Calculate cost based on number of services selected
+    const serviceCost = formData.services.length * 300; // $300 per service
+    setTotalCost(serviceCost);
     
     // Initialize service configs for selected services
     formData.services.forEach(serviceId => {
@@ -113,6 +114,17 @@ const ContactForm = ({ userType }: ContactFormProps) => {
       ...prev,
       [serviceId]: config
     }));
+  };
+
+  // Pricing and checkout logic
+  const getCheckoutUrl = (numberOfServices: number) => {
+    const pricingMap = {
+      1: "https://www.paypal.com/ncp/payment/RAL8XL4PLF388", // $300
+      2: "https://www.paypal.com/ncp/payment/72QM3XUV3CQE2", // $600
+      3: "https://www.paypal.com/ncp/payment/G7MTTA6CKFZPW", // $900
+      4: "https://www.paypal.com/ncp/payment/C63UJL244KXR6"  // $1200
+    };
+    return pricingMap[numberOfServices as keyof typeof pricingMap] || pricingMap[1];
   };
 
   const handleNicheChange = (value: string) => {
@@ -260,11 +272,15 @@ const ContactForm = ({ userType }: ContactFormProps) => {
       SoundEffects.playSuccess();
       setDemoSubmitted(true);
       clearSavedData();
-      setShowSuccessDialog(true);
+      
+      // Get the appropriate checkout URL based on selected services
+      const paymentUrl = getCheckoutUrl(formData.services.length);
+      setCheckoutUrl(paymentUrl);
+      setShowCheckout(true);
       
       toast({
-        title: "Success!",
-        description: "Your request has been sent successfully!",
+        title: "Demo Request Submitted!",
+        description: "Please complete your payment to proceed with the services.",
       });
       
     } catch (error) {
@@ -308,7 +324,7 @@ const ContactForm = ({ userType }: ContactFormProps) => {
               demoSubmitted={demoSubmitted}
               userType={userType}
               services={formData.services}
-              totalCost={0}
+              totalCost={totalCost}
               progress={progress}
             />
             
@@ -339,7 +355,7 @@ const ContactForm = ({ userType }: ContactFormProps) => {
                   services={formData.services}
                   onServiceToggle={handleServiceToggle}
                   isSubmitting={isSubmitting}
-                  showActualPrice={false}
+                  showActualPrice={true}
                 />
 
                 {formData.services.map(serviceId => (
@@ -382,7 +398,7 @@ const ContactForm = ({ userType }: ContactFormProps) => {
                   isSubmitting={isSubmitting}
                   isPurchaseDisabled={isSubmitDisabled}
                   demoSubmitted={demoSubmitted}
-                  totalCost={0}
+                  totalCost={totalCost}
                 />
               </form>
             </CardContent>
@@ -392,6 +408,15 @@ const ContactForm = ({ userType }: ContactFormProps) => {
         <SuccessDialog 
           open={showSuccessDialog}
           onOpenChange={setShowSuccessDialog}
+        />
+
+        <CheckoutDialog
+          open={showCheckout}
+          onOpenChange={setShowCheckout}
+          checkoutUrl={checkoutUrl}
+          numberOfServices={formData.services.length}
+          totalCost={totalCost}
+          selectedServices={formData.services}
         />
       </div>
     </section>

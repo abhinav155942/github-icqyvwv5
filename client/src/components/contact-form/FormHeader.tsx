@@ -27,15 +27,15 @@ export const FormHeader = ({ demoSubmitted, submitAttempts = 0, progress }: Form
 
       <div className="text-center mb-8 md:mb-12">
         <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-gray-800 mb-4 md:mb-6 px-2">
-          {demoSubmitted ? "Ready to Get Started?" : "Get Your"}{" "}
+          {demoSubmitted ? "Complete Your" : "Request Your"}{" "}
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600">
-            {demoSubmitted ? "Purchase Now" : "Free Demo"}
+            {demoSubmitted ? "Purchase" : "AI Services"}
           </span>
         </h2>
         <p className="text-sm sm:text-base md:text-lg text-gray-600 mb-4 sm:mb-6 md:mb-8 px-4 max-w-2xl mx-auto">
           {demoSubmitted 
-            ? "Your demo request has been submitted! Ready to purchase your AI solution?"
-            : "Tell us about your business and we'll create a tailored AI solution for you"
+            ? "Your service request has been submitted! Complete payment to get started with your AI solution."
+            : "Since you've already used your free demo, you can now purchase our premium AI services. Tell us about your business needs and proceed to payment."
           }
         </p>
         
@@ -65,20 +65,20 @@ export const FormHeader = ({ demoSubmitted, submitAttempts = 0, progress }: Form
               <div className="flex-1">
                 <h3 className="text-xl font-bold text-gray-800 mb-3 flex items-center">
                   <span className="mr-2">🎉</span>
-                  Demo Request Successfully Submitted!
+                  Service Request Successfully Submitted!
                 </h3>
                 <div className="space-y-3 text-gray-700">
                   <p className="flex items-center">
                     <Clock className="h-5 w-5 mr-2 text-blue-600" />
-                    <span className="font-semibold">Timeline:</span> You will receive your custom demo within 24-48 hours
+                    <span className="font-semibold">Next Step:</span> Complete payment to activate your AI services
                   </p>
                   <p className="leading-relaxed">
-                    Our AI specialists are now crafting a personalized demo based on your specific business needs and requirements. 
-                    Once you review the demo and see how it can transform your business, you can select the services you'd like to purchase below.
+                    Your service request has been processed. Since you've already experienced our free demo, 
+                    you can now proceed with payment to get full access to your selected AI services.
                   </p>
                   <div className="bg-white/70 rounded-lg p-4 border-l-4 border-purple-500">
                     <p className="text-sm font-medium text-purple-700">
-                      💡 <strong>Next Steps:</strong> Review your demo → Select desired services → Complete secure payment → Launch your AI solution
+                      💡 <strong>Ready to Launch:</strong> Complete secure payment → Receive setup instructions → Launch your AI solution within 24-48 hours
                     </p>
                   </div>
                 </div>
